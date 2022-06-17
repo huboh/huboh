@@ -1,5 +1,8 @@
 import { FC } from 'react';
 
+// providers
+import BrowserRouterProvider from './BrowserRouterProvider';
+
 
 const combineProviders = (providers: FC<any>[]) => providers.reduce(
   (Providers, Provider) => function AppProviders({ children }) {
@@ -13,7 +16,9 @@ const combineProviders = (providers: FC<any>[]) => providers.reduce(
   }
 );
 
-const AppProviders = combineProviders([]);
+const AppProviders = combineProviders([
+  BrowserRouterProvider,
+]);
 
 
 export {
