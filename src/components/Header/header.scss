@@ -1,0 +1,15 @@
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  z-index: 18;
+  width: 100%;
+  padding: 0.2em 1em;
+
+  position: sticky;
+  top: 0;
+
+  background-color: var(--background-color);
+  border-bottom: 1px solid rgba(128, 128, 128, 0.3);
+}
