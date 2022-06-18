@@ -1,0 +1,18 @@
+.logo-wrapper {
+  margin: 0;
+  width: max-content;
+  cursor: pointer;
+
+  border: none;
+  outline: none;
+  overflow: hidden;
+  border-radius: var(--border-radius);
+
+  .logo {
+    width: 9em;
+  }
+
+  &:focus {
+    background-color: var(--hover-color);
+  }
+}
