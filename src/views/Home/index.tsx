@@ -1,15 +1,20 @@
 import { FC } from "react";
 
-// import Header from "../../components/Header";
-// import Footer from "../../components/Footer";
+// components
+import View from "../View";
+import Header from "../../components/Header";
+import Footer from "../../components/Footer";
+
+// sections
+import Sections from "./Sections";
 
 
 const Home: FC = () => (
-  <>
-    {/* <Header /> */ }
-    <main className="view home-view">hello</main>
-    {/* <Footer /> */ }
-  </>
+  <View>
+    <Header />
+    <Sections />
+    <Footer />
+  </View>
 );
 
 
