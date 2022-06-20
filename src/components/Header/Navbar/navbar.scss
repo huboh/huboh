@@ -1,0 +1,13 @@
+.navbar-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  & > * {
+    margin-right: 0;
+
+    &:first-of-type {
+      margin-right: 1em;
+    }
+  }
+}
