@@ -1,0 +1,58 @@
+.text-header {
+  &.h2 {
+    font-size: 2rem;
+    font-weight: 800;
+
+    &.small {
+      font-size: 1.6rem;
+    }
+
+    &.medium {
+      font-size: 2rem;
+    }
+
+    &.large {
+      font-size: 2.4rem;
+    }
+  }
+}
+
+@media screen and (min-width: 760px) {
+  .text-header {
+    &.h2 {
+      font-size: 2.4rem;
+
+      &.small {
+        font-size: 2rem;
+      }
+
+      &.medium {
+        font-size: 2.4rem;
+      }
+
+      &.large {
+        font-size: 2.8rem;
+      }
+    }
+  }
+}
+
+@media screen and (min-width: 860px) {
+  .text-header {
+    &.h2 {
+      font-size: 2.8rem;
+
+      &.small {
+        font-size: 2.4rem;
+      }
+
+      &.medium {
+        font-size: 2.8rem;
+      }
+
+      &.large {
+        font-size: 3.2rem;
+      }
+    }
+  }
+}
