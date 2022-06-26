@@ -1,4 +1,8 @@
 .header {
+  position: sticky;
+  top: 0;
+  left: 0;
+
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -6,10 +10,21 @@
   z-index: 18;
   width: 100%;
   padding: 0.3em 1em;
+  backdrop-filter: blur(6px);
+  border-bottom: 1px solid transparent;
+  transition: transform 300ms ease-in-out;
+  background-color: var(--background-color-main-light);
 
-  position: sticky;
-  top: 0;
+  &.scrolled-up {
+    border-color: transparent;
+  }
 
-  background-color: var(--background-color);
-  border-bottom: 1px solid rgba(128, 128, 128, 0.3);
+  &.scrolling-up {
+    transform: translateY(0);
+    border-color: var(--border-color-light);
+  }
+
+  &.scrolling-down {
+    transform: translateY(-101%);
+  }
 }
