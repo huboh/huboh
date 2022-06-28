@@ -1,6 +1,6 @@
 import "./paragraph.scss";
 
-import { Size } from "../../types";
+import { TextSize } from "../../types";
 import { FC, ReactNode } from "react";
 import { joinClassStrings } from "../../../../utils";
 
@@ -8,7 +8,7 @@ export interface ParagraphProps {
   children?: ReactNode;
   className?: string;
   text?: string | ReactNode;
-  size?: Size;
+  size?: TextSize;
   id?: string;
 }
 
