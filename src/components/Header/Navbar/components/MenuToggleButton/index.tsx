@@ -1,16 +1,16 @@
 import { FC } from "react";
-import { CgMenuRight } from 'react-icons/cg';
+import { HiOutlineMenuAlt3 } from 'react-icons/hi';
 
 import Button from "../../../../Button";
 
 
-const ThemeSwitcherButton: FC = () => (
+const MenuToggleButton: FC = () => (
   <Button.Icon
-    icon={ <CgMenuRight /> }
+    icon={ <HiOutlineMenuAlt3 /> }
   />
 );
 
 
 export {
-  ThemeSwitcherButton as default
+  MenuToggleButton as default
 };
