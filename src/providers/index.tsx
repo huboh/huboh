@@ -1,6 +1,7 @@
 import { FC } from 'react';
 
 // providers
+import PreferencesProvider from './PreferencesProvider';
 import BrowserRouterProvider from './BrowserRouterProvider';
 
 
@@ -18,6 +19,7 @@ const combineProviders = (providers: FC<any>[]) => providers.reduce(
 
 const AppProviders = combineProviders([
   BrowserRouterProvider,
+  PreferencesProvider,
 ]);
 
 
