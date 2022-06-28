@@ -6,7 +6,8 @@ import { HeaderProps } from "../../types";
 import { joinClassStrings } from "../../../../../../utils";
 
 // components
-import ColoredText from "../../../ColoredText";
+import FullStop from "../../components/FullStop";
+import ColoredSpan from "../../components/ColoredSpan";
 
 
 const Header: FC<HeaderProps> = ({ children, text, id, ...props }) => {
@@ -18,8 +19,8 @@ const Header: FC<HeaderProps> = ({ children, text, id, ...props }) => {
   return (
     <h2 className={ `text-header h2 ${classString}`.trim() } id={ id }>
       <span>{ text || children }</span>
-      <ColoredText text={ props.coloredText } />
-      <span className="semi-colon"></span>
+      <ColoredSpan text={ props.coloredText } />
+      <FullStop showFullStop={ props.showFullStop } />
     </h2>
   );
 };
