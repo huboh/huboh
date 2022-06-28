@@ -3,6 +3,10 @@
     font-size: 2rem;
     font-weight: 800;
 
+    &.extra-small {
+      font-size: 1.2rem;
+    }
+
     &.small {
       font-size: 1.6rem;
     }
@@ -21,6 +25,10 @@
   .text-header {
     &.h2 {
       font-size: 2.4rem;
+
+      &.extra-small {
+        font-size: 1.3rem;
+      }
 
       &.small {
         font-size: 2rem;
@@ -41,6 +49,10 @@
   .text-header {
     &.h2 {
       font-size: 2.8rem;
+
+      &.extra-small {
+        font-size: 1.4rem;
+      }
 
       &.small {
         font-size: 2.4rem;
