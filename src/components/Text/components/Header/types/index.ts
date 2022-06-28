@@ -1,15 +1,14 @@
 import { ReactNode } from "react";
-
-export type Color = "grey";
-
-export type Size = "small" | "medium" | "large";
+import { TextSize, TextColor } from "../../../types";
 
 export interface HeaderProps {
-  children?: ReactNode;
+  showFullStop?: boolean;
   coloredText?: string;
   className?: string;
-  text?: string;
-  color?: Color;
-  size?: Size;
   id?: string;
+
+  children?: ReactNode;
+  color?: TextColor;
+  size?: TextSize;
+  text?: string;
 }
