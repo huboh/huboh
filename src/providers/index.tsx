@@ -1,6 +1,7 @@
 import { FC } from 'react';
 
 // providers
+import PopupMenuProvider from './PopupMenuProvider';
 import PreferencesProvider from './PreferencesProvider';
 import BrowserRouterProvider from './BrowserRouterProvider';
 
@@ -20,6 +21,7 @@ const combineProviders = (providers: FC<any>[]) => providers.reduce(
 const AppProviders = combineProviders([
   BrowserRouterProvider,
   PreferencesProvider,
+  PopupMenuProvider,
 ]);
 
 
