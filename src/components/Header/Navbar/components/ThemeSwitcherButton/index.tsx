@@ -3,10 +3,15 @@ import { TbMoon } from 'react-icons/tb';
 
 import Button from "../../../../Button";
 
+export interface ThemeSwitcherButtonProps {
+  onClick?: VoidFunction;
+}
 
-const ThemeSwitcherButton: FC = () => (
+
+const ThemeSwitcherButton: FC<ThemeSwitcherButtonProps> = (props) => (
   <Button.Icon
     icon={ <TbMoon /> }
+    onClick={ props.onClick }
   />
 );
 
