@@ -22,7 +22,12 @@
     background-color: var(--primary-color);
   }
 
-  &:hover::after {
-    transform: scaleX(1);
+  &:hover,
+  &:focus {
+    outline: none;
+
+    &::after {
+      transform: scaleX(1);
+    }
   }
 }
