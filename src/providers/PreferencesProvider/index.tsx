@@ -1,23 +1,35 @@
-import * as react from 'react';
-import * as utils from './utils';
-import * as types from './types';
-import * as constants from '../../constants';
+import { createContext, FC, useCallback, useEffect, useState } from 'react';
+import { Preferences, PreferencesProviderProps } from './types';
+import { getUpdatePreferences, initialState } from './utils';
+import { preferencesKey, themes } from '../../constants/';
+
+import useEventListener from '../../hooks/useEventListener';
 
 
-const PreferencesContext = react.createContext(utils.initialState);
+const PreferencesContext = createContext(initialState);
 
 
-const PreferencesProvider: react.FC<types.PreferencesProviderProps> = ({ children }) => {
-  const preferencesKey = constants.preferencesKey;
-  const userPreferences: types.Preferences = JSON.parse(localStorage.getItem(preferencesKey)!);
+const PreferencesProvider: FC<PreferencesProviderProps> = ({ children }) => {
+  const userPreferences: Preferences = JSON.parse(localStorage.getItem(preferencesKey)!);
+  const [preferences, setPreferences] = useState(userPreferences || initialState);
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  const updatePreferences = useCallback(getUpdatePreferences(setPreferences), [setPreferences]);
 
-  const [preferences, setPreferences] = react.useState(userPreferences || utils.initialState);
-  const updatePreferences = react.useCallback(utils.getUpdatePreferences(setPreferences), [setPreferences]);
-
-  react.useEffect(() => {
+  useEffect(() => {
     (document.querySelector("body")!).dataset.theme = preferences.theme;
-
     localStorage.setItem(preferencesKey, JSON.stringify(preferences));
+  });
+
+  useEventListener({
+    target: window,
+    eventType: 'storage',
+    eventHandler: (e) => {
+      const event = e as StorageEvent;
+      if (event.key !== preferencesKey) return;
+
+      const { theme }: Preferences = JSON.parse(event.newValue!);
+      themes.includes(theme) && updatePreferences({ theme });
+    }
   });
 
   return (
