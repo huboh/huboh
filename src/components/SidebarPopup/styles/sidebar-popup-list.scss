@@ -1,0 +1,28 @@
+.sidebar-popup-list {
+  width: 100%;
+  list-style-type: none;
+
+  .sidebar-popup-list-item {
+    --list-item-padding: 0.5em 1em;
+
+    width: 100%;
+    color: inherit;
+    background-color: transparent;
+    border-radius: var(--border-radius-min);
+    transition: background-color 200ms ease-in-out;
+
+    &:not(:last-of-type) {
+      margin-bottom: 0.4em;
+    }
+
+    &:hover,
+    &:focus,
+    &:focus-within {
+      background-color: var(--hover-color);
+    }
+
+    &:active {
+      background-color: var(--active-color);
+    }
+  }
+}

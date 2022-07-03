@@ -1,21 +1,18 @@
-import "./sidebar-popup.scss";
-import { FC, ReactNode } from "react";
+import "./styles/sidebar-popup.scss";
+
+import { FC } from "react";
+import { SidebarPopupProps } from "./types";
+import { joinClassStrings } from "../../utils";
 
 import ModalOverlay from "../ModalOverlay";
 import useAnimatedComponent from "../../hooks/useAnimatedComponent";
 
-export interface SidebarPopupProps {
-  children?: ReactNode;
-  sidebarItem?: ReactNode;
-  openSidebarPopup: boolean;
-  onOverlayClick?: VoidFunction;
-}
-
 
 const SidebarPopup: FC<SidebarPopupProps> = ({ openSidebarPopup, ...props }) => {
+  const classString = joinClassStrings("popup-menu-wrapper", props.className || "");
   const [Component] = useAnimatedComponent({
     tagName: 'aside',
-    className: `popup-menu-wrapper`,
+    className: classString,
     display: openSidebarPopup,
     transition: {
       duration: 0.1
@@ -27,11 +24,9 @@ const SidebarPopup: FC<SidebarPopupProps> = ({ openSidebarPopup, ...props }) => 
     }
   });
 
-  return !openSidebarPopup ? null : (
+  return (
     <ModalOverlay isOpen={ openSidebarPopup } className="popup-overlay" onClick={ props.onOverlayClick }>
-      <Component
-        children={ props.sidebarItem || props.children }
-      />
+      <Component children={ props.sidebarItem || props.children } />
     </ModalOverlay>
   );
 };
