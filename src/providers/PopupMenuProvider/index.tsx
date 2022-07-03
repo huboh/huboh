@@ -1,16 +1,17 @@
 import "./styles/popup-menu.scss";
-import * as react from 'react';
-import * as utils from './utils';
-import * as types from './types';
-import * as Menu from "../../components/Menu";
+
+import { initialState } from './utils';
+import { PopupMenuProps } from './types';
+import { createContext, FC, useState } from 'react';
+import { Sidebar, ThemePicker } from "../../components/Menu";
 
 
-const PopupMenuContext = react.createContext(utils.initialState);
+const PopupMenuContext = createContext(initialState);
 
 
-const PopupMenuProvider: react.FC<types.PopupMenuProps> = ({ children }) => {
-  const [isSidebarMenuOpen, setSidebarMenuOpen] = react.useState(false);
-  const [isThemePickerMenuOpen, setThemePickerMenuOpen] = react.useState(false);
+const PopupMenuProvider: FC<PopupMenuProps> = ({ children }) => {
+  const [isSidebarMenuOpen, setSidebarMenuOpen] = useState(false);
+  const [isThemePickerMenuOpen, setThemePickerMenuOpen] = useState(false);
 
   const toggleSidebarMenu = () => setSidebarMenuOpen(s => !s);
   const toggleThemePickerMenu = () => setThemePickerMenuOpen(s => !s);
@@ -18,8 +19,8 @@ const PopupMenuProvider: react.FC<types.PopupMenuProps> = ({ children }) => {
   return (
     <PopupMenuContext.Provider value={ { toggleSidebarMenu, toggleThemePickerMenu } }>
       <div className="header-popups-wrapper">
-        <Menu.SidebarMenu openSidebarMenu={ isSidebarMenuOpen } onOverlayClick={ toggleSidebarMenu } />
-        <Menu.ThemePickerMenu openThemePickerMenu={ isThemePickerMenuOpen } onOverlayClick={ toggleThemePickerMenu } />
+        < Sidebar openSidebarMenu={ isSidebarMenuOpen } onOverlayClick={ toggleSidebarMenu } />
+        < ThemePicker openThemePickerMenu={ isThemePickerMenuOpen } onOverlayClick={ toggleThemePickerMenu } />
       </div>
 
       { children }
