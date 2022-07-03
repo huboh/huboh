@@ -1,36 +1,22 @@
 import './modal.scss';
 
-import { FC, useRef } from 'react';
 import { ModalProps } from "./types";
+import { FC, useRef, MouseEvent } from 'react';
 import { joinClassStrings } from '../../utils';
 
-// hooks
-import useEventListener from '../../hooks/useEventListener';
 
+const ModalOverlay: FC<ModalProps> = ({ isOpen, ...props }) => {
+  const overlayRef = useRef<HTMLDivElement>(null);
+  const classString = joinClassStrings("modal-overlay", props.className || "");
 
-const ModalOverlay: FC<ModalProps> = ({ isOpen, modalContent, ...props }) => {
-  const className = props.className || "";
-  const isActiveClass = isOpen ? "open" : "";
-  const classString = joinClassStrings(isActiveClass, className);
+  const onClickHandler = (event: MouseEvent<HTMLDivElement>) => {
+    (event.target === overlayRef.current) && props.onClick?.(event);
+  };
 
-  const overlayRef = useRef<HTMLDivElement>(
-    null
-  );
-
-  useEventListener({
-    target: overlayRef,
-    eventType: 'click',
-    eventHandler: (event) => {
-      (event.target === overlayRef.current) && props.onClick?.();
-    }
-  });
-
-  return (
-    <div
-      ref={ overlayRef }
-      className={ `modal-overlay ${classString}`.trim() }
-      children={ isOpen && (modalContent ?? props.children) }
-    />
+  return !isOpen ? null : (
+    <div className={ classString } ref={ overlayRef } onClick={ onClickHandler }>
+      { props.modalContent ?? props.children }
+    </div>
   );
 };
 

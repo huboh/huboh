@@ -6,17 +6,7 @@
   backdrop-filter: blur(4px);
   background-color: var(--background-color-light-hover);
 
-  visibility: hidden;
-  user-select: none;
-  pointer-events: none;
-
   position: fixed;
   top: 0;
   left: 0;
-
-  &.open {
-    user-select: all;
-    pointer-events: all;
-    visibility: visible;
-  }
 }
