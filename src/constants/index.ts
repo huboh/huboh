@@ -12,6 +12,6 @@ export const themes: Preferences['theme'][] = ["light", "dark", "system"];
 
 export const NavigationLinks = [
   { label: "about", link: "#about" },
-  { label: "recent projects", link: "#recent-project" },
+  { label: "projects", link: "#projects" },
   { label: "contact", link: "#contact" },
 ];
