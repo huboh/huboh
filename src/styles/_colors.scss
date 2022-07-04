@@ -7,7 +7,7 @@
   --background-color-primary: rgb(22, 21, 21);
   --background-color-light: rgba(255, 255, 255, 0.048);
   --background-color-light-hover: rgba(0, 0, 0, 0.5);
-  --background-color-main-light: rgba(17, 17, 17, 0.9);
+  --background-color-translucent: rgba(17, 17, 17, 0.9);
 
   --hover-color: rgba(255, 255, 255, 0.1);
   --active-color: rgba(255, 255, 255, 0.3);
@@ -43,6 +43,7 @@ body[data-theme="light"] {
   --background-color-primary: rgb(247, 247, 247);
   --background-color-light: rgba(0, 0, 0, 0.1);
   --background-color-light-hover: rgba(0, 0, 0, 0.3);
+  --background-color-translucent: rgba(248, 248, 248, 0.6);
 
   --hover-color: rgba(0, 0, 0, 0.1);
   --active-color: rgba(0, 0, 0, 0.3);
@@ -66,6 +67,7 @@ body[data-theme="dark"] {
   --background-color-primary: rgb(22, 21, 21);
   --background-color-light: rgba(255, 255, 255, 0.048);
   --background-color-light-hover: rgba(0, 0, 0, 0.5);
+  --background-color-translucent: rgba(17, 17, 17, 0.9);
 
   --border-color: rgb(12, 12, 12);
   --box-shadow: 0px 0px 12px 4px rgba(0, 0, 0, 0.3);
@@ -85,6 +87,7 @@ body[data-theme="system"] {
     --background-color-primary: rgb(247, 247, 247);
     --background-color-light: rgba(0, 0, 0, 0.1);
     --background-color-light-hover: rgba(0, 0, 0, 0.3);
+    --background-color-translucent: rgba(248, 248, 248, 0.6);
 
     --hover-color: rgba(0, 0, 0, 0.1);
     --active-color: rgba(0, 0, 0, 0.3);

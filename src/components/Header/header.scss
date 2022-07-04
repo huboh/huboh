@@ -13,7 +13,7 @@
   backdrop-filter: blur(6px);
   border-bottom: 1px solid transparent;
   transition: transform 300ms ease-in-out;
-  background-color: var(--background-color-main-light);
+  background-color: var(--background-color-translucent);
 
   &.scrolled-up {
     border-color: transparent;
