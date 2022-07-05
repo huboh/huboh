@@ -14,4 +14,13 @@
     font-size: 1.4rem;
     fill: var(--primary-color);
   }
+
+  &:focus,
+  &:hover {
+    background-color: var(--primary-color-hover);
+  }
+
+  &:active {
+    background-color: var(--primary-color-hover);
+  }
 }
