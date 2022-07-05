@@ -6,7 +6,7 @@ export const ResumeDownloadLink = "/resume.pdf";
 
 export const defaultListBulletIcon = "⚡";
 
-export const preferencesKey = "preferences";
+export const PreferencesKey = "preferences";
 
 export const DefaultTheme: Preferences['theme'] = "dark";
 
