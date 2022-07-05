@@ -1,7 +1,7 @@
 import { FC } from "react";
 import { HiOutlineMenuAlt3 } from 'react-icons/hi';
 
-import Button from "../../../../Button";
+import Button from "../../../../../Button";
 
 export interface MenuToggleButtonProps {
   onClick?: VoidFunction;

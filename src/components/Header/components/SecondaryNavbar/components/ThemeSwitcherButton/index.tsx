@@ -1,7 +1,7 @@
 import { FC } from "react";
 import { TbMoon } from 'react-icons/tb';
 
-import Button from "../../../../Button";
+import Button from "../../../../../Button";
 
 export interface ThemeSwitcherButtonProps {
   onClick?: VoidFunction;

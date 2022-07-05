@@ -9,14 +9,5 @@
 
   & > :first-child {
     margin-left: 0;
-
-    // responsive rule
-    display: none;
-  }
-
-  @media screen and (min-width: 760px) {
-    & > :first-child {
-      display: flex;
-    }
   }
 }
