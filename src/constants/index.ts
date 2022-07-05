@@ -8,7 +8,9 @@ export const defaultListBulletIcon = "⚡";
 
 export const preferencesKey = "preferences";
 
-export const themes: Preferences['theme'][] = ["light", "dark", "system"];
+export const DefaultTheme: Preferences['theme'] = "dark";
+
+export const Themes: Preferences['theme'][] = ["light", "dark", "system"];
 
 export const NavigationLinks = [
   { label: "about", link: "#about" },
