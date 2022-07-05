@@ -9,18 +9,17 @@ import useAnimatedComponent from "../../hooks/useAnimatedComponent";
 
 
 const SidebarPopup: FC<SidebarPopupProps> = ({ openSidebarPopup, ...props }) => {
-  const classString = joinClassStrings("popup-menu-wrapper", props.className || "");
   const [Component] = useAnimatedComponent({
-    tagName: 'aside',
-    className: classString,
+    className: joinClassStrings("popup-menu-wrapper", props.className || ""),
     display: openSidebarPopup,
+    tagName: 'aside',
     transition: {
-      duration: 0.1
+      duration: 0.05,
     },
     lifeCycleTransitions: {
-      exit: { y: 0, x: 50, opacity: 0 },
-      enter: { y: 0, x: 0, opacity: 1 },
-      initial: { y: 0, x: 50, opacity: 0 },
+      exit: { x: "80%" },
+      enter: { x: "0%" },
+      initial: { x: "100%" },
     }
   });
 
