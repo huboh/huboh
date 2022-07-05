@@ -1,40 +1,30 @@
-import "./header.scss";
+import "./styles/header.scss";
 import { FC, useRef } from "react";
 
+// components
 import Logo from "../Logo";
-import Navbar from "./Navbar";
+import NavMenu from "./components/NavMenu";
+import SecondaryNavbar from "./components/SecondaryNavbar";
 
-import useEventListener from "../../hooks/useEventListener";
+// hooks
+import useMediaQuery from "../../hooks/useMediaQuery";
+import useWindowScrollInfo from "../../hooks/useWindowScrollInfo";
 
 
 const Header: FC = () => {
   const headerRef = useRef<HTMLElement>(null);
-  const lastScrollPositionRef = useRef(0);
+  const isMobile = useMediaQuery("(max-width: 760px)");
+  const { isScrolledUp, isScrollingUp, isScrollingDown } = useWindowScrollInfo();
 
-  useEventListener({
-    target: window,
-    eventType: "scroll",
-    eventHandler: async (event) => {
-      const window = event.currentTarget as Window;
-      const currentScrollPosition = window.scrollY;
-      const lastScrollPosition = lastScrollPositionRef.current;
-
-      const isScrolledUp = currentScrollPosition <= 30;
-      const isScrollingUp = currentScrollPosition < lastScrollPosition;
-      const isScrollingDown = currentScrollPosition > lastScrollPosition;
-
-      headerRef.current?.classList?.toggle?.("scrolled-up", isScrolledUp);
-      headerRef.current?.classList?.toggle?.("scrolling-up", isScrolledUp ? !isScrolledUp : isScrollingUp);
-      headerRef.current?.classList?.toggle?.("scrolling-down", isScrollingDown);
-
-      lastScrollPositionRef.current = currentScrollPosition;
-    }
-  });
+  headerRef.current?.classList?.toggle?.("scrolled-up", isScrolledUp);
+  headerRef.current?.classList?.toggle?.("scrolling-down", isScrollingDown);
+  headerRef.current?.classList?.toggle?.("scrolling-up", isScrolledUp ? !isScrolledUp : isScrollingUp);
 
   return (
     <header className="header" ref={ headerRef }>
       <Logo />
-      <Navbar />
+      <NavMenu isMobile={ isMobile } />
+      <SecondaryNavbar isMobile={ isMobile } />
     </header>
   );
 };
