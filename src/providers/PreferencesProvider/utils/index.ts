@@ -1,7 +1,8 @@
 import * as types from '../types';
+import * as constants from "../../../constants";
 
 export const initialState: types.Preferences = {
-  theme: 'system',
+  theme: constants.DefaultTheme,
 };
 
 export const getUpdatePreferences = (setter: types.PreferencesSetter) => (
@@ -9,7 +10,11 @@ export const getUpdatePreferences = (setter: types.PreferencesSetter) => (
     // removing undefined values
     const updatedPreferences = JSON.parse(JSON.stringify(preferences));
 
-    // TODO: validate preferences values
-    setter(currState => ({ ...currState, ...updatedPreferences }));
+    if ("theme" in updatedPreferences) {
+      constants.Themes.includes(updatedPreferences.theme) && setter(currState => ({
+        ...currState,
+        ...updatedPreferences
+      }));
+    }
   }
 );
