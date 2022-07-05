@@ -1,2 +1,2 @@
-export { default as SidebarMenu } from "./SidebarMenu";
-export { default as ThemePickerMenu } from "./ThemePickerMenu";
+export { default as Sidebar } from "./Sidebar";
+export { default as ThemePicker } from "./ThemePicker";
