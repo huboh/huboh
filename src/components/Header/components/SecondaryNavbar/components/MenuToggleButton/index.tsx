@@ -11,6 +11,7 @@ export interface MenuToggleButtonProps {
 const MenuToggleButton: FC<MenuToggleButtonProps> = (props) => (
   <Button.Icon
     icon={ <HiOutlineMenuAlt3 /> }
+    title={ "toggle menu" }
     onClick={ props.onClick }
   />
 );

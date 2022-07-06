@@ -11,6 +11,7 @@ export interface ThemeSwitcherButtonProps {
 const ThemeSwitcherButton: FC<ThemeSwitcherButtonProps> = (props) => (
   <Button.Icon
     icon={ <TbMoon /> }
+    title={ "select theme" }
     onClick={ props.onClick }
   />
 );

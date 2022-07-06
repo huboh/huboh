@@ -5,6 +5,7 @@ import { joinClassStrings } from "../../../../utils";
 
 export interface IconLinkProps extends LinkProps {
   icon?: ReactNode;
+  title?: string;
 }
 
 
