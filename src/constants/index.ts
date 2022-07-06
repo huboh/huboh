@@ -17,3 +17,7 @@ export const NavigationLinks = [
   { label: "projects", link: "#projects" },
   { label: "contact", link: "#contact" },
 ];
+
+export const Skills = [
+  "javaScript", "typeScript", "React", "NodeJs", "Go", "Docker"
+];
