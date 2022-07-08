@@ -18,6 +18,12 @@ export const NavigationLinks = [
   { label: "contact", link: "#contact" },
 ];
 
+export const SocialLinks = {
+  github: "https://www.github.com/huboh",
+  twitter: "https://www.twitter.com/from_Godfather",
+  linkedIn: "https://www.linkedin.com/in/knowledge-musa-4aa980231",
+};
+
 export const Skills = [
   "javaScript", "typeScript", "React", "NodeJs", "Go", "Docker"
 ];
