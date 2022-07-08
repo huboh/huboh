@@ -15,7 +15,11 @@ const socialIcons = [
 const SocialIcons: FC = () => (
   <ul className="social-icons-wrapper">
     { socialIcons.map(socialIcon => (
-      <li className="social-icon-wrapper" children={ <Button.IconLink to={ socialIcon.link } icon={ socialIcon.icon } /> } />
+      <li
+        key={ socialIcon.link }
+        className="social-icon-wrapper"
+        children={ <Button.IconLink to={ socialIcon.link } icon={ socialIcon.icon } /> }
+      />
     )) }
   </ul>
 );
