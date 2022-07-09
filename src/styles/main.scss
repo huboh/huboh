@@ -27,6 +27,11 @@ body {
   background-color: var(--background-color);
 }
 
+div#root {
+  margin: 0 auto;
+  max-width: 1500px;
+}
+
 img,
 svg {
   max-width: 100%;
