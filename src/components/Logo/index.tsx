@@ -1,24 +1,13 @@
-import "./logo.scss";
-import { FC } from "react";
-import { Link } from 'react-router-dom';
+import Icon from "./variants/Icon";
+import Linkable from "./variants/Linkable";
+import DefaultLogo, { LogoProps } from "./variants/Logo";
 
-// @ts-ignore
-import logo from "./logo.png";
-import * as routes from "../../constants/routes";
-
-export interface LogoProps {
-  className?: string;
-  redirectLink?: string;
+export default function Logo(props: LogoProps) {
+  return (
+    <DefaultLogo { ...props } />
+  );
 }
 
-
-const Logo: FC<LogoProps> = ({ redirectLink, className }) => (
-  <Link to={ redirectLink || routes.HOME } className={ `logo-wrapper ${className || ''}`.trim() }>
-    <img className="logo" alt="logo" src={ logo } />
-  </Link>
-);
-
-
-export {
-  Logo as default
-};
+Logo.Icon = Icon;
+Logo.Linkable = Linkable;
+Logo.Default = DefaultLogo;
