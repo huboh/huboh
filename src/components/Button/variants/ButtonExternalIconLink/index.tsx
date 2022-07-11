@@ -14,7 +14,7 @@ const IconExternalLink: FC<IconExternalLinkProps> = ({ icon, ...props }) => {
   const classString = joinClassStrings("see-through", className);
 
   return (
-    <a { ...props } href={ props.to } className={ `button-icon link-icon ${classString}` } children={ icon } />
+    <a { ...props } href={ props.to } target={ "_blank" } rel={ "noreferrer" } className={ `button-icon link-icon ${classString}` } children={ icon } />
   );
 };
 
