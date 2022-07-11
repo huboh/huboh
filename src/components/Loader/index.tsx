@@ -1,9 +1,10 @@
 import './loader.scss';
 import { FC } from 'react';
+import Logo from "../Logo";
 
 const Loader: FC = () => (
   <div className='loader'>
-    <span className='loader-text'>loading...</span>
+    <Logo.Icon className='logo' />
   </div>
 );
 
