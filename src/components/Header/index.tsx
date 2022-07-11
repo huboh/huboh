@@ -22,7 +22,7 @@ const Header: FC = () => {
 
   return (
     <header className="header" ref={ headerRef }>
-      <Logo />
+      <Logo.Linkable />
       <NavMenu isMobile={ isMobile } />
       <SecondaryNavbar isMobile={ isMobile } />
     </header>
