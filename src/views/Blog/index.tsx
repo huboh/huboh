@@ -1,10 +1,11 @@
 import { FC } from 'react';
 
+// components
+import View from "../View";
+
 
 const Blog: FC = () => (
-  <section>
-    blog
-  </section>
+  <View></View>
 );
 
 
