@@ -14,7 +14,7 @@
     align-items: center;
     justify-content: center;
     flex-flow: column nowrap;
-    min-height: 70vh !important;
+    min-height: max-content !important;
 
     .notfound-msg {
       max-width: 30em;
