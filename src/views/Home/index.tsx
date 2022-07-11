@@ -2,20 +2,25 @@ import { FC } from "react";
 
 // components
 import View from "../View";
+import Sections from "./Sections";
 import Header from "../../components/Header";
 import Footer from "../../components/Footer";
 
-// sections
-import Sections from "./Sections";
+// hooks
+import useDocumentTitle from "../../hooks/useDocumentTitle";
 
 
-const Home: FC = () => (
-  <View>
-    <Header />
-    <Sections />
-    <Footer />
-  </View>
-);
+const Home: FC = () => {
+  useDocumentTitle("Knowledge Musa - Software Engineer.");
+
+  return (
+    <View>
+      <Header />
+      <Sections />
+      <Footer />
+    </View>
+  );
+};
 
 
 export {
