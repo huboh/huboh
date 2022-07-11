@@ -12,8 +12,12 @@ import Header from "../../components/Header";
 import Footer from "../../components/Footer";
 import Section from "../../components/Section";
 
+// hooks
+import useDocumentTitle from "../../hooks/useDocumentTitle";
 
 const NotFound: FC = () => {
+  useDocumentTitle("Not Found - Knowledge Musa.");
+
   return (
     <View>
       <Header />
@@ -25,7 +29,7 @@ const NotFound: FC = () => {
           />
           <Text.Paragraph
             className={ "notfound-msg" }
-            text={ "yup, there's definitely a mistake somewhere. couldn't find the requested resource 🙃" }
+            text={ "Yup, there's definitely a mistake somewhere. couldn't find the requested resource 🙃" }
           />
           <Button.Link
             to={ HOME }
