@@ -1,5 +1,4 @@
 import { FC } from "react";
-import { Link } from "react-router-dom";
 import { ProjectDescriptionProps } from "../../types";
 
 import Text from "../../../Text";
@@ -9,7 +8,7 @@ import ProjectStack from "../ProjectStack";
 
 const ProjectDescription: FC<ProjectDescriptionProps> = ({ title, description, stackList, ...iconLinks }) => {
   const titleLinkText = (
-    <Link to={ iconLinks.externalLink || "" } children={ title } />
+    <a href={ iconLinks.externalLink || "" } children={ title } target={ "_blank" } rel={ "noreferrer" } />
   );
 
   return (
