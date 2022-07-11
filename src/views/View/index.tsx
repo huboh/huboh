@@ -1,4 +1,5 @@
 import { FC, ReactNode } from "react";
+import { joinClassStrings } from "../../utils";
 
 export interface ViewProps {
   children?: ReactNode;
@@ -7,11 +8,15 @@ export interface ViewProps {
 }
 
 
-const View: FC<ViewProps> = ({ children, className, id }) => (
-  <section className={ "view" + (className || "") } id={ id }>
-    { children }
-  </section>
-);
+const View: FC<ViewProps> = ({ children, className, id }) => {
+  const classString = joinClassStrings("view", (className || ""));
+
+  return (
+    <section className={ classString } id={ id }>
+      { children }
+    </section>
+  );
+};
 
 
 export {
