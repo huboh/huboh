@@ -1,9 +1,5 @@
 import { Preferences } from "../providers/PreferencesProvider/types";
 
-
-export const ResumeFileName = "resume";
-export const ResumeDownloadLink = "/resume.pdf";
-
 export const defaultListBulletIcon = "⚡";
 
 export const PreferencesKey = "preferences";
@@ -11,6 +7,11 @@ export const PreferencesKey = "preferences";
 export const DefaultTheme: Preferences['theme'] = "dark";
 
 export const Themes: Preferences['theme'][] = ["light", "dark", "system"];
+
+export const Resume = {
+  fileName: "knowledge musa resume",
+  path: "/knowledge-musa-resume.pdf",
+};
 
 export const NavigationLinks = [
   { label: "about", link: "#about" },
