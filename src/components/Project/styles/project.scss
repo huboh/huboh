@@ -93,15 +93,6 @@
     }
   }
 
-  &:hover,
-  &:focus-within {
-    .project-image-wrapper {
-      .project-image {
-        transform: scale(1.15);
-      }
-    }
-  }
-
   @media screen and (min-width: 760px) {
     --image-column: 0.85fr;
 
@@ -186,22 +177,6 @@
 
       .project-icons-wrapper {
         margin-top: 0;
-      }
-    }
-
-    &:hover {
-      .project-image-wrapper {
-        .project-image {
-          transform: scale(1);
-        }
-      }
-    }
-
-    &:focus-within {
-      .project-image-wrapper {
-        .project-image {
-          transform: scale(1);
-        }
       }
     }
   }
