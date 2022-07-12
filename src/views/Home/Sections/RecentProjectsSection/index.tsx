@@ -1,12 +1,22 @@
+import "./recent-project-section.scss";
+
 import { FC } from "react";
+import project from "./data/projects";
+
+import Text from "../../../../components/Text";
 import Section from "../../../../components/Section";
+import Project from "../../../../components/Project";
 
-export interface RecentProjectsSectionProps { }
 
+const RecentProjectsSection: FC = () => (
+  <Section id="projects" className="recent-projects-section" textAlignment="center">
+    <div className="section-wrapper">
+      <Text.Header.H2 className="section-header" text="some of my " coloredText="recent projects" />
 
-const RecentProjectsSection: FC<RecentProjectsSectionProps> = () => (
-  <Section id="recent-project">
-    recent projects section
+      <div className="projects-wrapper">
+        { project.map(project => <Project key={ project.title } { ...project } />) }
+      </div>
+    </div>
   </Section>
 );
 
