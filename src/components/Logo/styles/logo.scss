@@ -5,7 +5,7 @@
 
   margin: 0;
   cursor: pointer;
-  width: max-content;
+  min-width: max-content;
 
   &:focus {
     background-color: var(--hover-color);
@@ -14,7 +14,7 @@
 
 .logo-wrapper {
   margin: 0;
-  width: max-content;
+  min-width: max-content;
 
   .logo {
     width: 7rem;
