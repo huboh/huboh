@@ -32,6 +32,14 @@
   --success-color: rgba(3, 174, 71, 1);
   --error-color-light: rgb(255, 154, 154);
   --success-color-light: rgb(190, 255, 216);
+
+  --color-scheme-red: rgb(255, 0, 0);
+  --color-scheme-orange: rgb(255, 165, 0);
+  --color-scheme-yellow: rgb(199, 199, 0);
+  --color-scheme-green: rgb(0, 128, 0);
+  --color-scheme-blue: rgb(0, 175, 239);
+  --color-scheme-pink: rgb(221, 137, 151);
+  --color-scheme-gold: rgb(230, 195, 0);
 }
 
 body[data-theme="light"] {
@@ -101,4 +109,55 @@ body[data-theme="system"] {
     --box-shadow-stacked-light: -15px 0px 12px 4px rgba(0, 0, 0, 0.1);
     --box-shadow-skeleton: 0px 0px 10px rgba(0, 0, 0, 0.1);
   }
+}
+
+// color schemes
+
+body[data-color-scheme="red"] {
+  --primary-color: rgb(255, 0, 0);
+  --primary-color-light: rgba(255, 0, 0, 0.2);
+  --primary-color-hover: rgba(255, 0, 0, 0.4);
+  --primary-color-active: rgba(255, 0, 0, 0.5);
+}
+
+body[data-color-scheme="orange"] {
+  --primary-color: rgb(255, 165, 0);
+  --primary-color-light: rgba(255, 165, 0, 0.2);
+  --primary-color-hover: rgba(255, 165, 0, 0.4);
+  --primary-color-active: rgba(255, 165, 0, 0.5);
+}
+
+body[data-color-scheme="yellow"] {
+  --primary-color: rgb(199, 199, 0);
+  --primary-color-light: rgba(199, 199, 0, 0.2);
+  --primary-color-hover: rgba(199, 199, 0, 0.4);
+  --primary-color-active: rgba(199, 199, 0, 0.5);
+}
+
+body[data-color-scheme="green"] {
+  --primary-color: rgb(0, 128, 0);
+  --primary-color-light: rgba(0, 128, 0, 0.2);
+  --primary-color-hover: rgba(0, 128, 0, 0.4);
+  --primary-color-active: rgba(0, 128, 0, 0.5);
+}
+
+body[data-color-scheme="blue"] {
+  --primary-color: rgb(0, 175, 239);
+  --primary-color-light: rgba(40, 171, 211, 0.2);
+  --primary-color-hover: rgba(40, 171, 211, 0.4);
+  --primary-color-active: rgba(40, 171, 211, 0.5);
+}
+
+body[data-color-scheme="pink"] {
+  --primary-color: rgb(221, 137, 151);
+  --primary-color-light: rgba(221, 137, 151, 0.2);
+  --primary-color-hover: rgba(221, 137, 151, 0.4);
+  --primary-color-active: rgba(221, 137, 151, 0.5);
+}
+
+body[data-color-scheme="gold"] {
+  --primary-color: rgb(230, 195, 0);
+  --primary-color-light: rgba(255, 215, 0, 0.2);
+  --primary-color-hover: rgba(255, 215, 0, 0.4);
+  --primary-color-active: rgba(255, 215, 0, 0.5);
 }
