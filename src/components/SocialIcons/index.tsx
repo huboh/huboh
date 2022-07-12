@@ -18,7 +18,7 @@ const SocialIcons: FC = () => (
       <li
         key={ socialIcon.link }
         className="social-icon-wrapper"
-        children={ <Button.IconLink to={ socialIcon.link } icon={ socialIcon.icon } /> }
+        children={ <Button.ExternalIconLink to={ socialIcon.link } icon={ socialIcon.icon } /> }
       />
     )) }
   </ul>
