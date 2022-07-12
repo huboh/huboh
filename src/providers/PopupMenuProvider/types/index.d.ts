@@ -5,6 +5,7 @@ export interface PopupMenuProps {
 }
 
 export interface PopupMenu {
+  toggleColorSchemePickerMenu: VoidFunction,
   toggleThemePickerMenu: VoidFunction,
   toggleSidebarMenu: VoidFunction,
 }
