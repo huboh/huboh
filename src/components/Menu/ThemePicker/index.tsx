@@ -17,13 +17,13 @@ export interface ThemePickerMenuProps {
 
 
 const ThemePickerMenu: FC<ThemePickerMenuProps> = ({ openThemePickerMenu, onOverlayClick }) => {
-  const { theme: currentTheme, updatePreferences } = usePreferences();
+  const { theme: currentTheme, updateTheme } = usePreferences();
 
   const render = (theme: typeof currentTheme) => (
     <ThemePickerButton
       theme={ theme }
       isChecked={ theme === currentTheme }
-      onClick={ () => updatePreferences?.({ theme }) }
+      onClick={ () => updateTheme?.(theme) }
     />
   );
 
