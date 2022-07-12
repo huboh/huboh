@@ -1,0 +1,38 @@
+.section {
+  width: 100%;
+  padding: 1em;
+  min-height: 85vh;
+  position: relative;
+
+  &:not(:last-of-type) {
+    margin-bottom: 2em;
+  }
+
+  &.left {
+    text-align: left;
+  }
+
+  &.center {
+    text-align: center;
+  }
+
+  &.right {
+    text-align: right;
+  }
+}
+
+@media screen and (min-width: 760px) {
+  .section {
+    padding: 2em;
+
+    &:not(:last-of-type) {
+      margin-bottom: 4em;
+    }
+  }
+}
+
+@media screen and (min-width: 860px) {
+  .section {
+    padding: 2em;
+  }
+}

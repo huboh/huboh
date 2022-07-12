@@ -1,0 +1,24 @@
+.color-scheme-picker-button {
+  border: none;
+  outline: none;
+  background-color: transparent;
+
+  width: 100%;
+  font-weight: 600;
+  color: var(--text-color-grey);
+  padding: var(--list-item-padding, 0.6em);
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  &.active {
+    color: var(--primary-color);
+  }
+
+  .icon-wrapper svg {
+    fill: var(--scheme-color);
+    stroke: var(--scheme-color);
+    font-size: 1.2rem;
+  }
+}

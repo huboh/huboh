@@ -1,0 +1,34 @@
+.get-in-touch-section {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  .get-in-touch-section-wrapper {
+    width: 100%;
+
+    .main-header {
+      margin-top: 0.4em;
+      margin-bottom: 0.4em;
+    }
+
+    .paragraph-text {
+      margin-bottom: 2em;
+    }
+
+    .get-in-touch-cta {
+      margin: 0 auto;
+    }
+  }
+
+  @media screen and (min-width: 760px) {
+    .get-in-touch-section-wrapper {
+      width: 80%;
+    }
+  }
+
+  @media screen and (min-width: 860px) {
+    .get-in-touch-section-wrapper {
+      width: 70%;
+    }
+  }
+}
