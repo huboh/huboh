@@ -6,10 +6,10 @@ const useMediaQuery = (query: string) => {
   const matchMedia = window.matchMedia(query);
   const [matches, setMatches] = useState(matchMedia.matches);
 
-  useEventListener({
+  useEventListener<MediaQueryListEvent>({
     target: matchMedia,
     eventType: 'change',
-    eventHandler: (event) => setMatches((event as MediaQueryListEvent).matches)
+    eventHandler: ({ matches }) => setMatches(matches)
   });
 
   return matches;
