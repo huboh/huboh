@@ -12,7 +12,7 @@ const PreferencesContext = createContext(initialState);
 
 
 const PreferencesProvider: FC<PreferencesProviderProps> = ({ children }) => {
-  const storedValue = JSON.parse(localStorage.getItem(PreferencesKey)!);
+  const storedValue = JSON.parse(localStorage.getItem(PreferencesKey) || "{}");
   const userPreferences: Preferences = { ...initialState, ...(storedValue ?? {}) };
   const [preferences, setPreferences] = useState(userPreferences);
 
@@ -27,18 +27,13 @@ const PreferencesProvider: FC<PreferencesProviderProps> = ({ children }) => {
     localStorage.setItem(PreferencesKey, JSON.stringify(preferences));
   });
 
-  useEventListener({
+  useEventListener<StorageEvent>({
     target: window,
     eventType: 'storage',
     eventHandler: (event) => {
-      if ((event as StorageEvent).key !== PreferencesKey) {
-        return;
+      if (event.key === PreferencesKey) {
+        updatePreferences(JSON.parse(event.newValue || "{}"));
       };
-
-      const newValue = (event as StorageEvent).newValue!;
-      const preferences: Preferences = JSON.parse(newValue);
-
-      updatePreferences(preferences);
     }
   });
 

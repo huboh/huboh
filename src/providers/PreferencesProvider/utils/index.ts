@@ -25,7 +25,7 @@ export const getUpdateColorScheme = (setter: types.PreferencesSetter) => (
 export const getUpdatePreferences = (setter: types.PreferencesSetter) => (
   (preferences: Partial<Omit<types.Preferences, "updateTheme" | "updateColorScheme" | "updatePreferences">>) => {
     // removing undefined values
-    const updatedPreferences = JSON.parse(JSON.stringify(preferences));
+    const updatedPreferences = JSON.parse(JSON.stringify(preferences)) || {};
 
     if (
       ("theme" in updatedPreferences && !(constants.Themes.includes(updatedPreferences.theme))) ||
