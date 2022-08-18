@@ -1,12 +1,11 @@
 import { useState } from "react";
-import useEventListener from "../useEventListener";
+import { useEventListener } from "../useEventListener";
 
-
-const useMediaQuery = (query: string) => {
+export const useMediaQuery = (query: string) => {
   const matchMedia = window.matchMedia(query);
   const [matches, setMatches] = useState(matchMedia.matches);
 
-  useEventListener<MediaQueryListEvent>({
+  useEventListener({
     target: matchMedia,
     eventType: 'change',
     eventHandler: ({ matches }) => setMatches(matches)
@@ -14,7 +13,6 @@ const useMediaQuery = (query: string) => {
 
   return matches;
 };
-
 
 export {
   useMediaQuery as default
