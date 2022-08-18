@@ -6,6 +6,7 @@
   margin: 0;
   cursor: pointer;
   min-width: max-content;
+  width: max-content;
 
   &:focus {
     background-color: var(--hover-color);
