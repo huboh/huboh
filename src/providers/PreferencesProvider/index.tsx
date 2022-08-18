@@ -1,14 +1,9 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import { PreferencesKey } from '../../constants/';
+import { useEventListener } from '../../hooks/useEventListener';
+import { FC, useCallback, useEffect, useState } from 'react';
 import { Preferences, PreferencesProviderProps } from './types';
-import { createContext, FC, useCallback, useEffect, useState } from 'react';
-import { getUpdatePreferences, getUpdateTheme, getUpdateColorScheme, initialState } from './utils';
-
-// hooks
-import useEventListener from '../../hooks/useEventListener';
-
-
-const PreferencesContext = createContext(initialState);
+import { getUpdatePreferences, getUpdateTheme, getUpdateColorScheme, initialState, PreferencesContext } from './utils';
 
 
 const PreferencesProvider: FC<PreferencesProviderProps> = ({ children }) => {
@@ -27,7 +22,7 @@ const PreferencesProvider: FC<PreferencesProviderProps> = ({ children }) => {
     localStorage.setItem(PreferencesKey, JSON.stringify(preferences));
   });
 
-  useEventListener<StorageEvent>({
+  useEventListener({
     target: window,
     eventType: 'storage',
     eventHandler: (event) => {

@@ -1,3 +1,4 @@
+import * as react from 'react';
 import * as types from '../types';
 import * as constants from "../../../constants";
 
@@ -5,6 +6,8 @@ export const initialState: types.Preferences = {
   theme: constants.DefaultTheme,
   colorScheme: constants.DefaultColorScheme,
 };
+
+export const PreferencesContext = react.createContext(initialState);
 
 export const getUpdateTheme = (setter: types.PreferencesSetter) => (
   (theme: types.Theme) => {
