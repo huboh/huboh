@@ -2,11 +2,11 @@ import { useEffect } from 'react';
 import { UseEventListener } from './types';
 import { getTarget, getListener } from './utils';
 
-const useEventListener: UseEventListener = (props) => useEffect(() => {
+export const useEventListener: UseEventListener = (props) => useEffect(() => {
   const type = props.eventType;
   const options = props.eventOptions;
   const target = getTarget(props.target);
-  const handler = props.eventHandler.bind(target);
+  const handler = props.eventHandler.bind(target!);
 
   if (!target) return;
 

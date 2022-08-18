@@ -1,11 +1,11 @@
-import { GetListener } from "../types";
+import { GetTarget, GetListener } from "../types";
 
 /**
- * gets the event target from a possible react ref object
- * @param target either a react ref object that points to an HTML element or any object that can receive events and may have listeners for them.
+ * accepts an `EventTarget` object or a `React.RefObject<EventTarget>` & returns the event target object.
+ * @param target a union of `EventTarget` | `React.RefObject<EventTarget>`,
  * @returns the event target
  */
-export const getTarget = (target: any) => "current" in target ? target.current : target;
+export const getTarget: GetTarget = (target) => "current" in target ? target.current : target;
 
 /**
  * gets the event listener function on the provided target
@@ -13,6 +13,6 @@ export const getTarget = (target: any) => "current" in target ? target.current :
  * @param listenerType type of listener either `addEventListener` or `removeEventListener`
  * @returns a function that when called adds or remove the listener type on the target
  */
-export const getListener: GetListener = (target, listenerType) => (type, listener, options) => {
-  target[listenerType](type, listener, options);
+export const getListener: GetListener = (target, listenerType) => (type, handler, options) => {
+  target[listenerType]?.(type, handler, options);
 };
