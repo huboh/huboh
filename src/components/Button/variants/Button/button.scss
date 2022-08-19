@@ -19,13 +19,13 @@
     margin: 0;
     display: block;
     white-space: nowrap;
-    margin-inline-start: 0.4em;
   }
 
   .icon-wrapper {
     width: 1.3rem;
     margin: 0;
     display: block;
+    margin-inline-end: 1em;
 
     & > * {
       width: 100%;
