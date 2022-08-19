@@ -1,6 +1,7 @@
 .project-wrapper {
   width: 100%;
-  height: 20em;
+  min-height: 15rem;
+  height: max-content;
   display: grid;
   overflow: hidden;
   grid-template-columns: 1fr;
@@ -45,37 +46,41 @@
 
     .project-title {
       margin-bottom: 0.5em;
-      transition: color 100ms ease-in-out;
 
       a {
         color: inherit;
         text-decoration: none;
-      }
+        transition: color 100ms ease-in-out;
 
-      &:hover,
-      &:focus-within {
-        color: var(--primary-color);
-
-        a {
+        &:hover,
+        &:focus-within {
+          color: var(--primary-color);
           outline: none;
         }
       }
     }
 
     .project-stack-list {
-      margin-top: 2em;
+      width: 100%;
+      margin-top: 1.5rem;
       list-style-type: none;
 
       display: flex;
+      flex-flow: row wrap;
       align-items: center;
       justify-content: flex-start;
 
       .project-stack-list-item {
         font-size: 0.8rem;
         color: var(--text-color-grey);
+        margin-bottom: 0.5rem;
 
         &:not(:last-of-type) {
-          margin-right: 1.5em;
+          margin-right: 1rem;
+
+          &::after {
+            content: ",";
+          }
         }
       }
     }
@@ -118,6 +123,10 @@
 
         text-align: left;
         align-items: flex-start;
+
+        .project-stack-list {
+          justify-content: flex-start;
+        }
       }
     }
 
@@ -158,7 +167,9 @@
       align-items: flex-end;
 
       .project-title {
+        max-width: 90%;
         margin-bottom: 0;
+        width: max-content;
       }
 
       .project-description {
@@ -171,8 +182,10 @@
       }
 
       .project-stack-list {
+        max-width: 90%;
         margin-top: 0.5em;
         margin-bottom: 1em;
+        justify-content: flex-end;
       }
 
       .project-icons-wrapper {
