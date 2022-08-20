@@ -9,7 +9,7 @@ import Project from "../../../../components/Project";
 
 
 const RecentProjectsSection: FC = () => (
-  <Section id="projects" className="recent-projects-section" textAlignment="center">
+  <Section id="projects" className="recent-projects-section">
     <div className="section-wrapper">
       <Text.Header.H2 className="section-header" text="some of my " coloredText="recent projects" />
 
