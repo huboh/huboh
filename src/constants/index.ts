@@ -14,7 +14,7 @@ export const ColorSchemes: Preferences['colorScheme'][] = ["red", "orange", "yel
 
 export const Resume = {
   fileName: "knowledge musa resume",
-  path: "/knowledge-musa-resume.pdf",
+  path: "https://bit.ly/knowledgeresume",
 };
 
 export const NavigationLinks = [
@@ -30,5 +30,5 @@ export const SocialLinks = {
 };
 
 export const Skills = [
-  "javaScript", "typeScript", "React", "NodeJs", "Go", "Docker"
+  "javaScript", "typeScript", "React/Next", "NodeJs", "Go", "Docker"
 ];
