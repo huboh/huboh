@@ -5,7 +5,7 @@ import { GetTarget, GetListener } from "../types";
  * @param target a union of `EventTarget` | `React.RefObject<EventTarget>`,
  * @returns the event target
  */
-export const getTarget: GetTarget = (target) => "current" in target ? target.current : target;
+export const getTarget: GetTarget = (target: any) => target?.current ?? target;
 
 /**
  * gets the event listener function on the provided target
@@ -14,5 +14,5 @@ export const getTarget: GetTarget = (target) => "current" in target ? target.cur
  * @returns a function that when called adds or remove the listener type on the target
  */
 export const getListener: GetListener = (target, listenerType) => (type, handler, options) => {
-  target[listenerType]?.(type, handler, options);
+  target?.[listenerType]?.(type, handler, options);
 };
