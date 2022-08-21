@@ -9,7 +9,7 @@ import Section from "../../../../components/Section";
 const HeroSection: FC = () => {
   const primaryHeaderText = "knowledge musa.";
   const secondaryHeaderText = "basically, i edit text files for a living🙂.";
-  const shortParagraphText = `i’m a software engineer (and occasionally i design intuitive user interfaces) with a background working in demanding enviroment, building enterprise-ready backend services, passion working on intriguing problems & focused in building high quality, user centered products & cutting-edge mobile or web applications.`;
+  const shortParagraphText = `i’m a software engineer (and occasionally i design intuitive user interfaces) with a background working in demanding enviroment, building enterprise-ready backend services, passion working on intriguing problems & focused in building high quality, user centered applications.`;
 
   return (
     <Section id="hero" className="hero-section" textAlignment={ "left" }>

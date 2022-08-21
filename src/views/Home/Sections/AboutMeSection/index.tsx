@@ -23,7 +23,7 @@ const AboutMeSection: FC = () => (
     <div className="about-me-section-wrapper">
       <div className="text-wrapper">
         <Text.Paragraph>
-          Hello! I’m Knowledge, a software engineer with over 6 years of experience in demanding enviroments focused in building user centered & cutting-edge products.
+          Hello! I’m Knowledge, a software engineer with over 6 years of experience in demanding enviroments focused in building user centered & cutting-edge applications.
         </Text.Paragraph>
 
         <Text.Paragraph>
@@ -31,7 +31,7 @@ const AboutMeSection: FC = () => (
         </Text.Paragraph>
 
         <Text.Paragraph>
-          Fast-forward to today, I've had the privilege of building great apllications for several clients, reliable, secured Api's & improved the underlying architecture at <a className="link" target="_blank" rel="noreferrer" children="Ctechway" href={ "https://www.ctechway.com" } />. My main focus these days is Blockchain Development, Distributed Systems, Creating Great Experiences & User-Centered Products.
+          Fast-forward to today, I've had the privilege of building great apllications for several clients, built reliable, secured api's & improved the underlying architecture at <a className="link" target="_blank" rel="noreferrer" children="Ctechway" href={ "https://www.ctechway.com" } />. My main focus these days is Blockchain Development, Distributed Systems, Creating Great Experiences & User-Centered Products.
         </Text.Paragraph>
 
         <Text.Paragraph>
