@@ -16,7 +16,7 @@ const projectDetails: ProjectProps[] = [
     imageAltText: "noteway web app",
     githubLink: "https://www.github.com/huboh/noteway-server",
     externalLink: "https://www.github.com/huboh/noteway-server",
-    description: "Noteway is a collaborative note-taking/article-writing web app, i like to think of it as \"a mesh of Google Keep & Google Docs\" with a nice UI of course. individuals or teams can sync notes or tasks across multiple devices, share ideas, plan projects & lots more. (beta release would be out soon).",
+    description: "Noteway is a collaborative note-taking/article-writing web app, i like to think of it as \"a mesh of Google Keep & Google Docs\" with a nice UI of course. individuals or teams can sync, organize & retrieve notes or tasks across multiple devices, share ideas & lots more. (in development).",
   },
   {
     title: "Records: Golang CSV Data Marshaler",
