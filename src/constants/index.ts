@@ -30,5 +30,5 @@ export const SocialLinks = {
 };
 
 export const Skills = [
-  "javaScript", "typeScript", "React/Next", "NodeJs", "Go", "Docker"
+  "javaScript", "typeScript", "React & Nextjs", "NodeJs", "Go", "Docker"
 ];
