@@ -1,18 +1,13 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import { PreferencesKey } from '../../constants/';
+import { useEventListener } from '../../hooks/useEventListener';
+import { FC, useCallback, useEffect, useState } from 'react';
 import { Preferences, PreferencesProviderProps } from './types';
-import { createContext, FC, useCallback, useEffect, useState } from 'react';
-import { getUpdatePreferences, getUpdateTheme, getUpdateColorScheme, initialState } from './utils';
-
-// hooks
-import useEventListener from '../../hooks/useEventListener';
-
-
-const PreferencesContext = createContext(initialState);
+import { getUpdatePreferences, getUpdateTheme, getUpdateColorScheme, initialState, PreferencesContext } from './utils';
 
 
 const PreferencesProvider: FC<PreferencesProviderProps> = ({ children }) => {
-  const storedValue = JSON.parse(localStorage.getItem(PreferencesKey)!);
+  const storedValue = JSON.parse(localStorage.getItem(PreferencesKey) || "{}");
   const userPreferences: Preferences = { ...initialState, ...(storedValue ?? {}) };
   const [preferences, setPreferences] = useState(userPreferences);
 
@@ -31,14 +26,9 @@ const PreferencesProvider: FC<PreferencesProviderProps> = ({ children }) => {
     target: window,
     eventType: 'storage',
     eventHandler: (event) => {
-      if ((event as StorageEvent).key !== PreferencesKey) {
-        return;
+      if (event.key === PreferencesKey) {
+        updatePreferences(JSON.parse(event.newValue || "{}"));
       };
-
-      const newValue = (event as StorageEvent).newValue!;
-      const preferences: Preferences = JSON.parse(newValue);
-
-      updatePreferences(preferences);
     }
   });
 

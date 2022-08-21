@@ -1,3 +1,4 @@
+import * as react from 'react';
 import * as types from '../types';
 import * as constants from "../../../constants";
 
@@ -5,6 +6,8 @@ export const initialState: types.Preferences = {
   theme: constants.DefaultTheme,
   colorScheme: constants.DefaultColorScheme,
 };
+
+export const PreferencesContext = react.createContext(initialState);
 
 export const getUpdateTheme = (setter: types.PreferencesSetter) => (
   (theme: types.Theme) => {
@@ -25,7 +28,7 @@ export const getUpdateColorScheme = (setter: types.PreferencesSetter) => (
 export const getUpdatePreferences = (setter: types.PreferencesSetter) => (
   (preferences: Partial<Omit<types.Preferences, "updateTheme" | "updateColorScheme" | "updatePreferences">>) => {
     // removing undefined values
-    const updatedPreferences = JSON.parse(JSON.stringify(preferences));
+    const updatedPreferences = JSON.parse(JSON.stringify(preferences)) || {};
 
     if (
       ("theme" in updatedPreferences && !(constants.Themes.includes(updatedPreferences.theme))) ||

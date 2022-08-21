@@ -10,22 +10,22 @@ import AoraImageSrc from "../../../../../assets/image/projects/aora.png";
 
 const projectDetails: ProjectProps[] = [
   {
-    title: "A Collaborative Note-Taking Platform",
-    stackList: ["TypeScript", "Apollo", "GraphQl", "MongoDB"],
+    title: "Noteway",
+    stackList: ["TypeScript", "Apollo", "GraphQl", "MongoDB", "Redis", "Docker", "etc."],
     imageSrc: NotewayImageSrc,
     imageAltText: "noteway web app",
     githubLink: "https://www.github.com/huboh/noteway-server",
     externalLink: "https://www.github.com/huboh/noteway-server",
-    description: "A web app that i call \"a mesh of Google Keep & Google Docs\", it's a collaborative note-taking tool for either individuals or teams to sync notes or tasks across multiple devices, share ideas, work on projects & lots more. (beta release would be out soon).",
+    description: "Noteway is a collaborative note-taking/article-writing web app, i like to think of it as \"a mesh of Google Keep & Google Docs\" with a nice UI of course. individuals or teams can sync, organize & retrieve notes or tasks across multiple devices, share ideas & lots more. (in development).",
   },
   {
-    title: "Golang Data Marshaler",
+    title: "Records: Golang CSV Data Marshaler",
     stackList: ["Go"],
     imageSrc: GoPackageImageSrc,
-    imageAltText: "golang utility package",
-    externalLink: "https://www.github.com/huboh/",
-    githubLink: "https://www.github.com/huboh/",
-    description: "A light weight utility package that uses reflection under the hood for its implementation. it adds the missing functionality in Go for mapping parsed csv data to the fields in a struct & vice versa",
+    imageAltText: "records: golang csv data marshaler",
+    externalLink: "https://www.github.com/huboh/records/",
+    githubLink: "https://www.github.com/huboh/records/",
+    description: "A light weight & blazingly fast😁 Go package that uses reflection under the hood to marshal & unmarshal CSV records(slice of slice of strings) to/from CSV entries(slice of structs).",
   },
   {
     title: "Aora",

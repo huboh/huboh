@@ -1,7 +1,7 @@
 .section {
   width: 100%;
   padding: 1em;
-  min-height: 85vh;
+  min-height: calc(100vh - 4rem);
   position: relative;
 
   &:not(:last-of-type) {
