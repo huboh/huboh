@@ -5,22 +5,21 @@ import { FC } from "react";
 // components
 import Text from "../../../../components/Text";
 import Section from "../../../../components/Section";
+import DownLoadResume from "../../../../components/DownLoadResume";
 
 const HeroSection: FC = () => {
   const primaryHeaderText = "knowledge musa.";
-  const secondaryHeaderText = "basically, i edit text files for a living🙂.";
-  const shortParagraphText = `i’m a software engineer (and occasionally i design intuitive user interfaces) with a background working in demanding enviroment, building enterprise-ready backend services, passion working on intriguing problems & focused in building high quality, user centered applications.`;
+  const secondaryHeaderText = "I build enterprise-ready web apps.";
+  const shortParagraphText = `i’m a software engineer with background working in demanding enviroment, passion working on intriguing problems & focused in building high quality, user centered applications.`;
 
   return (
-    <Section id="hero" className="hero-section" textAlignment={ "left" }>
+    <Section id="hero" className="hero-section" textAlignment="left">
       <div className="hero-section-wrapper">
         <Text.Colored text="Hi, my name is" />
-        <Text.Header.H1 text={ primaryHeaderText } showFullStop={ false } className={ "hero-text main-header" } />
-        <Text.Header.H2 color={ "grey" } showFullStop={ false } text={ secondaryHeaderText } className={ "hero-text secondary-header" } />
-        <Text.Paragraph text={ shortParagraphText } className={ "hero-text paragraph-text" } />
-        <a className={ `button button-link hero-cta` } href={ "#projects" } >
-          <span className='text-wrapper' children="view projects" />
-        </a>
+        <Text.Header.H1 className="hero-text main-header" size="large" text={ primaryHeaderText } showFullStop={ false } />
+        <Text.Header.H2 className="hero-text secondary-header" color={ "grey" } showFullStop={ false } text={ secondaryHeaderText } />
+        <Text.Paragraph className="hero-text paragraph-text" text={ shortParagraphText } />
+        <DownLoadResume />
       </div>
     </Section>
   );

@@ -31,7 +31,7 @@ const AboutMeSection: FC = () => (
         </Text.Paragraph>
 
         <Text.Paragraph>
-          Fast-forward to today, I've had the privilege of building great apllications for several clients, built reliable, secured api's & improved the underlying architecture at <a className="link" target="_blank" rel="noreferrer" children="Ctechway" href={ "https://www.ctechway.com" } />. My main focus these days is Blockchain Development, Distributed Systems, Creating Great Experiences & User-Centered Products.
+          Fast-forward to today, I've had the privilege of wroking at <a className="link" target="_blank" rel="noreferrer" children="Ctechway" href={ "https://www.ctechway.com" } />, built great applications e.t.c. My main focus these days is Noteway, Go, Blockchain Development, Distributed Systems, Creating Great Experiences & User-Centered Products.
         </Text.Paragraph>
 
         <Text.Paragraph>
