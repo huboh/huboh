@@ -14,7 +14,7 @@ export const ColorSchemes: Preferences['colorScheme'][] = ["red", "orange", "yel
 
 export const Resume = {
   fileName: "knowledge musa resume",
-  path: "https://drive.google.com/file/d/1CrtYNBY5oeJoJuZnNZwFbOvzJIckEkZ_/view?usp=sharing",
+  path: "https://drive.google.com/file/d/1YiuAUY3NEL5e0590TwT1m9TKLl0uiWqc/view?usp=share_link",
 };
 
 export const NavigationLinks = [
