@@ -1,0 +1,13 @@
+.sidebar_menu_wrapper {
+  .nav_menu_item {
+    width: 100%;
+    font-weight: 600;
+    color: var(--text-color-grey);
+    background-color: transparent;
+    padding: var(--list-item-padding);
+  }
+
+  .sidebar_menu_cta {
+    min-width: 100%;
+  }
+}

@@ -1,0 +1,34 @@
+.sidebar_popup_list {
+  width: 100%;
+  list-style-type: none;
+
+  .sidebar_popup_list_item {
+    --list-item-padding: 0.5em 1em;
+
+    width: 100%;
+    font-size: 1.2rem;
+    font-weight: 600;
+    color: var(--text-color-grey);
+    background-color: transparent;
+    border-radius: var(--border-radius-min);
+    transition: background-color 200ms ease-in-out;
+
+    &:not(:last-of-type) {
+      margin-bottom: 0.4em;
+    }
+
+    &:hover,
+    &:focus,
+    &:focus-within {
+      background-color: var(--hover-color);
+    }
+
+    &:active {
+      background-color: var(--active-color);
+    }
+
+    @media screen and (min-width: 760px) {
+      font-size: 1rem;
+    }
+  }
+}
