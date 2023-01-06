@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useState, useLayoutEffect } from "react";
 
 /**
  * this hook provides a `SSR` friendly way to reference the `Window` object
@@ -6,7 +6,7 @@ import { useEffect, useState } from "react";
 export const useWindow = () => {
   const [_window_, setWindow] = useState<typeof window | null>(null);
 
-  useEffect(() => {
+  useLayoutEffect(() => {
     setWindow(window);
   }, []);
 

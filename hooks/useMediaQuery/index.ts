@@ -1,10 +1,14 @@
-import { useState } from "react";
+import { useState, useLayoutEffect } from "react";
 import { useWindow, useEventListener } from "../";
 
 export const useMediaQuery = (query: string) => {
   const _window_ = useWindow();
   const matchMedia = _window_?.matchMedia(query);
-  const [matches, setMatches] = useState(Boolean(matchMedia?.matches));
+  const [matches, setMatches] = useState(matchMedia?.matches);
+
+  useLayoutEffect(() => {
+    setMatches(matchMedia?.matches);
+  }, [matchMedia?.matches]);
 
   useEventListener({
     target: matchMedia!,
