@@ -1,5 +1,5 @@
 import { useState, useRef } from "react";
-import useEventListener from "../useEventListener";
+import { useWindow, useEventListener } from "../";
 
 const window_ = typeof window !== "undefined" ? window : null;
 
@@ -14,11 +14,12 @@ const getScrollData = (lastScrollPosition: number) => {
 };
 
 export const useWindowScrollInfo = () => {
+  const _window_ = useWindow();
   const lastScrollPositionRef = useRef(0);
   const [currentScrollInfo, setCurrentScrollInfo] = useState(getScrollData(lastScrollPositionRef.current));
 
   useEventListener({
-    target: window_!,
+    target: _window_!,
     eventType: "scroll",
     eventHandler: async (event) => {
       const window = event.currentTarget as Window;

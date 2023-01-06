@@ -1,19 +1,13 @@
-import { useState, useEffect } from "react";
-import { useEventListener } from "../useEventListener";
+import { useState } from "react";
+import { useWindow, useEventListener } from "../";
 
 export const useMediaQuery = (query: string) => {
-  // defaulting to false initially so the render tree doesn't differ on server and client
-  // which causes an error during hydration
-  const [matches, setMatches] = useState(false);
-  const isBrowser = typeof window !== "undefined";
-  const mediaQueryList = isBrowser ? window.matchMedia(query) : null;
-
-  useEffect(() => {
-    setMatches(window.matchMedia(query).matches);
-  }, [query]);
+  const _window_ = useWindow();
+  const matchMedia = _window_?.matchMedia(query);
+  const [matches, setMatches] = useState(Boolean(matchMedia?.matches));
 
   useEventListener({
-    target: mediaQueryList!,
+    target: matchMedia!,
     eventType: 'change',
     eventHandler: ({ matches }) => setMatches(matches)
   });
