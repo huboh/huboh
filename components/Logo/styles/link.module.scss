@@ -1,0 +1,16 @@
+.logo_link {
+  border: none;
+  outline: none;
+  overflow: hidden;
+
+  margin: 0;
+  display: block;
+  cursor: pointer;
+
+  width: max-content;
+  min-width: max-content;
+
+  &:focus {
+    background-color: var(--hover-color);
+  }
+}
