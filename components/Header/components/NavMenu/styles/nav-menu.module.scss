@@ -1,0 +1,18 @@
+.nav_menu {
+  .nav_list {
+    width: max-content;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-flow: row nowrap;
+  }
+
+  &.vertical {
+    .nav_list {
+      width: 100%;
+      flex-flow: column nowrap;
+      align-items: flex-start;
+      justify-content: flex-start;
+    }
+  }
+}

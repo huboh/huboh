@@ -1,0 +1,29 @@
+.nav_menu_item {
+  border: none;
+  outline: none;
+  background-color: transparent;
+
+  padding: 0.5em 1em;
+  margin-right: 0.3em;
+  border-radius: var(--border-radius);
+
+  color: var(--text-color-grey);
+  width: max-content;
+  display: inline-block;
+  font-weight: 800;
+  text-decoration: none;
+  text-transform: capitalize;
+
+  &.active {
+    color: var(--primary-color);
+  }
+
+  &:last-of-type {
+    margin-right: 0;
+  }
+
+  &:hover,
+  &:focus-within {
+    background-color: var(--hover-color);
+  }
+}

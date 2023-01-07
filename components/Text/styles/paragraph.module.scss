@@ -1,0 +1,25 @@
+.text_paragraph {
+  font-size: 1rem;
+  font-weight: 400;
+  color: var(--text-color-grey);
+
+  &:not(:last-of-type) {
+    margin-bottom: 1em;
+  }
+
+  &.smaller {
+    font-size: 0.6rem;
+  }
+
+  &.small {
+    font-size: 0.8rem;
+  }
+
+  &.medium {
+    font-size: 1rem;
+  }
+
+  &.large {
+    font-size: 1.2rem;
+  }
+}
