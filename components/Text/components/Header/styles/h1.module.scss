@@ -1,4 +1,4 @@
-.text-header {
+.text_header {
   &.h1 {
     font-weight: 800;
     font-size: 2.6rem;
@@ -22,7 +22,7 @@
 }
 
 @media screen and (min-width: 760px) {
-  .text-header {
+  .text_header {
     &.h1 {
       font-size: 2.8rem;
 
@@ -46,7 +46,7 @@
 }
 
 @media screen and (min-width: 860px) {
-  .text-header {
+  .text_header {
     &.h1 {
       font-size: 3.2rem;
 

@@ -12,7 +12,7 @@ import ColoredSpan from "../../components/ColoredSpan";
 const H1: FC<HeaderProps> = (props) => {
   const sizeAttr = h1Styles[props.size || ""];
   const colorAttr = headerStyles[props.color || ""];
-  const className = useClassString(headerStyles.text_header, h1Styles.h2, sizeAttr, colorAttr, props.className);
+  const className = useClassString(headerStyles.text_header, h1Styles.h1, sizeAttr, colorAttr, props.className);
 
   return (
     <h1 className={ className } id={ props.id }>
