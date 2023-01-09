@@ -1,4 +1,5 @@
 import { Preferences } from "../providers/PreferencesProvider/types";
+import { TbBrandGithub, TbBrandTwitter, TbBrandLinkedin } from "react-icons/tb";
 
 export const defaultListBulletIcon = "⚡";
 
@@ -22,6 +23,12 @@ export const NavigationLinks = [
   { label: "projects", link: "#projects" },
   { label: "contact", link: "#contact" },
 ];
+
+export const Socials = {
+  github: { icon: <TbBrandGithub />, link: process.env.NEXT_PUBLIC_GITHUB_LINK },
+  twitter: { icon: <TbBrandTwitter />, link: process.env.NEXT_PUBLIC_TWITTER_LINK },
+  linkedIn: { icon: <TbBrandLinkedin />, link: process.env.NEXT_PUBLIC_LINKEDIN_LINK },
+};
 
 export const Skills = [
   "javaScript", "typeScript", "React & Nextjs", "NodeJs", "Go", "Docker"
