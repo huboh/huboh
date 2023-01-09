@@ -1,4 +1,5 @@
-import styles from '../../styles/button-link.module.scss';
+import buttonStyles from '../../styles/button.module.scss';
+import buttonLinkStyles from '../../styles/button-link.module.scss';
 
 import { FC, ReactNode } from 'react';
 import { LinkProps } from 'react-router-dom';
@@ -13,12 +14,12 @@ export interface ButtonExternalLinkProps extends LinkProps {
 }
 
 const ButtonExternalLink: FC<ButtonExternalLinkProps> = ({ text, to, icon, children, ...rest }) => {
-  const className = useClassString(styles.button, styles.button_link, rest.linkStyle, rest.className);
+  const className = useClassString(buttonStyles.button, buttonLinkStyles.button_link, rest.linkStyle, rest.className);
 
   return (
     <a { ...rest } className={ className } href={ to } target="_blank" rel="noreferrer" >
-      { icon && <span className="icon-wrapper">{ icon }</span> }
-      <span className="text-wrapper">{ text || children }</span>
+      { icon && <span className={ buttonStyles.icon_wrapper }>{ icon }</span> }
+      <span className={ buttonStyles.text_wrapper }>{ text || children }</span>
     </a>
   );
 };
