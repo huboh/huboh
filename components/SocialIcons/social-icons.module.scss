@@ -1,0 +1,14 @@
+.social_icons_wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  width: max-content;
+  list-style-type: none;
+
+  .social_icon_wrapper {
+    &:not(:last-of-type) {
+      margin-right: 1em;
+    }
+  }
+}
