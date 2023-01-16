@@ -21,3 +21,18 @@ export interface Project {
   techStacks: string[];
   description: string;
 }
+
+export interface Article {
+  id: string;
+  date: string;
+  title: string;
+  content: string;
+  coverImage: Image;
+  author: {
+    name: string;
+    avatar: Image;
+  };
+  ogImage: {
+    url: Image;
+  };
+}
