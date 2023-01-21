@@ -29,7 +29,7 @@ export const getArticle = async (props: GetArticleProps) => {
 
   return {
     ...grayMatterFile.data,
-    id: path.replace(/\.mdx?$/, ""),
+    id: props.path.replace(/\.mdx?$/, ""),
     content: (await markdownToHTML(grayMatterFile.content)).value
   } as Article;
 };
