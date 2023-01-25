@@ -1,0 +1,22 @@
+.list {
+  width: 100%;
+  list-style: none;
+
+  gap: 1em;
+  display: flex;
+  align-items: flex-start;
+  justify-content: flex-start;
+
+  &.vertical {
+    flex-flow: column nowrap;
+  }
+
+  &.horizontal {
+    flex-flow: row nowrap;
+  }
+
+  .list-item {
+    margin: 0;
+    padding: 0;
+  }
+}
