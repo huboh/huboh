@@ -1,7 +1,7 @@
-import { ReactNode } from "react";
+import { HTMLProps, ReactNode } from "react";
 import { TextSize, TextColor } from "../../../types";
 
-export interface HeaderProps {
+export interface HeaderProps extends Omit<HTMLProps<HTMLHeadingElement>, "size"> {
   showFullStop?: boolean;
   coloredText?: string;
   className?: string;

@@ -1,10 +1,10 @@
 import styles from "../../styles/paragraph.module.scss";
 
 import { TextSize } from "../../types";
-import { FC, ReactNode } from "react";
 import { useClassString } from "../../../../hooks";
+import { FC, ReactNode, HTMLAttributes } from "react";
 
-export interface ParagraphProps {
+export interface ParagraphProps extends HTMLAttributes<HTMLParagraphElement> {
   id?: string;
   size?: TextSize;
   text?: string | ReactNode;
@@ -12,15 +12,16 @@ export interface ParagraphProps {
   className?: string;
 }
 
-const Paragraph: FC<ParagraphProps> = (props) => {
-  const size = styles[props.size || ""];
-  const className = useClassString(styles.text_paragraph, size, props.className);
+const Paragraph: FC<ParagraphProps> = ({ id, text, size, children, className, ...props }) => {
+  const textSize = styles[size || ""];
+  const className_ = useClassString(styles.text_paragraph, textSize, className);
 
   return (
     <p
-      id={ props.id }
-      children={ props.text || props.children }
-      className={ className }
+      { ...props }
+      id={ id }
+      children={ text || children }
+      className={ className_ }
     />
   );
 };
