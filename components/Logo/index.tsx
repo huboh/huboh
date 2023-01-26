@@ -1,5 +1,5 @@
 import styles from "./styles/logo.module.scss";
-import LogoSrc from "../../public/images/logo.png";
+import LogoSrc from "../../public/assets/images/logo.png";
 
 // components
 import Icon from "./variants/Icon";

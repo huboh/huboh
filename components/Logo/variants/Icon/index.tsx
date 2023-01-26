@@ -1,6 +1,6 @@
 import { FC } from "react";
 import Image from "next/image";
-import IconSrc from "../../../../public/images/icon.png";
+import IconSrc from "../../../../public/assets/images/icon.png";
 import useClassString from "../../../../hooks/useClassString";
 
 interface LogoProps {
