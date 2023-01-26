@@ -19,9 +19,9 @@ export const Resume = {
 };
 
 export const NavigationLinks = [
-  { label: "about", link: "#about" },
-  { label: "projects", link: "#projects" },
-  { label: "contact", link: "#contact" },
+  { label: "about", link: "/#about" },
+  { label: "projects", link: "/#projects" },
+  { label: "contact", link: "/#contact" },
 ];
 
 export const Socials = {
