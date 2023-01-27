@@ -28,6 +28,7 @@ export interface Article {
   title: string;
   content: string;
   coverImage: Image;
+  previewText: string;
   author: {
     name: string;
     avatar: Image;

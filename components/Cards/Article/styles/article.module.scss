@@ -1,0 +1,106 @@
+.article {
+  --padding: 1em;
+  --border-radius: 0.5rem;
+
+  width: 100%;
+  border: 1px solid var(--border-color-light);
+  padding: var(--padding);
+  box-shadow: var(--box-shadow);
+  border-radius: var(--border-radius);
+  background-color: var(--background-color-primary);
+
+  gap: 0.8rem;
+  display: flex;
+  flex-flow: column nowrap;
+  align-items: flex-start;
+  justify-content: flex-start;
+
+  .image-wrapper {
+    width: 100%;
+    height: 13rem;
+    min-height: 13rem;
+    overflow: hidden;
+    border-radius: var(--border-radius);
+    background-color: var(--hover-color);
+    border: 1px solid var(--border-color-light);
+
+    .image {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center center;
+      transition: transform 200ms ease-in;
+    }
+  }
+
+  .text-wrapper {
+    gap: 0.4rem;
+    display: flex;
+    flex-flow: column nowrap;
+    align-items: flex-start;
+    justify-content: flex-start;
+
+    white-space: normal;
+    text-overflow: ellipsis;
+
+    .published-date {
+      font-size: 0.8rem;
+      color: var(--text-color-grey);
+    }
+
+    .title {
+      overflow: hidden;
+      line-clamp: 3;
+      -webkit-line-clamp: 3;
+      -webkit-box-orient: vertical;
+      display: -webkit-box !important;
+    }
+
+    .preview-text {
+      color: var(--text-color-grey);
+      overflow: hidden;
+      font-size: 0.95rem;
+
+      line-clamp: 4;
+      -webkit-line-clamp: 4;
+      -webkit-box-orient: vertical;
+      display: -webkit-box !important;
+    }
+  }
+
+  &:hover {
+    .image {
+      transform: scale(1.05);
+    }
+  }
+
+  @media screen and (min-width: 760px) {
+    --padding: 0.8em;
+
+    gap: 0.4rem;
+    max-width: 22rem;
+
+    .image-wrapper {
+      height: 12rem;
+      min-height: 12rem;
+    }
+
+    .text-wrapper {
+      gap: 0.4rem;
+
+      .published-date {
+        font-size: 0.7rem;
+      }
+
+      .title {
+        font-size: 1.25rem;
+      }
+
+      .preview-text {
+        font-size: 0.85rem;
+        line-clamp: 3;
+        -webkit-line-clamp: 3;
+      }
+    }
+  }
+}
