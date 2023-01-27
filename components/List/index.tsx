@@ -5,7 +5,7 @@ import styles from "./styles/list.module.scss";
 const List = <T = any>(props: ListProps<T>) => {
   const type = props.type || "horizontal";
   const className = useClassString(styles["list"], styles[type], props.className);
-  const getItemKey = (item: T, d: number): any => (typeof item === "object" ? ((item!)[props.k!] || d) : d);
+  const getItemKey = (item: T, d: number): any => (typeof item === "object" ? ((item!)[props.key_!] || d) : d);
 
   return (
     <ul className={ className }>

@@ -6,7 +6,7 @@ export interface ListProps<T> {
   /**
    * list item key prop
    */
-  k?: T extends object ? keyof T : never;
+  key_?: T extends object ? keyof T : never;
   type?: ListType;
   items: T[];
   render: (item: T) => ReactElement;
