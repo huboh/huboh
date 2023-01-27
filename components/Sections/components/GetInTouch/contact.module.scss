@@ -1,0 +1,33 @@
+.get_in_touch_section {
+  display: flex;
+  height: 80vh;
+  align-items: center;
+  justify-content: center;
+  flex-flow: column nowrap;
+
+  .main_header {
+    margin-top: 0.4em;
+    margin-bottom: 0.4em;
+  }
+
+  .paragraph_text {
+    width: 100%;
+    margin-bottom: 2em;
+  }
+
+  .get_in_touch_cta {
+    margin: 0 auto;
+  }
+
+  @media screen and (min-width: 760px) {
+    .paragraph_text {
+      width: 80%;
+    }
+  }
+
+  @media screen and (min-width: 860px) {
+    .paragraph_text {
+      width: 70%;
+    }
+  }
+}

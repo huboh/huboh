@@ -1,0 +1,24 @@
+.articles {
+  gap: 2rem;
+  display: flex;
+  flex-flow: column nowrap;
+  align-items: center;
+  justify-content: flex-start;
+
+  .heading {
+    width: 100%;
+    text-align: start;
+  }
+
+  @media screen and (min-width: 760px) {
+    .heading {
+      text-align: center;
+    }
+
+    .list {
+      gap: 2rem;
+      width: 100%;
+      justify-content: center;
+    }
+  }
+}
