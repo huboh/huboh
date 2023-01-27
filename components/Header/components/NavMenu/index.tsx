@@ -1,13 +1,16 @@
 import { FC } from "react";
 import { NavigationLinks } from "../../../../constants";
 
+// component
+import List from "../../../List";
+import NavMenuItem from "./NavMenuItem";
+
+// styles
+import styles from "./styles/nav-menu.module.scss";
+
 // hooks
 import { useState } from "react";
 import { useWindow, useClassString, useEventListener } from "../../../../hooks";
-
-// component
-import styles from "./styles/nav-menu.module.scss";
-import NavMenuItem from "./NavMenuItem";
 
 export interface NavMenuProps {
   layout?: "horizontal" | "vertical";
@@ -19,9 +22,6 @@ const NavMenu: FC<NavMenuProps> = (props) => {
   const _window_ = useWindow();
   const [hash, setHash] = useState(_window_?.location?.hash || "");
   const className = useClassString(styles.nav_menu, styles[props.layout || "horizontal"]);
-  const navigationLinks = !props.isMobile && NavigationLinks.map(
-    ({ link, label }) => <NavMenuItem key={ link } href={ link } label={ label } isActive={ hash === link } />
-  );
 
   useEventListener({
     target: _window_!,
@@ -31,7 +31,12 @@ const NavMenu: FC<NavMenuProps> = (props) => {
 
   return props.isMobile ? null : (
     <nav className={ className }>
-      <ul children={ navigationLinks } className={ styles.nav_list } />
+      <List
+        key_="label"
+        items={ NavigationLinks }
+        className={ styles.nav_list }
+        render={ ({ link, label }) => <NavMenuItem href={ link } label={ label } isActive={ hash === link } /> }
+      />
     </nav>
   );
 };

@@ -23,9 +23,9 @@ const PopupMenuProvider: FC<PopupMenuProps> = (props) => {
   return (
     <PopupMenuContext.Provider value={ context }>
       <div className={ styles.header_popups }>
-        <Sidebar openSidebarMenu={ isSidebarOpen } onOverlayClick={ context.toggleSidebar } />
-        <ThemePicker openThemePickerMenu={ isThemePickerOpen } onOverlayClick={ context.toggleThemePicker } />
-        <ColorSchemePicker openColorSchemeMenu={ isColorSchemePickerOpen } onOverlayClick={ context.toggleColorSchemePicker } />
+        <Sidebar openSidebarPopup={ isSidebarOpen } onOverlayClick={ context.toggleSidebar } />
+        <ThemePicker openSidebarPopup={ isThemePickerOpen } onOverlayClick={ context.toggleThemePicker } />
+        <ColorSchemePicker openSidebarPopup={ isColorSchemePickerOpen } onOverlayClick={ context.toggleColorSchemePicker } />
       </div>
       { props.children }
     </PopupMenuContext.Provider>

@@ -27,9 +27,12 @@ const SidebarPopup: FC<SidebarPopupProps> = (props) => {
   });
 
   return (
-    <ModalOverlay isOpen={ isOpen } className={ styles.popup_overlay } onClick={ props.onOverlayClick }>
-      <Component children={ props.sidebarItem || props.children } />
-    </ModalOverlay>
+    <ModalOverlay
+      isOpen={ isOpen }
+      onClick={ props.onOverlayClick }
+      children={ <Component children={ props.sidebarItem || props.children } /> }
+      className={ styles.popup_overlay }
+    />
   );
 };
 
