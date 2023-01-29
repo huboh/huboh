@@ -12,8 +12,8 @@ export interface IconExternalLinkProps extends LinkProps {
 }
 
 const IconExternalLink: FC<IconExternalLinkProps> = ({ icon, ...props }) => {
-  const style = styles["see_through"];
-  const className = useClassString(iconButtonStyles.button_icon, styles.link_icon, style, props.className);
+  const style = styles["see-through"];
+  const className = useClassString(iconButtonStyles["button-icon"], styles["link-icon"], style, props.className);
 
   return (
     <a { ...props } href={ props.to } target={ "_blank" } rel={ "noreferrer" } children={ icon } className={ className } />

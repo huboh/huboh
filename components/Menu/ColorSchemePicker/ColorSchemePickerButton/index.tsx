@@ -12,8 +12,8 @@ export interface ColorSchemePickerButtonProps {
 
 const ColorSchemePickerButton: FC<ColorSchemePickerButtonProps> = ({ colorScheme, isSelected, onClick }) => {
   const buttonRef = useRef<HTMLButtonElement>(null);
-  const activeClass = isSelected ? styles.active : "";
-  const classString = useClassString(styles.color_scheme_picker_button, activeClass);
+  const activeClass = isSelected ? styles["active"] : "";
+  const classString = useClassString(styles["color-scheme-picker-button"], activeClass);
 
   useEffect(() => {
     (buttonRef.current!).style.setProperty(`--scheme-color`, `var(--color-scheme-${colorScheme})`);
@@ -24,7 +24,7 @@ const ColorSchemePickerButton: FC<ColorSchemePickerButtonProps> = ({ colorScheme
   return (
     <button className={ classString } onClick={ onClick } ref={ buttonRef }>
       <span children={ colorScheme } />
-      <span children={ isSelected ? <MdRadioButtonChecked /> : <MdRadioButtonUnchecked /> } className={ styles.icon_wrapper } />
+      <span children={ isSelected ? <MdRadioButtonChecked /> : <MdRadioButtonUnchecked /> } className={ styles["icon-wrapper"] } />
     </button>
   );
 };

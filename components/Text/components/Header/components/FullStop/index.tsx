@@ -6,7 +6,7 @@ export interface FullStopProps {
 }
 
 const FullStop: FC<FullStopProps> = (props) => (
-  (props.showFullStop ?? true) ? <span className={ styles.full_stop } /> : null
+  (props.showFullStop ?? true) ? <span className={ styles["full-stop"] } /> : null
 );
 
 export {

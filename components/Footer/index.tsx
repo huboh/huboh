@@ -20,7 +20,7 @@ const Footer: FC<FooterProps> = (props) => {
   const paragraphText = (
     <>
       <span children="Designed & Built with 💖 by " />
-      <a className={ linkStyles.link } target="_blank" rel="noreferrer" children="Musa Knowledge" href={ Socials.linkedIn.link } />
+      <a className={ linkStyles["link"] } target="_blank" rel="noreferrer" children="Musa Knowledge" href={ Socials.linkedIn.link } />
     </>
   );
 

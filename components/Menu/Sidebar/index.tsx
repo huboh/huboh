@@ -32,17 +32,17 @@ const Sidebar: FC<SidebarMenuProps> = (props) => {
   });
 
   return (
-    <SidebarPopup { ...props } className={ styles.sidebar_menu_wrapper }>
+    <SidebarPopup { ...props } className={ styles["sidebar-menu-wrapper"] }>
       <SidebarPopupHeader
         title={ "menu" }
       />
       <SidebarPopupList
         key_="label"
         items={ NavigationLinks }
-        render={ (link) => <NavMenuItem className={ styles.nav_menu_item } href={ link.link } label={ link.label } isActive={ hash === link.link } /> }
+        render={ (link) => <NavMenuItem className={ styles["nav-menu-item"] } href={ link.link } label={ link.label } isActive={ hash === link.link } /> }
       />
       <SidebarPopupFooter
-        children={ <DownLoadResume className={ styles.sidebar_menu_cta } /> }
+        children={ <DownLoadResume className={ styles["sidebar-menu-cta"] } /> }
       />
     </SidebarPopup >
   );

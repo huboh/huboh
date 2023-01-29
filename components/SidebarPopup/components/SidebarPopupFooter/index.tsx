@@ -8,7 +8,7 @@ export interface SidebarPopupFooterProps {
 }
 
 const SidebarPopupFooter: FC<SidebarPopupFooterProps> = (props) => {
-  const className = useClassString(styles.sidebar_popup_footer, props.className);
+  const className = useClassString(styles["sidebar-popup-footer"], props.className);
 
   return (
     <footer

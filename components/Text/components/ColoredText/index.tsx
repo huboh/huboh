@@ -6,7 +6,7 @@ export interface ColoredTextProps {
 }
 
 const ColoredText: FC<ColoredTextProps> = (props) => {
-  const className = styles.colored_text;
+  const className = styles["colored-text"];
 
   return (
     props.text ? <span className={ className }>{ props.text }</span> : null

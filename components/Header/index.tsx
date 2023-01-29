@@ -20,11 +20,11 @@ const Header: FC<HeaderProps> = (props) => {
   const ref = useRef<HTMLElement>(null);
   const view = useWindowScrollInfo();
   const isMobile = useMediaQuery("(max-width: 760px)");
-  const className = useClassString(styles.header, props.className);
+  const className = useClassString(styles["header"], props.className);
 
-  ref.current?.classList?.toggle?.(styles.scrolled_up, view.isScrolledUp);
-  ref.current?.classList?.toggle?.(styles.scrolling_down, view.isScrollingDown);
-  ref.current?.classList?.toggle?.(styles.scrolling_up, view.isScrolledUp ? !view.isScrolledUp : view.isScrollingUp);
+  ref.current?.classList?.toggle?.(styles["scrolled-up"], view.isScrolledUp);
+  ref.current?.classList?.toggle?.(styles["scrolling-down"], view.isScrollingDown);
+  ref.current?.classList?.toggle?.(styles["scrolling-up"], view.isScrolledUp ? !view.isScrolledUp : view.isScrollingUp);
 
   return (
     <header id={ id } ref={ ref } className={ className }>

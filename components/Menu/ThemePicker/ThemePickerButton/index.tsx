@@ -12,12 +12,12 @@ export interface ThemePickerButtonProps {
 
 const ThemePickerButton: FC<ThemePickerButtonProps> = ({ theme, isChecked, onClick }) => {
   const activeClass = isChecked ? styles.active : "";
-  const classString = useClassString(styles.theme_picker_button, activeClass);
+  const classString = useClassString(styles["theme-picker-button"], activeClass);
 
   return (
     <button className={ classString } onClick={ onClick }>
       <span children={ theme } />
-      <span children={ isChecked ? <MdRadioButtonChecked /> : <MdRadioButtonUnchecked /> } className={ styles.icon_wrapper } />
+      <span children={ isChecked ? <MdRadioButtonChecked /> : <MdRadioButtonUnchecked /> } className={ styles["icon-wrapper"] } />
     </button>
   );
 };

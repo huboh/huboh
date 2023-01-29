@@ -6,14 +6,14 @@ import styles from "./social-icons.module.scss";
 
 const SocialIcons: FC = () => {
   const socials = Object.keys(Socials);
-  const className = styles.social_icons_wrapper;
+  const className = styles["social-icons-wrapper"];
 
   return (
     <ul className={ className }>
       { (socials as (keyof typeof Socials)[]).map((social) => (
         <li
           key={ Socials[social].link }
-          className={ styles.social_icon_wrapper }
+          className={ styles["social-icon-wrapper"] }
           children={ <Button.ExternalIconLink to={ Socials[social].link || "" } icon={ Socials[social].icon } /> }
         />
       )) }

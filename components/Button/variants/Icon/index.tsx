@@ -10,8 +10,8 @@ export interface IconProps extends Pick<ButtonProps, "icon" | "type" | "style" |
 
 const Icon: FC<IconProps> = (props) => {
   const type = props.type || 'button';
-  const style = styles[props.style || "see_through"];
-  const className = useClassString(styles.button_icon, style, props.className);
+  const style = styles[props.style || "see-through"];
+  const className = useClassString(styles["button-icon"], style, props.className);
 
   return (
     <button title={ props.title } onClick={ props.onClick } type={ type } className={ className }>

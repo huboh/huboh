@@ -13,7 +13,7 @@ export interface NavMenuItemProps {
 const NavMenuItem: FC<NavMenuItemProps> = (props) => {
   const href = props.href;
   const label = props.label;
-  const className = useClassString(styles.nav_menu_item, props.isActive ? styles.active : "", props.className);
+  const className = useClassString(styles["nav-menu-item"], props.isActive ? styles["active"] : "", props.className);
 
   return (
     <a

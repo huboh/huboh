@@ -1,4 +1,4 @@
-.error_screen_wrapper {
+.error-screen-wrapper {
   --spacing: 1.5rem;
 
   width: 100%;
@@ -11,11 +11,11 @@
   justify-content: center;
   flex-flow: column nowrap;
 
-  .error_icon {
+  .error-icon {
     font-size: 3rem;
   }
 
-  .message_wrapper {
+  .message-wrapper {
     max-width: 40rem;
 
     .title {

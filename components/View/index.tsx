@@ -11,7 +11,7 @@ interface ViewProps {
 const View: FC<ViewProps> = (props) => {
   const id = props.id;
   const children = props.children;
-  const className = useClassString(styles.view, props.className);
+  const className = useClassString(styles["view"], props.className);
 
   return (
     <section

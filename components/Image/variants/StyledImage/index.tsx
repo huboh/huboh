@@ -8,7 +8,7 @@ import { useClassString } from "../../../../hooks";
 import styles from "../../styles/image.module.scss";
 
 const StyledImage: FC<ImageProps> = (props) => {
-  const className = useClassString(styles.styled_image, props.className);
+  const className = useClassString(styles["styled-image"], props.className);
 
   return (
     <Image

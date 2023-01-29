@@ -1,4 +1,4 @@
-.social_icons_wrapper {
+.social-icons-wrapper {
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -6,7 +6,7 @@
   width: max-content;
   list-style-type: none;
 
-  .social_icon_wrapper {
+  .social-icon-wrapper {
     &:not(:last-of-type) {
       margin-right: 1em;
     }

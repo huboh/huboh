@@ -1,4 +1,4 @@
-.theme_picker_button {
+.theme-picker-button {
   border: none;
   outline: none;
   background-color: transparent;
@@ -16,7 +16,7 @@
     color: var(--primary-color);
   }
 
-  & .icon_wrapper svg {
+  & .icon-wrapper svg {
     stroke: inherit;
     font-size: 1.2rem;
   }

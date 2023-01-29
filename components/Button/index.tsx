@@ -30,7 +30,7 @@ export interface ButtonProps {
 export default function Button(props: ButtonProps) {
   const type = props.type || 'button';
   const [isDisabled, setIsDisabled] = useState(props.disabled);
-  const className = useClassString(styles.button, props.style, props.className);
+  const className = useClassString(styles["button"], props.style, props.className);
 
   const onClickHandler = async () => {
     if (props.onClick) {
@@ -46,10 +46,10 @@ export default function Button(props: ButtonProps) {
   return (
     <button type={ type } className={ className } onClick={ onClickHandler } disabled={ props.onClick ? isDisabled : props.disabled }>
       { props.showSpinner ?
-        <BiLoaderCircle className={ styles.button_spinner } /> : (
+        <BiLoaderCircle className={ styles["button-spinner"] } /> : (
           <>
-            { props.icon && <span className={ styles.icon_wrapper }>{ props.icon }</span> }
-            { props.label && <span className={ styles.text_wrapper }>{ props.label }</span> }
+            { props.icon && <span className={ styles["icon-wrapper"] }>{ props.icon }</span> }
+            { props.label && <span className={ styles["text-wrapper"] }>{ props.label }</span> }
           </>
         ) }
     </button>

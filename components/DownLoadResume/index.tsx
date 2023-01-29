@@ -16,12 +16,12 @@ interface DownloadResumeProps {
 const DownloadResumeBtn: FC<DownloadResumeProps> = (props) => {
   const title = "resume";
   const cloud = <TbCloudDownload />;
-  const className = useClassString(buttonStyles.button, buttonLinkStyles.button_link, props.className);
+  const className = useClassString(buttonStyles["button"], buttonLinkStyles["button-link"], props.className);
 
   return (
     <a title={ title } className={ className } href={ Resume.path } target={ "_blank" } rel={ "noreferrer" }>
-      <span className={ buttonStyles.icon_wrapper }>{ cloud }</span>
-      <span className={ buttonStyles.text_wrapper }>{ title }</span>
+      <span className={ buttonStyles["icon-wrapper"] }>{ cloud }</span>
+      <span className={ buttonStyles["text-wrapper"] }>{ title }</span>
     </a>
   );
 };

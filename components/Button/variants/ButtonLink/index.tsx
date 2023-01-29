@@ -18,12 +18,12 @@ const ButtonLink: FC<ButtonLinkProps> = ({ text, href, icon, children, ...rest }
   const label = text || children;
   const style = styles[rest.linkStyle || ""];
   const linkStyle = linkStyles[rest.linkStyle || ""];
-  const className = useClassString(styles.button, linkStyles.button_link, style, linkStyle, rest.className);
+  const className = useClassString(styles["button"], linkStyles["button-link"], style, linkStyle, rest.className);
 
   return (
     <Link { ...rest } href={ href } className={ className }>
-      { icon && <span className={ styles.icon_wrapper }>{ icon }</span> }
-      { label && <span className={ styles.text_wrapper }>{ label }</span> }
+      { icon && <span className={ styles["icon-wrapper"] }>{ icon }</span> }
+      { label && <span className={ styles["text-wrapper"] }>{ label }</span> }
     </Link>
   );
 };

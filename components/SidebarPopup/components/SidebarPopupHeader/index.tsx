@@ -8,11 +8,11 @@ export interface SidebarPopupHeaderProps {
 }
 
 const SidebarPopupHeader: FC<SidebarPopupHeaderProps> = (props) => {
-  const className = useClassString(styles.sidebar_popup_header, props.className);
+  const className = useClassString(styles["sidebar-popup-header"], props.className);
 
   return (
     <header className={ className }>
-      <h1 children={ props.title } className={ styles.header_title } />
+      <h1 children={ props.title } className={ styles["header-title"] } />
     </header>
   );
 };

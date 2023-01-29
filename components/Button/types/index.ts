@@ -1,1 +1,1 @@
-export type ButtonStyle = 'opaque' | 'transparent' | 'see_through';
+export type ButtonStyle = 'opaque' | 'transparent' | 'see-through';

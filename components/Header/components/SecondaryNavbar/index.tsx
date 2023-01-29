@@ -21,7 +21,7 @@ const SecondaryNavbar: FC<SecondaryNavProps> = (props) => {
   const { toggleSidebar, toggleThemePicker, toggleColorSchemePicker } = usePopupMenu();
 
   return (
-    <div className={ styles.navbar_wrapper }>
+    <div className={ styles["navbar-wrapper"] }>
       <ColorSchemePickerButton onClick={ toggleColorSchemePicker } />
       <ThemeSwitcherButton onClick={ toggleThemePicker } />
       { isMobile ? <MenuToggleButton onClick={ toggleSidebar } /> : <DownLoadResume /> }

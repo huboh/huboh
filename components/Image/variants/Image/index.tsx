@@ -13,7 +13,7 @@ export interface ImageProps extends NextImageProps {
 
 const Image: FC<ImageProps> = (props) => {
   const border = props.roundedBorder ? "round-border" : "";
-  const className = useClassString(styles.image, styles[border || "round-border"], props.className);
+  const className = useClassString(styles["image"], styles[border || "round-border"], props.className);
 
   return (
     <NextImage

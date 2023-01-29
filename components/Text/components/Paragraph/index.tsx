@@ -14,7 +14,7 @@ export interface ParagraphProps extends HTMLAttributes<HTMLParagraphElement> {
 
 const Paragraph: FC<ParagraphProps> = ({ id, text, size, children, className, ...props }) => {
   const textSize = styles[size || ""];
-  const className_ = useClassString(styles.text_paragraph, textSize, className);
+  const className_ = useClassString(styles["text-paragraph"], textSize, className);
 
   return (
     <p

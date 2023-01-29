@@ -20,16 +20,16 @@
   transition: transform 300ms ease-in-out;
   background-color: var(--background-color-translucent);
 
-  &.scrolled_up {
+  &.scrolled-up {
     border-color: transparent;
   }
 
-  &.scrolling_up {
+  &.scrolling-up {
     transform: translateY(0);
     border-color: var(--border-color-light);
   }
 
-  &.scrolling_down {
+  &.scrolling-down {
     transform: translateY(-101%);
   }
 

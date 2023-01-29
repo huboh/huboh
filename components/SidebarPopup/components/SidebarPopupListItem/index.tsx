@@ -10,7 +10,7 @@ const SidebarPopup: FC<SidebarPopupListItemProps> = (props) => {
   return (
     <li
       children={ props.children }
-      className={ styles.sidebar_popup_list_item }
+      className={ styles["sidebar-popup-list-item"] }
     />
   );
 };

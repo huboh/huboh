@@ -21,17 +21,17 @@ const DefaultErrorMessage = "Click the button below to reload the page. I might 
 const ErrorScreen: FC<ErrorScreenProps> = (props) => {
   const title = props.title || DefaultErrorTitle;
   const message = props.message || props.error?.message || DefaultErrorMessage;
-  const className = useClassStrings(styles.error_screen_wrapper, props.className);
+  const className = useClassStrings(styles["error-screen-wrapper"], props.className);
 
   return (
     <div className={ className }>
       <TbInfoCircle
-        className={ styles.error_icon }
+        className={ styles["error-icon"] }
       />
 
-      <div className={ styles.message_wrapper }>
-        <h1 className={ styles.title } children={ title } />
-        <p className={ styles.message } children={ message } />
+      <div className={ styles["message-wrapper"] }>
+        <h1 className={ styles["title"] } children={ title } />
+        <p className={ styles["message"] } children={ message } />
       </div>
 
       <Button

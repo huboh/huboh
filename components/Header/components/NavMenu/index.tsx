@@ -21,7 +21,7 @@ export interface NavMenuProps {
 const NavMenu: FC<NavMenuProps> = (props) => {
   const _window_ = useWindow();
   const [hash, setHash] = useState(_window_?.location?.hash || "");
-  const className = useClassString(styles.nav_menu, styles[props.layout || "horizontal"]);
+  const className = useClassString(styles["nav-menu"], styles[props.layout || "horizontal"]);
 
   useEventListener({
     target: _window_!,
@@ -34,7 +34,7 @@ const NavMenu: FC<NavMenuProps> = (props) => {
       <List
         key_="label"
         items={ NavigationLinks }
-        className={ styles.nav_list }
+        className={ styles["nav-list"] }
         render={ ({ link, label }) => <NavMenuItem href={ link } label={ label } isActive={ hash === link } /> }
       />
     </nav>

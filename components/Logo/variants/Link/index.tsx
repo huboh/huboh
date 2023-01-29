@@ -17,7 +17,7 @@ interface LinkableProps {
 const LogoLink: FC<LinkableProps> = (props) => {
   const id = props.id;
   const href = props.href || "/";
-  const className = useClassString(styles.logo_link, props.className);
+  const className = useClassString(styles["logo-link"], props.className);
 
   return (
     <Link

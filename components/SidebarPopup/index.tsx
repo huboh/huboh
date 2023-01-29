@@ -11,7 +11,7 @@ import useAnimatedComponent from "../../hooks/useAnimatedComponent";
 
 const SidebarPopup: FC<SidebarPopupProps> = (props) => {
   const isOpen = props.openSidebarPopup;
-  const className = useClassString(styles.popup_menu_wrapper, props.className);
+  const className = useClassString(styles["popup-menu-wrapper"], props.className);
   const [Component] = useAnimatedComponent({
     display: isOpen,
     tagName: 'aside',
@@ -31,7 +31,7 @@ const SidebarPopup: FC<SidebarPopupProps> = (props) => {
       isOpen={ isOpen }
       onClick={ props.onOverlayClick }
       children={ <Component children={ props.sidebarItem || props.children } /> }
-      className={ styles.popup_overlay }
+      className={ styles["popup-overlay"] }
     />
   );
 };

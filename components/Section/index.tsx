@@ -14,7 +14,7 @@ export interface SectionProps {
 const Section: FC<SectionProps> = (props) => {
   const id = props.id;
   const children = props.children;
-  const className = useClassString(styles.section, styles[props.textAlignment || ""], props.className);
+  const className = useClassString(styles["section"], styles[props.textAlignment || ""], props.className);
 
   return (
     <section

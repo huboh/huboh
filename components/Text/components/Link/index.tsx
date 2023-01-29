@@ -11,7 +11,7 @@ export interface LinkProps extends NextLinkProps {
 }
 
 const Link: FC<LinkProps> = ({ children, text, ...props }) => {
-  const className = useClassString(styles.link, props.className);
+  const className = useClassString(styles["link"], props.className);
 
   return (
     <NextLink

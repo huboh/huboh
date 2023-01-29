@@ -1,4 +1,4 @@
-.color_scheme_picker_button {
+.color-scheme-picker-button {
   border: none;
   outline: none;
   background-color: transparent;
@@ -16,7 +16,7 @@
     color: var(--primary-color);
   }
 
-  .icon_wrapper svg {
+  .icon-wrapper svg {
     fill: var(--scheme-color);
     stroke: var(--scheme-color);
     font-size: 1.2rem;

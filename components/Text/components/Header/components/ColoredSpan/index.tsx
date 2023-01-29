@@ -6,7 +6,7 @@ export interface ColoredSpanProps {
 }
 
 const ColoredSpan: FC<ColoredSpanProps> = (props) => (
-  props.text ? <span children={ props.text } className={ styles.colored_text } /> : null
+  props.text ? <span children={ props.text } className={ styles["colored-text"] } /> : null
 );
 
 export {

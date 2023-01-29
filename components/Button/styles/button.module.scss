@@ -15,13 +15,13 @@
   align-items: center;
   justify-content: center;
 
-  .text_wrapper {
+  .text-wrapper {
     margin: 0;
     display: block;
     white-space: nowrap;
   }
 
-  .icon_wrapper {
+  .icon-wrapper {
     width: 1.3rem;
     margin: 0;
     display: block;
@@ -42,7 +42,7 @@
     color: var(--primary-color);
     background-color: transparent;
 
-    .icon_wrapper {
+    .icon-wrapper {
       & > * {
         fill: var(--primary-color);
       }
@@ -66,11 +66,11 @@
     }
   }
 
-  &.see_through {
+  &.see-through {
     color: var(--primary-color);
     background-color: var(--primary-color-light);
 
-    .icon_wrapper {
+    .icon-wrapper {
       & > * {
         fill: var(--primary-color);
       }
@@ -98,7 +98,7 @@
   // style variations end
   //
 
-  .button_spinner {
+  .button-spinner {
     @keyframes rotate {
       0% {
         transform: rotate(0deg);

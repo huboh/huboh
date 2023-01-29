@@ -28,7 +28,7 @@ const ScrollToTop: FC = () => {
           onClick={ onButtonClick }
           children={ <BiArrowToTop /> }
           variants={ lifeCycleTransitions }
-          className={ styles.scroll_to_top_button }
+          className={ styles["scroll-to-top-button"] }
         />
       ) }
     </AnimatePresence >

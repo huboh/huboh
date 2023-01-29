@@ -1,5 +1,5 @@
-.nav_menu {
-  .nav_list {
+.nav-menu {
+  .nav-list {
     width: max-content;
     display: flex;
     align-items: center;
@@ -8,7 +8,7 @@
   }
 
   &.vertical {
-    .nav_list {
+    .nav-list {
       width: 100%;
       flex-flow: column nowrap;
       align-items: flex-start;
