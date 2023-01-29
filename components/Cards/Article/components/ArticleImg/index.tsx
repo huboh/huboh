@@ -1,5 +1,6 @@
 import { FC } from "react";
 import { Article } from "../../types";
+import { ARTICLES } from "../../../../../constants/routes";
 
 import Link from "next/link";
 import Image from "../../../../Image";
@@ -14,7 +15,7 @@ const ArticleImg: FC<ArticleDescProps> = (props) => {
   const { alt, src } = article.coverImage;
 
   return (
-    <Link href={ `/articles/${article.id}` } className={ styles["image-wrapper"] }>
+    <Link href={ `${ARTICLES}/${article.id}` } className={ styles["image-wrapper"] }>
       <Image alt={ alt } src={ src } width={ 1000 } height={ 1000 } loading={ "lazy" } placeholder={ "empty" } className={ styles["image"] } />
     </Link>
   );

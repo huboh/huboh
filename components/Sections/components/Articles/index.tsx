@@ -1,4 +1,5 @@
 import { FC } from "react";
+import { ARTICLES } from "../../../../constants/routes";
 import { ArticlesProps } from "./types";
 
 // styles
@@ -34,7 +35,7 @@ const Articles: FC<ArticlesProps> = (props) => {
         className={ styles["list"] }
       />
       <Button.Link
-        href={ "/articles" }
+        href={ ARTICLES }
         text={ "view more" }
       />
     </Section>
