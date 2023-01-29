@@ -13,7 +13,7 @@ const ArticleDesc: FC<ArticleDescProps> = ({ article }) => {
     <div className={ styles["text-wrapper"] }>
       <span
         className={ styles['published-date'] }
-        children={ new Date(article.date).toDateString() }
+        children={ new Date(article.publishedAt).toDateString() }
       />
 
       <Text.Header.H1

@@ -22,15 +22,16 @@ export const getArticle = async (props: GetArticleProps) => {
     ...grayMatterFile.data,
     id: props.path.replace(/\.mdx?$/, ""),
     source: await serialize(grayMatterFile.content),
-    content: (await markdownToHTML(grayMatterFile.content)).value
+    content: (await markdownToHTML(grayMatterFile.content)).value,
+    modifiedAt: grayMatterFile.data.modifiedAt || grayMatterFile.data.publishedAt,
+    publishedAt: grayMatterFile.data.publishedAt,
   } as Article;
 };
 
 export const getArticles = async (props: GetArticlesProps) => {
   const dir = props.directory || ArticlesDir;
-  const articles = await Promise.all(
-    (await readdir(dir, { encoding: "utf-8" })).map((article) => getArticle({ path: article }))
-  );
+  const paths = await readdir(dir, { encoding: "utf-8" });
+  const articles = (await Promise.all(paths.map((path) => getArticle({ path })))).filter(({ published }) => published);
 
   return {
     nodes: articles,

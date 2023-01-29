@@ -1,3 +1,5 @@
+import type { serialize } from "next-mdx-remote/serialize";
+
 export type TextAlignment = "left" | "center" | "right";
 
 export interface PageProps {
@@ -7,6 +9,7 @@ export interface PageProps {
 export interface Image {
   alt: string;
   src: string;
+  type?: string;
 }
 
 export interface ProjectLinks {
@@ -22,18 +25,28 @@ export interface Project {
   description: string;
 }
 
+export interface Socials {
+  website?: string;
+  twitter?: string;
+  linkedIn?: string;
+}
+
 export interface Article {
   id: string;
-  date: string;
+  tags: Array<string>;
   title: string;
+  source: Awaited<ReturnType<typeof serialize>>;
+  ogImage: Image;
   content: string;
+  featured: boolean;
+  published: boolean;
+  modifiedAt: string;
+  publishedAt: string;
   coverImage: Image;
   previewText: string;
   author: {
     name: string;
     avatar: Image;
-  };
-  ogImage: {
-    url: Image;
+    socials: Socials;
   };
 }
