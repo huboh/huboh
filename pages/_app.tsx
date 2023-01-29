@@ -1,8 +1,9 @@
 import "../styles/main.scss";
 
+import React from "react";
 import { AppType } from "next/app";
+import { Poppins } from "@next/font/google";
 import { StrictMode } from "react";
-import { Poppins, Quicksand } from "@next/font/google";
 
 // hooks
 import useClassString from "../hooks/useClassString";
@@ -11,8 +12,16 @@ import useClassString from "../hooks/useClassString";
 import AppProviders from "../providers";
 import ErrorBoundary from "../components/ErrorBoundary";
 
-const poppins = Poppins({ display: "swap", preload: true, weight: ["300", "400", "500", "600", "700", "800", "900"], fallback: ["Roboto", "Oxygen", "Ubuntu",] });
-const quicksand = Quicksand({ display: "swap", preload: true, weight: ["300", "400", "500", "600", "700"] });
+// suppress useLayoutEffect warnings when running outside a browser
+if (typeof window === "undefined") React.useLayoutEffect = React.useEffect;
+
+const poppins = Poppins({
+  preload: true,
+  display: "swap",
+  subsets: ["latin"],
+  weight: ["300", "400", "500", "600", "700", "800", "900"],
+  fallback: ["Roboto", "Oxygen", "Ubuntu",]
+});
 
 const App: AppType = (props) => {
   const Component = props.Component;
