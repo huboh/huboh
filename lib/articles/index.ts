@@ -1,23 +1,14 @@
 import { join } from "path";
 import { remark } from "remark";
 import { Article } from "../../types";
-import { readdir, readFile } from "fs/promises";
+import { serialize } from "next-mdx-remote/serialize";
 import { default as matter } from "gray-matter";
+import { readdir, readFile } from "fs/promises";
 import { default as remarkHtml } from "remark-html";
-
-interface GetArticleProps {
-  path: string;
-}
-
-interface GetArticlesProps {
-  directory?: string;
-}
+import { GetArticleProps, GetArticlesProps, GetArticlesPaths } from "./types";
 
 export const ArticlesDir = join(process.cwd(), "data", "articles");
 
-/**
- * processor that converts markdown content to raw html
- */
 export const markdownToHTML = async (md: string) => {
   return remark().use(remarkHtml).process(md);
 };
@@ -30,12 +21,23 @@ export const getArticle = async (props: GetArticleProps) => {
   return {
     ...grayMatterFile.data,
     id: props.path.replace(/\.mdx?$/, ""),
+    source: await serialize(grayMatterFile.content),
     content: (await markdownToHTML(grayMatterFile.content)).value
   } as Article;
 };
 
 export const getArticles = async (props: GetArticlesProps) => {
-  return Promise.all(
-    (await readdir(props.directory || ArticlesDir)).map((article) => getArticle({ path: article }))
+  const dir = props.directory || ArticlesDir;
+  const articles = await Promise.all(
+    (await readdir(dir, { encoding: "utf-8" })).map((article) => getArticle({ path: article }))
   );
+
+  return {
+    nodes: articles,
+    total: articles.length,
+  };
+};
+
+export const getArticlesPaths = async (props: GetArticlesPaths) => {
+  return (await readdir(props.directory || ArticlesDir)).map((path) => path.replace(/\.mdx?$/, ""));
 };
