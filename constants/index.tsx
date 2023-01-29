@@ -20,6 +20,7 @@ export const Resume = {
 
 export const NavigationLinks = [
   { label: "about", link: "/#about" },
+  { label: "articles", link: "/#articles" },
   { label: "projects", link: "/#projects" },
   { label: "contact", link: "/#contact" },
 ];
