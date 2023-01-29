@@ -1,0 +1,26 @@
+.not-found {
+  height: 100%;
+
+  display: flex;
+  flex-flow: column nowrap;
+  align-items: flex-start;
+  justify-content: flex-start;
+
+  main {
+    width: 100%;
+    min-height: 15rem;
+    margin-top: auto;
+    margin-bottom: auto;
+  }
+
+  .section {
+    height: 100%;
+    min-height: 100%;
+
+    gap: 1.2rem;
+    display: flex;
+    flex-flow: column nowrap;
+    align-items: center;
+    justify-content: flex-start;
+  }
+}

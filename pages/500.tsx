@@ -1,8 +1,29 @@
 import { NextPage } from "next";
+import { PageProps } from "../types";
+import { useRouter } from "next/router";
+import { ErrorProps } from "next/error";
 
-const ServerErrorPage: NextPage = () => {
+// components
+import Seo from "../components/Seo";
+import View from "../components/View";
+import ErrorScreen from "../components/ErrorScreen";
+
+const ServerErrorPage: NextPage<PageProps & ErrorProps> = (props) => {
+  const router = useRouter();
+  const canonical = process.env.NEXT_PUBLIC_DOMAIN + router.asPath;
+
   return (
-    <section>500 error</section>
+    <View className={ props.className }>
+      <Seo
+        title="(500) Internal Server Error"
+        noindex={ true }
+        nofollow={ true }
+        canonical={ canonical }
+      />
+      <ErrorScreen
+        title="(500) Internal Server Error"
+      />
+    </View>
   );
 };
 

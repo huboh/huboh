@@ -1,9 +1,15 @@
 import { join } from "path";
+import { NextPage } from "next";
 import { PageProps } from "../types";
-import { readdir, readFile } from "fs/promises";
-import { NextPage, GetStaticProps } from "next";
+
+import { getProjects } from "../lib/projects";
+import { getArticles } from "../lib/articles";
 
 // hooks
+import { useRouter } from "next/router";
+
+// styles
+import styles from "../styles/pages/index.module.scss";
 
 // components
 import Seo from "../components/Seo";
@@ -12,37 +18,44 @@ import Header from "../components/Header";
 import Footer from "../components/Footer";
 import Sections from "../components/Sections";
 
-export interface IndexPageProps extends PageProps { }
+interface IndexPageProps extends PageProps, Omit<Awaited<ReturnType<typeof getStaticProps>>["props"], ""> { }
 
-const cwd = process.cwd();
-const articlesDirectory = join(cwd, "articles");
-
-const getStaticProps: GetStaticProps = async (context) => {
-  const articlesPath = await readdir(articlesDirectory);
-  const articleContents = await Promise.all(articlesPath.map(
-    (article) => readFile(join(articlesDirectory, article), { encoding: "utf-8" })
-  ));
-
-  // grab projects, articles, github stats
+const getStaticProps = async () => {
+  const cwd = process.cwd();
+  const [projects, articles] = await Promise.all([
+    getProjects({ directory: join(cwd, "data", "projects") }), getArticles({ directory: join(cwd, "data", "articles") }),
+  ]);
 
   return {
     props: {
-      fileNames: articlesPath,
-      fileContents: articleContents,
+      projects,
+      articles
     }
   };
 };
 
 const IndexPage: NextPage<IndexPageProps> = (props) => {
+  const router = useRouter();
+  const canonical = process.env.NEXT_PUBLIC_DOMAIN + router.asPath;
+
   return (
     <View className={ props.className }>
       <Seo
-        title="Knowledge Musa - Software Engineer"
-        description="personal portfolio website for musa knowledge"
+        title="Knowledge Musa"
+        canonical={ canonical }
+        siteName="Software Engineer"
       />
-      <Header />
-      <Sections />
-      <Footer />
+      <Header
+        id="header"
+        className={ styles["header"] }
+      />
+      <Sections
+        articles={ props.articles.nodes }
+        projects={ props.projects.nodes }
+      />
+      <Footer
+        id="footer"
+      />
     </View>
   );
 };
