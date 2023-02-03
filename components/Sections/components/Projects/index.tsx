@@ -25,7 +25,7 @@ const Projects: FC<ProjectSectionProps> = (props) => {
         type={ "vertical" }
         items={ props.projects }
         className={ styles["projects"] }
-        render={ (project) => <Project key={ project.title } project={ project } /> }
+        render={ (project) => <Project project={ project } /> }
       />
     </Section>
   );
