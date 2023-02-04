@@ -1,32 +1,27 @@
 import { useState, useRef } from "react";
-import { useWindow, useEventListener } from "../";
-
-const window_ = typeof window !== "undefined" ? window : null;
+import { useEventListener } from "../";
 
 const getScrollData = (lastScrollPosition: number) => {
-  const currentScrollPosition = window_?.scrollY ?? 0;
-
   return {
-    isScrolledUp: currentScrollPosition <= 30,
-    isScrollingUp: currentScrollPosition < lastScrollPosition,
-    isScrollingDown: currentScrollPosition > lastScrollPosition,
+    isScrolledUp: window.scrollY <= 50,
+    isScrollingUp: window.scrollY < lastScrollPosition,
+    isScrollingDown: window.scrollY > lastScrollPosition,
   };
 };
 
 export const useWindowScrollInfo = () => {
-  const _window_ = useWindow();
   const lastScrollPositionRef = useRef(0);
   const [currentScrollInfo, setCurrentScrollInfo] = useState(getScrollData(lastScrollPositionRef.current));
 
   useEventListener({
-    target: _window_!,
+    target: window,
     eventType: "scroll",
     eventHandler: async (event) => {
       const window = event.currentTarget as Window;
       const currentScrollPosition = window.scrollY;
       const lastScrollPosition = lastScrollPositionRef.current;
 
-      const isScrolledUp = currentScrollPosition <= 30;
+      const isScrolledUp = currentScrollPosition <= 50;
       const isScrollingUp = currentScrollPosition < lastScrollPosition;
       const isScrollingDown = currentScrollPosition > lastScrollPosition;
 

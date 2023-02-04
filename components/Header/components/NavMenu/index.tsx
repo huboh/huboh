@@ -10,7 +10,7 @@ import styles from "./styles/nav-menu.module.scss";
 
 // hooks
 import { useState } from "react";
-import { useWindow, useClassString, useEventListener } from "../../../../hooks";
+import { useClassString, useEventListener } from "../../../../hooks";
 
 export interface NavMenuProps {
   layout?: "horizontal" | "vertical";
@@ -19,12 +19,11 @@ export interface NavMenuProps {
 }
 
 const NavMenu: FC<NavMenuProps> = (props) => {
-  const _window_ = useWindow();
-  const [hash, setHash] = useState(_window_?.location?.hash || "");
+  const [hash, setHash] = useState(window.location.hash);
   const className = useClassString(styles["nav-menu"], styles[props.layout || "horizontal"]);
 
   useEventListener({
-    target: _window_!,
+    target: window,
     eventType: "hashchange",
     eventHandler: (event) => setHash((event.target as Window).location.hash)
   });

@@ -7,8 +7,7 @@ import styles from "./styles/sidebar-menu.module.scss";
 
 // hooks
 import { useState } from "react";
-import { useRouter } from "next/router";
-import { useWindow, useEventListener } from "../../../hooks";
+import { useEventListener } from "../../../hooks";
 
 // component
 import SidebarPopup from "../../SidebarPopup";
@@ -21,12 +20,10 @@ import SidebarPopupFooter from "../../SidebarPopup/components/SidebarPopupFooter
 export interface SidebarMenuProps extends SidebarPopupProps { }
 
 const Sidebar: FC<SidebarMenuProps> = (props) => {
-  const router = useRouter();
-  const _window_ = useWindow();
-  const [hash, setHash] = useState(`#${router.asPath.split("#")[1]}`);
+  const [hash, setHash] = useState(window.location.hash);
 
   useEventListener({
-    target: _window_!,
+    target: window,
     eventType: "hashchange",
     eventHandler: (event) => setHash((event.target as Window).location.hash)
   });

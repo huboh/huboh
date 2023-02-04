@@ -1,17 +1,16 @@
-import { useState, useLayoutEffect } from "react";
-import { useWindow, useEventListener } from "../";
+import { useEventListener } from "../";
+import { useState, useEffect } from "react";
 
 export const useMediaQuery = (query: string) => {
-  const _window_ = useWindow();
-  const matchMedia = _window_?.matchMedia(query);
-  const [matches, setMatches] = useState(matchMedia?.matches);
+  const matchMedia = window.matchMedia(query);
+  const [matches, setMatches] = useState(matchMedia.matches);
 
-  useLayoutEffect(() => {
-    setMatches(matchMedia?.matches);
-  }, [matchMedia?.matches]);
+  useEffect(() => {
+    setMatches(matchMedia.matches);
+  }, [matchMedia.matches]);
 
   useEventListener({
-    target: matchMedia!,
+    target: matchMedia,
     eventType: 'change',
     eventHandler: ({ matches }) => setMatches(matches)
   });
