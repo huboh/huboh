@@ -43,8 +43,8 @@
     background-color: transparent;
 
     .icon-wrapper {
-      & > * {
-        fill: var(--primary-color);
+      svg {
+        stroke: var(--primary-color);
       }
     }
 

@@ -14,11 +14,9 @@ export interface ButtonLinkProps extends LinkProps {
   linkStyle?: ButtonStyle;
 }
 
-const ButtonLink: FC<ButtonLinkProps> = ({ text, href, icon, children, ...rest }) => {
+const ButtonLink: FC<ButtonLinkProps> = ({ text, href, icon, linkStyle, children, ...rest }) => {
   const label = text || children;
-  const style = styles[rest.linkStyle || ""];
-  const linkStyle = linkStyles[rest.linkStyle || ""];
-  const className = useClassString(styles["button"], linkStyles["button-link"], style, linkStyle, rest.className);
+  const className = useClassString(styles["button"], linkStyles["button-link"], styles[linkStyle || ""], linkStyles[linkStyle || ""], rest.className);
 
   return (
     <Link { ...rest } href={ href } className={ className }>
