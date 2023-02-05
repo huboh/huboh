@@ -1,4 +1,5 @@
 import { FC } from "react";
+import dynamic from "next/dynamic";
 import styles from "./styles/header.module.scss";
 
 // hooks
@@ -35,6 +36,6 @@ const Header: FC<HeaderProps> = (props) => {
   );
 };
 
-export {
-  Header as default
-};
+export default dynamic(() => Promise.resolve(Header), {
+  ssr: false
+});

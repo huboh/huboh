@@ -1,4 +1,5 @@
 import { FC } from "react";
+import dynamic from "next/dynamic";
 import { NavigationLinks } from "../../../constants";
 import { SidebarPopupProps } from "../../SidebarPopup/types";
 
@@ -45,6 +46,6 @@ const Sidebar: FC<SidebarMenuProps> = (props) => {
   );
 };
 
-export {
-  Sidebar as default
-};
+export default dynamic(() => Promise.resolve(Sidebar), {
+  ssr: false
+});

@@ -1,4 +1,5 @@
 import { FC } from "react";
+import dynamic from "next/dynamic";
 import { BiArrowToTop } from "react-icons/bi";
 import { AnimatePresence, motion, Variant } from 'framer-motion';
 
@@ -35,6 +36,6 @@ const ScrollToTop: FC = () => {
   );
 };
 
-export {
-  ScrollToTop as default
-};
+export default dynamic(() => Promise.resolve(ScrollToTop), {
+  ssr: false
+});

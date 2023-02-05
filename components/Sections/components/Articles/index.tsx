@@ -1,6 +1,7 @@
 import { FC } from "react";
 import { ARTICLES } from "../../../../constants/routes";
 import { ArticlesProps } from "./types";
+import { default as dynamic } from "next/dynamic";
 
 // styles
 import styles from "./articles.module.scss";
@@ -43,6 +44,6 @@ const Articles: FC<ArticlesProps> = (props) => {
   );
 };
 
-export {
-  Articles as default
-};
+export default dynamic(() => Promise.resolve(Articles), {
+  ssr: false
+});
