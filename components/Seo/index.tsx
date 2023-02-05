@@ -30,6 +30,10 @@ const Seo: FC<SeoProps> = (props) => {
             content: props.ogImage,
           },
           {
+            name: "twitter:image:src",
+            content: props.ogImage,
+          },
+          {
             name: "twitter:image:alt",
             content: props.ogAlt,
           },
@@ -96,8 +100,8 @@ const Seo: FC<SeoProps> = (props) => {
           {
             alt: props.ogAlt ?? props.title,
             url: props.ogImage!,
-            width: props.ogWidth!,
-            height: props.ogHeight!,
+            width: props.ogWidth ?? 850,
+            height: props.ogHeight ?? 650,
           }
         ]
       } }
