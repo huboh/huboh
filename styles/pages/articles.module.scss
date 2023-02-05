@@ -11,32 +11,29 @@
     width: 100%;
     padding: 1rem;
     min-height: 15rem;
-    margin-top: 2rem;
     margin-bottom: auto;
     align-self: center;
+
+    hgroup {
+      max-width: 42em;
+      text-align: center;
+      margin-block: 2rem;
+      margin-inline: auto;
+    }
   }
 
   .list {
     gap: 1.2rem;
     height: 100%;
     flex-flow: column nowrap;
-    margin-top: 2rem;
   }
 
   @media screen and (min-width: 760px) {
-    main hgroup {
-      max-width: 35rem;
-    }
-
     .list {
+      gap: 1.5rem;
       display: grid;
       justify-content: center;
-      grid-template-columns: repeat(3, minmax(10rem, 1fr));
-
-      li > :first-child {
-        width: 100%;
-        max-width: unset;
-      }
+      grid-template-columns: repeat(3, minmax(10rem, max-content));
     }
   }
 }

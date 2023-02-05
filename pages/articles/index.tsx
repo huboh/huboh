@@ -33,7 +33,7 @@ const ArticlesPage: NextPage<ArticlesPageProps> = (props) => {
   const router = useRouter();
   const canonical = process.env.NEXT_PUBLIC_DOMAIN + router.asPath;
   const className = useClassString(styles["articles"], props.className);
-  const pageDescription = "a collection of my written work. from in-depth tutorials to thought-provoking insights, these articles provide a glimpse into the projects I've worked on and the technologies I've mastered.";
+  const pageDescription = "A collection of my written work. from in-depth tutorials to thought-provoking insights, these articles provide a glimpse into the projects I've worked on and the technologies I've mastered.";
 
   return (
     <View className={ className }>
