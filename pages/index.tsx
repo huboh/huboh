@@ -41,9 +41,9 @@ const IndexPage: NextPage<IndexPageProps> = (props) => {
   return (
     <View className={ props.className }>
       <Seo
-        title="Knowledge Musa"
+        title="Home"
         canonical={ canonical }
-        siteName="Software Engineer"
+        siteName="Knowledge Musa"
       />
       <Header
         id="header"
