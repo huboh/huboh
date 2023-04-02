@@ -5,7 +5,7 @@ import { Skills } from "../../../../constants";
 import Text from "../../../Text";
 import Image from "../../../Image";
 import Section from "../../../Section";
-import AboutMeImage from "../../../../public/assets/images/knowledge.jpg";
+import AboutMeImage from "../../../../public/assets/images/musa-knowledge.jpeg";
 
 // styles
 import styles from "./about.module.scss";
@@ -49,7 +49,7 @@ const AboutMe: FC = () => {
 
         <Image.Styled
           src={ AboutMeImage }
-          alt={ "knowledge musa" }
+          alt={ "musa knowledge" }
           className={ styles.about_me_img }
         />
       </div>
