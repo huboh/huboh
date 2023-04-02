@@ -2,6 +2,7 @@ import "../styles/main.scss";
 
 import React from "react";
 import { AppType } from "next/app";
+import { Toaster } from "react-hot-toast";
 import { Poppins } from "@next/font/google";
 import { StrictMode } from "react";
 
@@ -18,9 +19,23 @@ if (typeof window === "undefined") React.useLayoutEffect = React.useEffect;
 const poppins = Poppins({
   preload: true,
   display: "swap",
-  subsets: ["latin"],
-  weight: ["300", "400", "500", "600", "700", "800", "900"],
-  fallback: ["Roboto", "Oxygen", "Ubuntu",]
+  subsets: [
+    "latin"
+  ],
+  weight: [
+    "300",
+    "400",
+    "500",
+    "600",
+    "700",
+    "800",
+    "900"
+  ],
+  fallback: [
+    "Roboto",
+    "Oxygen",
+    "Ubuntu"
+  ]
 });
 
 const App: AppType = (props) => {
@@ -33,6 +48,7 @@ const App: AppType = (props) => {
       <ErrorBoundary>
         <AppProviders>
           <Component { ...{ ...pageProps, className } } />
+          <Toaster position={ "bottom-center" } containerClassName={ className } />
         </AppProviders>
       </ErrorBoundary>
     </StrictMode>
