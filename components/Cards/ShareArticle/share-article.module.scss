@@ -1,0 +1,28 @@
+.share-article {
+  width: 100%;
+  padding: 1rem;
+  border: 1px solid var(--border-color-light);
+  border-radius: var(--border-radius-min);
+  background-color: var(--background-color-light);
+
+  .title {
+    font-size: 1rem;
+    font-weight: 500;
+    margin-bottom: 0.5rem;
+  }
+
+  .icons {
+    gap: 0.5rem;
+    width: 100%;
+    display: flex;
+    flex-flow: row wrap;
+    align-items: flex-start;
+    justify-content: flex-start;
+    list-style-type: none;
+
+    li {
+      margin: 0;
+      padding: 0;
+    }
+  }
+}
