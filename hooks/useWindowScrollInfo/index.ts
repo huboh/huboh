@@ -3,7 +3,7 @@ import { useEventListener } from "../";
 
 const getScrollData = (lastScrollPosition: number) => {
   return {
-    isScrolledUp: window.scrollY <= 50,
+    isScrolledUp: window.scrollY <= 100,
     isScrollingUp: window.scrollY < lastScrollPosition,
     isScrollingDown: window.scrollY > lastScrollPosition,
   };
