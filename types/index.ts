@@ -9,7 +9,9 @@ export interface PageProps {
 export interface Image {
   alt: string;
   src: string;
-  type?: string;
+  type: string;
+  width: number;
+  height: number;
 }
 
 export interface ProjectLinks {
@@ -38,8 +40,8 @@ export interface Article {
   source: Awaited<ReturnType<typeof serialize>>;
   ogImage: Image;
   content: string;
-  featured: boolean;
-  published: boolean;
+  isFeatured: boolean;
+  isPublished: boolean;
   modifiedAt: string;
   publishedAt: string;
   coverImage: Image;

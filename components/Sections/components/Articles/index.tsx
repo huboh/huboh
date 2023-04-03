@@ -20,7 +20,7 @@ const Articles: FC<ArticlesProps> = (props) => {
   const id = "articles";
   const className = styles["articles"];
   const listType = useMediaQuery("(max-width: 760px)") ? "vertical" : "horizontal";
-  const featuredArticles = props.articles.filter(({ featured }) => featured).slice(0, 3);
+  const featuredArticles = props.articles.filter((article) => article.isFeatured).slice(0, 3);
 
   return (
     <Section id={ id } className={ className }>
