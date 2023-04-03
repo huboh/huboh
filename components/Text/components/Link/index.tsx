@@ -1,11 +1,12 @@
 import styles from "../../styles/link.module.scss";
 
-import { FC, ReactNode } from "react";
 import { useClassString } from "../../../../hooks";
-import NextLink, { LinkProps as NextLinkProps } from "next/link";
+import { FC, HTMLAttributeAnchorTarget, ReactNode } from "react";
+import { default as NextLink, LinkProps as NextLinkProps } from "next/link";
 
 export interface LinkProps extends NextLinkProps {
   text: string;
+  target?: HTMLAttributeAnchorTarget;
   children?: ReactNode;
   className?: string;
 }
