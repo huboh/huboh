@@ -17,37 +17,41 @@ const Article: FC<ArticleProps> = (props) => {
   const className = useClassString(styles["article"], props.className);
 
   return (
-    <Link href={ `${ARTICLES}/${article.id}` } className={ className }>
-      <div className={ styles["image-wrapper"] }>
-        <Image
-          alt={ cvrImage.alt }
-          src={ cvrImage.src }
-          width={ cvrImage.width }
-          height={ cvrImage.height }
-          loading={ "lazy" }
-          placeholder={ "empty" }
-          className={ styles["image"] }
-        />
-      </div>
-
-      <div className={ styles["text-wrapper"] }>
-        <span
-          className={ styles['published-date'] }
-          children={ new Date(article.publishedAt).toDateString() }
-        />
-        <Text.Header.H1
-          size={ "extra-small" }
-          title={ article.title }
-          children={ article.title }
-          className={ styles["title"] }
-        />
-        <Text.Paragraph
-          size={ "extra-small" }
-          children={ article.previewText.substring(0, 400) }
-          className={ styles["preview-text"] }
-        />
-      </div>
-    </Link>
+    <article>
+      <Link href={ `${ARTICLES}/${article.id}` } className={ className }>
+        { cvrImage.src && (
+          <div className={ styles["image-wrapper"] }>
+            <Image
+              alt={ cvrImage.alt }
+              src={ cvrImage.src }
+              width={ cvrImage.width }
+              height={ cvrImage.height }
+              loading={ "lazy" }
+              placeholder={ "empty" }
+              className={ styles["image"] }
+            />
+          </div>
+        ) }
+        <div className={ styles["text-wrapper"] }>
+          <time
+            className={ styles['published-date'] }
+            dateTime={ new Date(article.publishedAt).toJSON() }
+            children={ new Date(article.publishedAt).toDateString() }
+          />
+          <Text.Header.H1
+            size={ "extra-small" }
+            title={ article.title }
+            children={ article.title }
+            className={ styles["title"] }
+          />
+          <Text.Paragraph
+            size={ "extra-small" }
+            children={ article.previewText.substring(0, 400) }
+            className={ styles["preview-text"] }
+          />
+        </div>
+      </Link>
+    </article>
   );
 };
 
