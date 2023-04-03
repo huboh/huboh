@@ -1,0 +1,40 @@
+.tag {
+  height: 100%;
+  display: flex;
+  flex-flow: column nowrap;
+  align-items: flex-start;
+  justify-content: flex-start;
+
+  main {
+    width: 100%;
+    padding: 1rem;
+    min-height: 15rem;
+    margin-bottom: auto;
+    align-self: center;
+
+    hgroup {
+      max-width: 42em;
+      text-align: center;
+      margin-block: 2rem;
+      margin-inline: auto;
+    }
+  }
+
+  .list {
+    --gap: 1.1rem;
+
+    gap: var(--gap) !important;
+    flex-flow: column nowrap;
+
+    > div {
+      gap: var(--gap) !important;
+      max-width: max-content !important;
+    }
+  }
+
+  @media screen and (min-width: 760px) {
+    .list {
+      --gap: 1.5rem;
+    }
+  }
+}
