@@ -23,17 +23,20 @@
   }
 
   .list {
-    gap: 1.2rem;
-    height: 100%;
+    --gap: 1.1rem;
+
+    gap: var(--gap) !important;
     flex-flow: column nowrap;
+
+    > div {
+      gap: var(--gap) !important;
+      max-width: max-content !important;
+    }
   }
 
   @media screen and (min-width: 760px) {
     .list {
-      gap: 1.5rem;
-      display: grid;
-      justify-content: center;
-      grid-template-columns: repeat(3, minmax(10rem, max-content));
+      --gap: 1.5rem;
     }
   }
 }

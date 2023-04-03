@@ -3,6 +3,7 @@ import { NextPage } from "next";
 import { PageProps } from "../../types";
 import { useRouter } from "next/router";
 import { getArticles } from "../../lib/articles";
+import { default as Masonry, ResponsiveMasonry } from "react-responsive-masonry";
 
 // hooks
 import { useClassString } from "../../hooks";
@@ -12,7 +13,6 @@ import styles from "../../styles/pages/articles.module.scss";
 
 // components
 import Seo from "../../components/Seo";
-import List from "../../components/List";
 import Text from "../../components/Text";
 import View from "../../components/View";
 import Footer from "../../components/Footer";
@@ -42,21 +42,23 @@ const ArticlesPage: NextPage<ArticlesPageProps> = (props) => {
         canonical={ canonical }
         description={ pageDescription }
       />
-      <Header id={ "header" } />
+      <Header
+        id={ "header" }
+      />
       <main className="main">
         <hgroup>
           <Text.Header.H1 text={ "articles" } />
           <Text.Paragraph text={ pageDescription } />
         </hgroup>
-        <List
-          key_="id"
-          type="vertical"
-          items={ props.articles.nodes }
-          render={ (article) => <Article article={ article } /> }
-          className={ styles["list"] }
-        />
+        <ResponsiveMasonry columnsCountBreakPoints={ { 0: 1, 350: 1, 760: 2, 1024: 3 } }>
+          <Masonry className={ styles["list"] }>
+            { props.articles.nodes.map((article) => <Article key={ article.id } article={ article } />) }
+          </Masonry>
+        </ResponsiveMasonry>
       </main>
-      <Footer id={ "footer" } />
+      <Footer
+        id={ "footer" }
+      />
     </View>
   );
 };
