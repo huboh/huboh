@@ -21,7 +21,7 @@ export const useWindowScrollInfo = () => {
       const currentScrollPosition = window.scrollY;
       const lastScrollPosition = lastScrollPositionRef.current;
 
-      const isScrolledUp = currentScrollPosition <= 50;
+      const isScrolledUp = currentScrollPosition <= 100;
       const isScrollingUp = currentScrollPosition < lastScrollPosition;
       const isScrollingDown = currentScrollPosition > lastScrollPosition;
 
