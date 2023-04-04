@@ -3,11 +3,11 @@
   --text-color-light: rgba(255, 255, 255, 0.6);
   --text-color-grey: rgb(180, 180, 180);
 
-  --background-color: rgb(17, 17, 17);
-  --background-color-primary: rgb(22, 21, 21);
+  --background-color: rgb(9, 9, 9);
+  --background-color-primary: rgb(17, 17, 17);
   --background-color-light: rgba(255, 255, 255, 0.048);
   --background-color-light-hover: rgba(0, 0, 0, 0.5);
-  --background-color-translucent: rgba(17, 17, 17, 0.9);
+  --background-color-translucent: rgba(9, 9, 9, 0.7);
 
   --hover-color: rgba(255, 255, 255, 0.1);
   --active-color: rgba(255, 255, 255, 0.3);
@@ -47,19 +47,21 @@ body[data-theme="light"] {
   --text-color-light: rgba(0, 0, 0, 0.6);
   --text-color-grey: rgb(51, 51, 51);
 
-  --background-color: rgba(248, 248, 248, 1);
-  --background-color-primary: rgb(247, 247, 247);
-  --background-color-light: rgba(0, 0, 0, 0.1);
+  --background-color: rgb(255, 255, 255);
+  --background-color-primary: rgb(243, 242, 242);
+  --background-color-light: rgba(192, 192, 192, 0.3);
   --background-color-light-hover: rgba(0, 0, 0, 0.3);
-  --background-color-translucent: rgba(248, 248, 248, 0.8);
+  --background-color-translucent: rgba(255, 255, 255, 0.7);
 
   --hover-color: rgba(0, 0, 0, 0.1);
   --active-color: rgba(0, 0, 0, 0.3);
   --active-color-pry: rgba(0, 0, 0, 0.5);
   --active-color-skeleton: rgba(0, 0, 0, 0.2);
 
-  --border-color: rgb(236, 236, 236);
-  --box-shadow: 0px 0px 12px 4px rgba(0, 0, 0, 0.2);
+  --border-color: rgb(161, 158, 158);
+  --border-color-light: rgba(190, 178, 178, 0.3);
+
+  --box-shadow: 0px 0px 12px 4px rgba(134, 131, 131, 0.2);
   --box-shadow-hvr: 0px 0px 14px 8px rgba(0, 0, 0, 0.3);
   --box-shadow-stacked: -15px 0px 12px 4px rgba(0, 0, 0, 0.2);
   --box-shadow-stacked-light: -15px 0px 12px 4px rgba(0, 0, 0, 0.1);
@@ -71,11 +73,11 @@ body[data-theme="dark"] {
   --text-color-light: rgba(255, 255, 255, 0.6);
   --text-color-grey: rgb(180, 180, 180);
 
-  --background-color: rgb(17, 17, 17);
-  --background-color-primary: rgb(22, 21, 21);
+  --background-color: rgb(9, 9, 9);
+  --background-color-primary: rgb(17, 17, 17);
   --background-color-light: rgba(255, 255, 255, 0.048);
   --background-color-light-hover: rgba(0, 0, 0, 0.5);
-  --background-color-translucent: rgba(17, 17, 17, 0.9);
+  --background-color-translucent: rgba(9, 9, 9, 0.7);
 
   --border-color: rgb(12, 12, 12);
   --box-shadow: 0px 0px 12px 4px rgba(0, 0, 0, 0.3);
@@ -91,19 +93,21 @@ body[data-theme="system"] {
     --text-color-light: rgba(0, 0, 0, 0.6);
     --text-color-grey: rgb(51, 51, 51);
 
-    --background-color: rgba(248, 248, 248, 1);
-    --background-color-primary: rgb(247, 247, 247);
-    --background-color-light: rgba(0, 0, 0, 0.1);
+    --background-color: rgb(255, 255, 255);
+    --background-color-primary: rgb(243, 242, 242);
+    --background-color-light: rgba(192, 192, 192, 0.3);
     --background-color-light-hover: rgba(0, 0, 0, 0.3);
-    --background-color-translucent: rgba(248, 248, 248, 0.8);
+    --background-color-translucent: rgba(255, 255, 255, 0.7);
 
     --hover-color: rgba(0, 0, 0, 0.1);
     --active-color: rgba(0, 0, 0, 0.3);
     --active-color-pry: rgba(0, 0, 0, 0.5);
     --active-color-skeleton: rgba(0, 0, 0, 0.2);
 
-    --border-color: rgb(236, 236, 236);
-    --box-shadow: 0px 0px 12px 4px rgba(0, 0, 0, 0.2);
+    --border-color: rgb(204, 200, 200);
+    --border-color-light: rgba(190, 178, 178, 0.3);
+
+    --box-shadow: 0px 0px 12px 4px rgba(134, 131, 131, 0.2);
     --box-shadow-hvr: 0px 0px 14px 8px rgba(0, 0, 0, 0.3);
     --box-shadow-stacked: -15px 0px 12px 4px rgba(0, 0, 0, 0.2);
     --box-shadow-stacked-light: -15px 0px 12px 4px rgba(0, 0, 0, 0.1);
