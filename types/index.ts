@@ -40,6 +40,7 @@ export interface Article {
   source: Awaited<ReturnType<typeof serialize>>;
   ogImage: Image;
   content: string;
+  rawContent: string;
   isFeatured: boolean;
   isPublished: boolean;
   modifiedAt: string;

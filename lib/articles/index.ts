@@ -24,6 +24,7 @@ export const getArticle = async (props: GetArticleProps): Promise<Article> => {
     content: (await markdownToHTML(grayMatterFile.content)).value.toString(),
     modifiedAt: grayMatterFile.data.modifiedAt || grayMatterFile.data.publishedAt,
     publishedAt: grayMatterFile.data.publishedAt,
+    rawContent: grayMatterFile.content,
     source: await serialize(grayMatterFile.content, {
       mdxOptions: {
         remarkPlugins: [],
