@@ -36,6 +36,6 @@ const Header: FC<HeaderProps> = (props) => {
   );
 };
 
-export default dynamic(() => Promise.resolve(Header), {
-  ssr: false
-});
+export default dynamic(
+  () => Promise.resolve(Header), { ssr: false }
+);

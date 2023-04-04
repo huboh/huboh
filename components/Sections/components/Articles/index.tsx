@@ -44,6 +44,6 @@ const Articles: FC<ArticlesProps> = (props) => {
   );
 };
 
-export default dynamic(() => Promise.resolve(Articles), {
-  ssr: false
-});
+export default dynamic(
+  () => Promise.resolve(Articles), { ssr: false }
+);

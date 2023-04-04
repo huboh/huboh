@@ -46,6 +46,6 @@ const Sidebar: FC<SidebarMenuProps> = (props) => {
   );
 };
 
-export default dynamic(() => Promise.resolve(Sidebar), {
-  ssr: false
-});
+export default dynamic(
+  () => Promise.resolve(Sidebar), { ssr: false }
+);

@@ -36,6 +36,6 @@ const ScrollToTop: FC = () => {
   );
 };
 
-export default dynamic(() => Promise.resolve(ScrollToTop), {
-  ssr: false
-});
+export default dynamic(
+  () => Promise.resolve(ScrollToTop), { ssr: false }
+);
