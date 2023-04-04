@@ -97,6 +97,7 @@ const Seo: FC<SeoProps> = (props) => {
         siteName: props.siteName,
         description: props.description,
         images: [
+          ...(props.openGraph?.images ?? []),
           {
             alt: props.ogAlt ?? props.title,
             url: props.ogImage!,

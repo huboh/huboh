@@ -73,8 +73,8 @@ const Article: NextPage<ArticlePageProps> = (props) => {
           description: article.previewText,
           article: {
             tags: article.tags,
-            modifiedTime: new Date(article.modifiedAt).toDateString(),
-            publishedTime: new Date(article.publishedAt).toDateString(),
+            modifiedTime: new Date(article.modifiedAt).toISOString(),
+            publishedTime: new Date(article.publishedAt).toISOString(),
             authors: [authorLink],
           },
           images: [
