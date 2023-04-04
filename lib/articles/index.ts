@@ -39,7 +39,13 @@ export const getArticle = async (props: GetArticleProps): Promise<Article> => {
 export const getArticles = async (props: GetArticlesProps) => {
   const dir = props.directory || ArticlesDir;
   const paths = await readdir(dir, { encoding: "utf-8" });
-  const articles = (await Promise.all(paths.map((path) => getArticle({ path })))).filter(({ published }) => published);
+  const articles = (await Promise.all(paths.map((path) => getArticle({ path }))))
+    .filter(
+      (article) => article.isPublished && (!props.tag ? true : article.tags.includes(props.tag))
+    )
+    .sort(
+      (aArticle, bArticle) => new Date(bArticle.publishedAt).getTime() - new Date(aArticle.publishedAt).getTime()
+    );
 
   return {
     nodes: articles,

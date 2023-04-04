@@ -3,6 +3,7 @@ export interface GetArticleProps {
 }
 
 export interface GetArticlesProps {
+  tag?: string;
   directory?: string;
 }
 
