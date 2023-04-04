@@ -1,4 +1,5 @@
 export interface ShareArticleProps {
   link: string;
-  title?: string;
+  title: string;
+  header?: string;
 }

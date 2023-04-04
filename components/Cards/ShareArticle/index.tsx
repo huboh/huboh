@@ -1,7 +1,7 @@
 import { FC } from "react";
 import { toast } from "react-hot-toast";
 import { ShareArticleProps } from "./share-article";
-import { TbCopy, TbShare, TbBrandTwitter, TbBrandWhatsapp, TbBrandFacebook, TbBrandLinkedin } from "react-icons/tb";
+import { TbCopy, TbShare, TbBrandTwitter, TbBrandWhatsapp, TbBrandFacebook, TbBrandLinkedin, TbBrandReddit } from "react-icons/tb";
 
 // components
 import Text from "../../Text";
@@ -14,13 +14,14 @@ import dynamic from "next/dynamic";
 
 const ShareArticle: FC<ShareArticleProps> = (props) => {
   const link = encodeURIComponent(props.link);
-  const title = props.title || "spread the word";
+  const title = encodeURIComponent(props.title);
+  const header = props.header || "spread the word";
   const className = useClassString(styles["share-article"]);
 
   return (
     <div className={ className }>
       <Text.Header.H1
-        text={ title }
+        text={ header }
         size={ "extra-small" }
         showFullStop={ false }
         className={ styles["title"] }
@@ -44,7 +45,7 @@ const ShareArticle: FC<ShareArticleProps> = (props) => {
                 onClick={
                   () => {
                     const url = props.link;
-                    const title = document.title;
+                    const title = props.title;
 
                     navigator.share({ url, title })
                       .then(() => toast.success("thanks for sharing!!!", { duration: 4000 }))
@@ -56,16 +57,19 @@ const ShareArticle: FC<ShareArticleProps> = (props) => {
           ) : (
             <>
               <li>
-                <Button.ExternalIconLink icon={ <TbBrandTwitter /> } to={ `https://twitter.com/intent/tweet?url=${link}` } />
+                <Button.ExternalIconLink icon={ <TbBrandTwitter /> } to={ `https://twitter.com/intent/tweet?url=${link}&text=${title}` } />
               </li>
               <li>
-                <Button.ExternalIconLink icon={ <TbBrandWhatsapp /> } to={ `whatsapp://send?text?url=${link}` } />
+                <Button.ExternalIconLink icon={ <TbBrandWhatsapp /> } to={ `whatsapp://send?text?url=${link}&text=${title}` } />
               </li>
               <li>
-                <Button.ExternalIconLink icon={ <TbBrandFacebook /> } to={ `https://www.facebook.com/sharer.php?u=${link}` } />
+                <Button.ExternalIconLink icon={ <TbBrandFacebook /> } to={ `https://www.facebook.com/sharer/sharer.php?u=${link}` } />
               </li>
               <li>
-                <Button.ExternalIconLink icon={ <TbBrandLinkedin /> } to={ `https://www.linkedin.com/shareArticle?mini=true&url=${link}&title=${document.title}` } />
+                <Button.ExternalIconLink icon={ <TbBrandLinkedin /> } to={ `https://www.linkedin.com/sharing/share-offsite/?mini=true&url=${link}&title=${title}` } />
+              </li>
+              <li>
+                <Button.ExternalIconLink icon={ <TbBrandReddit /> } to={ `https://reddit.com/submit?url=${link}&title=${title}&selftext=true` } />
               </li>
             </>
           )
