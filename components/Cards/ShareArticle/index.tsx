@@ -1,6 +1,7 @@
 import { FC } from "react";
 import { toast } from "react-hot-toast";
 import { ShareArticleProps } from "./share-article";
+import { default as dynamic } from "next/dynamic";
 import { TbCopy, TbShare, TbBrandTwitter, TbBrandWhatsapp, TbBrandFacebook, TbBrandLinkedin, TbBrandReddit } from "react-icons/tb";
 
 // components
@@ -10,13 +11,12 @@ import styles from "./share-article.module.scss";
 
 // hooks
 import useClassString from "../../../hooks/useClassString";
-import dynamic from "next/dynamic";
 
 const ShareArticle: FC<ShareArticleProps> = (props) => {
   const link = encodeURIComponent(props.link);
   const title = encodeURIComponent(props.title);
   const header = props.header || "spread the word";
-  const className = useClassString(styles["share-article"]);
+  const className = useClassString(styles["share-article"], props.className);
 
   return (
     <div className={ className }>
@@ -47,7 +47,8 @@ const ShareArticle: FC<ShareArticleProps> = (props) => {
                     const url = props.link;
                     const title = props.title;
 
-                    navigator.share({ url, title })
+                    navigator
+                      .share({ url, title })
                       .then(() => toast.success("thanks for sharing!!!", { duration: 4000 }))
                       .catch(() => toast.error("error occurred sharing article", { duration: 4000 }));
                   }
