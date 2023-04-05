@@ -17,7 +17,7 @@ const Article: FC<ArticleProps> = (props) => {
   const className = useClassString(styles["article"], props.className);
 
   return (
-    <article>
+    <article title={ article.title }>
       <Link href={ `${ARTICLES}/${article.id}` } className={ className }>
         { cvrImage.src && (
           <div className={ styles["image-wrapper"] }>
@@ -40,7 +40,6 @@ const Article: FC<ArticleProps> = (props) => {
           />
           <Text.Header.H1
             size={ "extra-small" }
-            title={ article.title }
             children={ article.title }
             className={ styles["title"] }
           />
