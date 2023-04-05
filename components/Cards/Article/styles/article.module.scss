@@ -46,7 +46,7 @@
     white-space: normal;
     text-overflow: ellipsis;
 
-    .published-date {
+    .time-wrapper {
       font-size: 0.8rem;
       color: var(--text-color-grey);
     }
@@ -92,7 +92,7 @@
     .text-wrapper {
       gap: 0.4rem;
 
-      .published-date {
+      .time-wrapper {
         font-size: 0.7rem;
       }
 

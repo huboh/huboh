@@ -2,6 +2,7 @@ import { FC } from "react";
 import { ARTICLES } from "../../../constants/routes";
 import { ArticleProps } from "./types";
 import { useClassString } from "../../../hooks";
+import { default as readTime } from "reading-time";
 
 // styles
 import styles from "./styles/article.module.scss";
@@ -33,11 +34,17 @@ const Article: FC<ArticleProps> = (props) => {
           </div>
         ) }
         <div className={ styles["text-wrapper"] }>
-          <time
-            className={ styles['published-date'] }
-            dateTime={ new Date(article.publishedAt).toJSON() }
-            children={ new Date(article.publishedAt).toDateString() }
-          />
+          <span className={ styles["time-wrapper"] }>
+            <time
+              className={ styles['published-date'] }
+              dateTime={ new Date(article.publishedAt).toJSON() }
+              children={ new Date(article.publishedAt).toDateString() }
+            />
+            &nbsp;&nbsp;•&nbsp;&nbsp;
+            <span
+              children={ readTime(article.rawContent).text }
+            />
+          </span>
           <Text.Header.H1
             size={ "extra-small" }
             children={ article.title }
