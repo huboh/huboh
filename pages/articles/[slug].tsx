@@ -28,7 +28,6 @@ const componentsMap = {
   p: Text.Paragraph,
   h1: Text.Header.H1,
   h2: Text.Header.H2,
-  image: Image,
   // components
   Text: Text,
   List: List,
@@ -94,8 +93,7 @@ const Article: NextPage<ArticlePageProps> = (props) => {
         <article className={ styles["article"] } itemScope itemType="http://schema.org/Article">
           <header>
             <hgroup>
-              <Text.Header
-                size={ "small" }
+              <Text.Header.H1
                 text={ article.title }
                 itemProp={ "headline" }
                 className={ styles["title"] }
@@ -106,7 +104,7 @@ const Article: NextPage<ArticlePageProps> = (props) => {
                     by <Text.Link href={ authorLink } text={ `${article.author.name}` } target={ "_blank" } />&nbsp;&nbsp;•&nbsp;&nbsp;
                   </span>
                   <time
-                    dateTime={ new Date(article.publishedAt).toJSON() }
+                    dateTime={ new Date(article.publishedAt).toISOString() }
                     children={ new Date(article.publishedAt).toDateString() }
                   />
                   <span>

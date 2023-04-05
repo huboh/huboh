@@ -15,10 +15,10 @@ const Hero: FC = () => {
   return (
     <Section id={ id } className={ className } textAlignment={ "center" }>
       <Text.Header.H1
-        color={ "grey" }
+        // color={ "grey" }
         size={ "medium" }
         text={ headerText }
-        showFullStop={ false }
+      // showFullStop={ false }
       />
     </Section>
   );

@@ -18,14 +18,13 @@ import Article from "../../../Cards/Article";
 
 const Articles: FC<ArticlesProps> = (props) => {
   const id = "articles";
-  const className = styles["articles"];
   const listType = useMediaQuery("(max-width: 760px)") ? "vertical" : "horizontal";
   const featuredArticles = props.articles.filter((article) => article.isFeatured).slice(0, 3);
 
   return (
-    <Section id={ id } className={ className }>
+    <Section id={ id } className={ styles["articles"] }>
       <Text.Header.H2
-        text={ "recent " }
+        text={ "featured " }
         coloredText={ "articles" }
         className={ styles["heading"] }
       />
