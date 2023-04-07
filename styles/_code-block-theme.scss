@@ -30,7 +30,8 @@
 
 code[class*="language-"],
 pre[class*="language-"] {
-  background: hsl(219, 19%, 14%);
+  font-size: 0.9rem;
+  background: hsla(217, 18%, 14%);
   color: hsl(220, 14%, 71%);
   text-shadow: 0 1px rgba(0, 0, 0, 0.3);
   font-family: "Fira Code", "Fira Mono", Menlo, Consolas, "DejaVu Sans Mono",
@@ -515,7 +516,8 @@ pre {
 
 .rehype-code-title {
   margin-bottom: -0.6rem;
-  padding: 0.5em 1em;
+  padding: 1rem 1rem;
+  font-size: inherit !important;
   font-family: Consolas, "Andale Mono WT", "Andale Mono", "Lucida Console",
     "Lucida Sans Typewriter", "DejaVu Sans Mono", "Bitstream Vera Sans Mono",
     "Liberation Mono", "Nimbus Mono L", Monaco, "Courier New", Courier,
@@ -525,6 +527,6 @@ pre {
   color: var(--text-color);
   z-index: 0;
 
-  border-top-left-radius: 0.3em;
-  border-top-right-radius: 0.3em;
+  border-top-left-radius: 0.3rem;
+  border-top-right-radius: 0.3rem;
 }
