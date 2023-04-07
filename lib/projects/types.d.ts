@@ -1,3 +1,3 @@
 export interface GetProjectProps {
-  directory: string;
+  directory?: string;
 }

@@ -4,6 +4,8 @@ export interface GetArticleProps {
 
 export interface GetArticlesProps {
   tag?: string;
+  count?: number;
+  featured?: boolean;
   directory?: string;
 }
 

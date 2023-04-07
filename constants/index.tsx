@@ -1,5 +1,9 @@
+import { join } from "path";
 import { Preferences } from "../providers/PreferencesProvider/types";
 import { TbBrandGithub, TbBrandTwitter, TbBrandLinkedin } from "react-icons/tb";
+
+export const ArticlesPath = join(process.cwd(), "data", "articles");
+export const ProjectsPath = join(process.cwd(), "data", "projects.json");
 
 export const defaultListBulletIcon = "⚡";
 
