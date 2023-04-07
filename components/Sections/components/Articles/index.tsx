@@ -19,7 +19,6 @@ import Article from "../../../Cards/Article";
 const Articles: FC<ArticlesProps> = (props) => {
   const id = "articles";
   const listType = useMediaQuery("(max-width: 760px)") ? "vertical" : "horizontal";
-  const featuredArticles = props.articles.filter((article) => article.isFeatured).slice(0, 3);
 
   return (
     <Section id={ id } className={ styles["articles"] }>
@@ -31,7 +30,7 @@ const Articles: FC<ArticlesProps> = (props) => {
       <List
         key_={ "id" }
         type={ listType }
-        items={ featuredArticles }
+        items={ props.articles }
         render={ (article) => <Article article={ article } /> }
         className={ styles["list"] }
       />

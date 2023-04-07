@@ -1,12 +1,8 @@
-import { join } from "path";
 import { NextPage } from "next";
 import { PageProps } from "../types";
-
+import { useRouter } from "next/router";
 import { getProjects } from "../lib/projects";
 import { getArticles } from "../lib/articles";
-
-// hooks
-import { useRouter } from "next/router";
 
 // styles
 import styles from "../styles/pages/index.module.scss";
@@ -21,9 +17,9 @@ import Sections from "../components/Sections";
 interface IndexPageProps extends PageProps, Omit<Awaited<ReturnType<typeof getStaticProps>>["props"], ""> { }
 
 const getStaticProps = async () => {
-  const cwd = process.cwd();
   const [projects, articles] = await Promise.all([
-    getProjects({ directory: join(cwd, "data", "projects") }), getArticles({ directory: join(cwd, "data", "articles") }),
+    getProjects({}),
+    getArticles({ count: 3, featured: true }),
   ]);
 
   return {
@@ -41,9 +37,9 @@ const IndexPage: NextPage<IndexPageProps> = (props) => {
   return (
     <View className={ props.className }>
       <Seo
-        title="Home"
+        title="Knowledge Musa"
         canonical={ canonical }
-        siteName="Knowledge Musa"
+        siteName="Software Engineer"
       />
       <Header
         id="header"

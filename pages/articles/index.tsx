@@ -1,12 +1,9 @@
-import { join } from "path";
 import { NextPage } from "next";
 import { PageProps } from "../../types";
 import { useRouter } from "next/router";
 import { getArticles } from "../../lib/articles";
-import { default as Masonry, ResponsiveMasonry } from "react-responsive-masonry";
-
-// hooks
 import { useClassString } from "../../hooks";
+import { default as Masonry, ResponsiveMasonry } from "react-responsive-masonry";
 
 // styles
 import styles from "../../styles/pages/articles.module.scss";
@@ -24,7 +21,7 @@ interface ArticlesPageProps extends PageProps, Omit<Awaited<ReturnType<typeof ge
 const getStaticProps = async () => {
   return {
     props: {
-      articles: await getArticles({ directory: join(process.cwd(), "data", "articles") })
+      articles: await getArticles({})
     }
   };
 };
