@@ -114,15 +114,15 @@ Seo.defaultProps = {
   siteName: "Knowledge Musa",
   canonical: process.env.NEXT_PUBLIC_DOMAIN,
   twitterHandle: process.env.NEXT_PUBLIC_TWITTER_HANDLE,
-  description: "Explore the portfolio and read articles from Knowledge Musa, a professional software engineer specializing in building enterprise-ready web applications and mobile apps. Discover my skills and experience in front-end and back-end web development, as well as my knowledge of the latest industry trends and technologies. Learn from my articles and tutorials on various programming topics, and check out examples of my work in the projects section. Whether you're an individual or a business looking for a software engineer, you'll find valuable information here",
+  description: "Welcome to my corner of the internet 👀, Knowledge Musa is a software engineer focused in building user-centered, enterprise ready & cutting edge application. I showcase my skills and share my insights on various technologies through detailed tutorials and informative articles. Join me on this journey of exploration and learning.",
 
   ogAlt: "knowledge musa's portfolio",
   ogType: "website",
-  ogWidth: 1757,
-  ogHeight: 2334,
-  ogImage: `${process.env.NEXT_PUBLIC_DOMAIN}/assets/images/musa-knowledge.jpeg`,
+  ogWidth: 1200,
+  ogHeight: 628,
+  ogImage: `${process.env.NEXT_PUBLIC_DOMAIN}/assets/images/siteimage.png`,
   ogLocale: "en_IE",
-  ogImageType: "image/jpeg",
+  ogImageType: "image/png",
 };
 
 export {
