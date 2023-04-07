@@ -64,7 +64,8 @@ const Article: NextPage<ArticlePageProps> = (props) => {
         description={ article.previewText }
         ogType={ "article" }
         ogAlt={ article.coverImage.alt }
-        ogImage={ article.coverImage.src }
+        ogImage={ process.env.NEXT_PUBLIC_DOMAIN + article.coverImage.src }
+        ogImageType={ article.ogImage.type }
         openGraph={ {
           url: canonical,
           type: "article",
@@ -79,9 +80,11 @@ const Article: NextPage<ArticlePageProps> = (props) => {
           images: [
             {
               alt: article.coverImage.alt,
-              url: article.coverImage.src,
+              url: process.env.NEXT_PUBLIC_DOMAIN + article.coverImage.src,
+              type: article.coverImage.type,
               width: article.coverImage.width,
               height: article.coverImage.height,
+              secureUrl: process.env.NEXT_PUBLIC_DOMAIN + article.coverImage.src
             },
           ],
         } }

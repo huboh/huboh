@@ -9,10 +9,13 @@
   padding: 0.8em;
   border-radius: var(--border-radius-min);
   background-color: var(--primary-color-light);
+  border-radius: 50%;
 
   svg {
     font-size: 1.6rem;
+    stroke-width: 1px;
     fill: var(--primary-color);
+    stroke: var(--primary-color);
   }
 
   &:focus,
