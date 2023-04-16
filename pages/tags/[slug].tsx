@@ -1,5 +1,5 @@
 import { useRouter } from "next/router";
-import { NextPage, GetServerSidePropsContext } from "next";
+import { NextPage, GetStaticPaths } from "next";
 
 import { PageProps } from "../../types";
 import { getArticles } from "../../lib/articles";
@@ -17,16 +17,29 @@ import Footer from "../../components/Footer";
 import Article from "../../components/Cards/Article";
 import Masonry, { ResponsiveMasonry } from "react-responsive-masonry";
 
-interface TagPageProps extends
-  PageProps,
-  Omit<Awaited<ReturnType<typeof getServerSideProps>>["props"], ""> { }
+interface TagPageProps extends PageProps, Omit<Awaited<ReturnType<typeof getStaticProps>>["props"], ""> { }
 
-const getServerSideProps = async (context: GetServerSidePropsContext<any>) => {
+const getStaticProps = async (context: any) => {
   return {
     props: {
       tag: context.params.slug,
       articles: await getArticles({ tag: context.params.slug })
     }
+  };
+};
+
+const getStaticPaths: GetStaticPaths = async () => {
+  const tags = new Set<string>();
+  const articles = (await getArticles({})).nodes;
+  const addTagsToList = (tags_: typeof tags, article: (typeof articles)[number]) => (article.tags.forEach((tag) => tags_.add(tag)), tags_);
+
+  return {
+    fallback: false,
+    paths: (
+      Array
+        .from(articles.reduce(addTagsToList, tags))
+        .map((path) => ({ params: { slug: path } }))
+    )
   };
 };
 
@@ -64,5 +77,6 @@ const Tag: NextPage<TagPageProps> = (props) => {
 
 export {
   Tag as default,
-  getServerSideProps,
+  getStaticProps,
+  getStaticPaths
 };
