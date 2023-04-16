@@ -49,6 +49,7 @@ pre[class*="language-"] {
   -moz-hyphens: none;
   -ms-hyphens: none;
   hyphens: none;
+  font-size: inherit;
 }
 
 pre[class*="language-"] {
@@ -515,18 +516,26 @@ pre {
 //
 
 .rehype-code-title {
+  padding: 0.6rem 1rem;
+  padding-bottom: 0.8rem;
   margin-bottom: -0.6rem;
-  padding: 1rem 1rem;
-  font-size: inherit !important;
   font-family: Consolas, "Andale Mono WT", "Andale Mono", "Lucida Console",
     "Lucida Sans Typewriter", "DejaVu Sans Mono", "Bitstream Vera Sans Mono",
     "Liberation Mono", "Nimbus Mono L", Monaco, "Courier New", Courier,
     monospace;
 
-  background-color: var(--background-color-light);
-  color: var(--text-color);
+  color: #fff;
   z-index: 0;
+  border: 1px solid var(--border-color-light);
+  border-bottom: none;
+  border-top-left-radius: 0.3em;
+  border-top-right-radius: 0.3em;
+  background-color: var(--background-color-light);
+  background-color: hsl(223, 16%, 9%);
+}
 
-  border-top-left-radius: 0.3rem;
-  border-top-right-radius: 0.3rem;
+.rehype-code-title + pre[class*="language-"] {
+  border-top: none;
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
 }
