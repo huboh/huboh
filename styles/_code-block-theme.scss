@@ -30,7 +30,6 @@
 
 code[class*="language-"],
 pre[class*="language-"] {
-  font-size: 0.9rem;
   background: hsla(217, 18%, 14%);
   color: hsl(220, 14%, 71%);
   text-shadow: 0 1px rgba(0, 0, 0, 0.3);
@@ -49,7 +48,12 @@ pre[class*="language-"] {
   -moz-hyphens: none;
   -ms-hyphens: none;
   hyphens: none;
-  font-size: inherit;
+
+  &,
+  & * {
+    font-size: 0.9rem;
+    font-size: inherit;
+  }
 }
 
 pre[class*="language-"] {
