@@ -21,7 +21,7 @@ interface ArticlesPageProps extends PageProps, Omit<Awaited<ReturnType<typeof ge
 const getStaticProps = async () => {
   return {
     props: {
-      articles: await getArticles({})
+      articles: await getArticles({ previewMode: true })
     }
   };
 };

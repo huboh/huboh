@@ -19,7 +19,7 @@ interface IndexPageProps extends PageProps, Omit<Awaited<ReturnType<typeof getSt
 const getStaticProps = async () => {
   const [projects, articles] = await Promise.all([
     getProjects({}),
-    getArticles({ count: 3, featured: true }),
+    getArticles({ count: 3, featured: true, previewMode: true }),
   ]);
 
   return {

@@ -7,6 +7,7 @@ export interface GetArticlesProps {
   count?: number;
   featured?: boolean;
   directory?: string;
+  previewMode?: boolean;
 }
 
 export interface GetArticlesPaths {

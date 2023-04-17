@@ -50,6 +50,9 @@ export const getArticles = async (props: GetArticlesProps) => {
     )
     .slice(
       0, props.count
+    )
+    .map(
+      (article) => !(props.previewMode ?? true) ? article : Object.assign(article, { content: "", source: {}, author: {} } as Partial<Article>)
     );
 
   return {
