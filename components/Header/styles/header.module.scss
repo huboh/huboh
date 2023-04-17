@@ -18,7 +18,6 @@
   transform: translateY(0);
   border-bottom: 1px solid transparent;
   transition: transform 300ms ease-in-out;
-  border-color: var(--border-color-light);
   backdrop-filter: blur(6px);
   background-color: var(--background-color-translucent);
 
@@ -30,6 +29,7 @@
 
   &.scrolling-up {
     transform: translateY(0);
+    border-color: var(--border-color-light);
   }
 
   &.scrolling-down {
