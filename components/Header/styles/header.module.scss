@@ -18,17 +18,18 @@
   transform: translateY(0);
   border-bottom: 1px solid transparent;
   transition: transform 300ms ease-in-out;
+  border-color: var(--border-color-light);
+  backdrop-filter: blur(6px);
   background-color: var(--background-color-translucent);
 
   &.scrolled-up {
     transform: translateY(0);
     border-color: transparent;
+    backdrop-filter: blur(0px);
   }
 
   &.scrolling-up {
     transform: translateY(0);
-    backdrop-filter: blur(6px);
-    border-color: var(--border-color-light);
   }
 
   &.scrolling-down {
@@ -37,8 +38,6 @@
 
   &:focus-within {
     transform: translateY(0);
-    border-color: var(--border-color-light);
-    backdrop-filter: blur(6px);
   }
 
   @media screen and (min-width: 760px) {
