@@ -34,8 +34,9 @@
 
     p code {
       padding: 0.2rem 0.4rem;
+      color: var(--primary-color);
       border-radius: var(--border-radius-min);
-      background-color: var(--primary-color-light);
+      background-color: var(--background-color-light);
     }
 
     img {
