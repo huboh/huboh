@@ -14,11 +14,22 @@ const Hero: FC = () => {
 
   return (
     <Section id={ id } className={ className } textAlignment={ "center" }>
+      <div
+        className={ styles["gaussian-gradients"] }
+        children={
+          <>
+            <div />
+            <div />
+            <div />
+            <div />
+          </>
+        }
+      />
+
       <Text.Header.H1
-        // color={ "grey" }
         size={ "medium" }
         text={ headerText }
-      // showFullStop={ false }
+        showFullStop={ true }
       />
     </Section>
   );
