@@ -37,6 +37,7 @@
     height: 20rem;
     position: absolute;
     border-radius: 50%;
+    mix-blend-mode: color-burn;
   }
 
   & :nth-child(1) {
@@ -89,9 +90,14 @@
       height: 25rem;
     }
 
+    & :nth-child(1) {
+      --top: 50%;
+      --left: 50%;
+    }
+
     & :nth-child(2) {
       --top: 50%;
-      --left: 65%;
+      --left: 60%;
     }
 
     & :nth-child(3) {
