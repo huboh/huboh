@@ -26,7 +26,7 @@ const Seo: FC<SeoProps> = (props) => {
             } as any,
             {
               name: "msapplication-TileColor",
-              content: preferences.colorScheme,
+              content: preferences.theme,
             },
             {
               name: "msapplication-config",
