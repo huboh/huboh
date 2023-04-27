@@ -142,7 +142,7 @@ const Article: NextPage<ArticlePageProps> = (props) => {
           <ShareArticle
             link={ canonical }
             title={ article.title }
-            header={ "spread the word 😁" }
+            header={ "spread the word 👀🫶" }
           />
         </aside>
       </main>
