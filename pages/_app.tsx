@@ -4,6 +4,7 @@ import React from "react";
 import { AppType } from "next/app";
 import { Toaster } from "react-hot-toast";
 import { Poppins } from "@next/font/google";
+import { Analytics } from '@vercel/analytics/react';
 import { StrictMode } from "react";
 
 // hooks
@@ -49,6 +50,7 @@ const App: AppType = (props) => {
         <AppProviders>
           <Component { ...{ ...pageProps, className } } />
           <Toaster position={ "bottom-center" } containerClassName={ className } />
+          <Analytics />
         </AppProviders>
       </ErrorBoundary>
     </StrictMode>
