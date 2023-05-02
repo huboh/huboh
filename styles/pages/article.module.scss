@@ -32,15 +32,36 @@
       }
     }
 
-    p code {
+    p code,
+    ul code {
+      white-space: nowrap;
       padding: 0.2rem 0.4rem;
       color: var(--primary-color);
       border-radius: var(--border-radius-min);
       background-color: var(--background-color-light);
     }
 
+    ul {
+      color: var(--text-color-grey);
+      margin-top: 1em;
+      list-style-position: inside;
+
+      &:not(:last-of-type) {
+        margin-bottom: 1em;
+      }
+    }
+
     img {
+      margin-block: 2rem;
       margin-inline: auto;
+    }
+
+    figure {
+      margin-block: 2rem;
+
+      img {
+        margin-block: 0;
+      }
     }
 
     .tags {
