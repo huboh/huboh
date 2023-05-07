@@ -11,8 +11,8 @@
         "height": 900
       },
       "links": {
-        "github": "https://www.github.com/huboh/noteway-server",
-        "external": "https://www.github.com/huboh/noteway-server"
+        "github": "https://www.github.com/huboh/noteway-server/",
+        "external": "https://www.github.com/huboh/noteway-server/"
       },
       "techStacks": [
         "TypeScript",
@@ -21,7 +21,7 @@
         "MongoDB",
         "Redis",
         "Docker",
-        "etc."
+        "Etc."
       ]
     },
     {
@@ -54,7 +54,7 @@
         "height": 900
       },
       "links": {
-        "github": "https://www.github.com/huboh/ayegs",
+        "github": "https://www.github.com/huboh/ayegs/",
         "external": "https://www.aora.com/"
       },
       "techStacks": [
