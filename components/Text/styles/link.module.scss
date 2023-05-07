@@ -6,6 +6,15 @@
   text-decoration: none;
   color: var(--primary-color);
 
+  display: inline-flex;
+  align-items: flex-start;
+  justify-content: flex-start;
+
+  svg {
+    stroke: var(--primary-color);
+    margin-inline-start: 0.2rem;
+  }
+
   &::after {
     content: "";
     width: 100%;
