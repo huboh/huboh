@@ -5,7 +5,7 @@ isFeatured: true
 isPublished: true
 modifiedAt: ""
 publishedAt: "2023-04-04T05:35:07.322Z"
-previewText: "One of the most common and devastating attacks that GraphQL APIs can face is the resource-exhaustion attacks, also known as Distributed Denial of Service (DDoS). This type of attack floods the API server with malicious requests, overwhelming its resources and making it unavailable to legitimate users"
+previewText: "Over the past few years, GraphQL has become more popular as a way to build APIs, it's important to understand the potential security risks that come with it. One of the most common and devastating attacks or security threats that GraphQL APIs face is resource-exhaustion attacks, which are a type of Distributed Denial of Service (DDoS) attacks. This type of attack floods your GraphQl API server with overly complex queries that overwhelm its resources, making it unresponsive and unable the complete the usual request-response lifecycle to genuine users."
 coverImage:
   alt: "Mitigating Resource-Exhaustion Attacks (DDoS) on GraphQL APIs: Best Practices and Strategies"
   src: "/assets/images/articles/Mitigating-Resource-Exhaustion-Attacks-(DDoS)-on-GraphQL-APIs-Best-Practices-and-Strategies.png"
@@ -32,33 +32,29 @@ ogImage:
   height: 662
 ---
 
-One of the most common and devastating attacks or security threats that GraphQL APIs face is resource-exhaustion attacks, also known as Distributed Denial of Service (DDoS). This type of attack floods your GraphQl API server with malicious queries, overwhelming its resources, making it unresponsive and unable the complete the usual request-response lifecycle to genuine users.
+Over the past few years, GraphQL has become more popular as a way to build APIs, it's important to understand the potential security risks that come with it. One of the most common and devastating attacks or security threats that GraphQL APIs face is resource-exhaustion attacks, which are a type of <Text.Link href={ "https://www.cloudflare.com/en-gb/learning/ddos/what-is-a-ddos-attack/" } text={ "Distributed Denial of Service (DDoS)" } target={ "\_blank" } showExtIcon={ true } /> attacks. This type of attack floods your GraphQl API server with overly complex queries that overwhelm its resources, making it unresponsive and unable the complete the usual request-response lifecycle to genuine users.
 
-In this article, we'll focus on some best practices and strategies to mitigate resource-exhaustion attacks specifically on GraphQl APIs. But before we dive into the solutions, let's first take a closer look at what resource-exhaustion attacks are and how they work.
+In this article, we'll focus on some best practices and strategies to mitigate resource-exhaustion attacks specifically on GraphQl APIs. But before we dive into the solutions, let's first take a closer look at what resource-exhaustion attacks are and how they affect Graphql APIs.
 
-## What are Resource-Exhaustion Attacks and How do They Impact GraphQL API Server's Performance?
+## What are Resource-Exhaustion Attacks and How Do They Impact GraphQL API's Performance?
 
-Resource-exhaustion attacks, aka DDoS attacks, are a type of cyber attack in which an attacker floods a server with a high volume of requests in a short period of time. The purpose of such an attack is to exhaust the server's resources and make it unavailable to legitimate users.
+Resource-exhaustion attacks are a type of `DDoS` attack that aims to exhaust the resources of a server by overwhelming it with a high volume of requests. In the case of GraphQL APIs, these attacks take many forms but they typically involve sending overly complex queries or mutations with circular dependencies that are computationally expensive, consuming a significant amount of the server's processing power. These queries can put a significant amount of strain on your server's resources, causing it to become unresponsive to legitimate users or even crash in some occurrences.
 
-In the context of a GraphQL APIs, a resource-exhaustion attack can take many forms. For example, an attacker may send a large number of queries with circular dependencies that are computationally expensive, consuming a significant amount of the server's processing power.
+One of the main challenges of mitigating resource-exhaustion attacks on GraphQL APIs is that they don't fit the traditional pattern of flooding a server with a high volume of requests. Instead, the attack is more subtle and involves sending a small number of large, overly complex queries. This makes it harder to detect and mitigate the attack.
 
-The effect of resource-exhaustion attacks on GraphQL API servers are not limited to technical issues like degraded performance or complete downtimes. Successful attacks can also lead to significant financial and reputational damage.
+Now, let's take a look at some code examples to better understand how this attack can affect a GraphQL API server, In these examples, I'll be making use of <Text.Link href={ "https://www.postman.com/" } text={ "Postman" } target={ "\_blank" } showExtIcon={ true } /> but you can equally use <Text.Link href={ "https://www.apollographql.com/" } text={ "Apollo's" } target={ "\_blank" } showExtIcon={ true } /> GraphIQL Playground (an interactive, in-browser GraphQl IDE) for sending the Graphql queries (just go to this <Text.Link href={ "http://localhost:4000/" } text={ "URL" } target={ "\_blank" } showExtIcon={ true } /> that the server is listening on in your browser). To follow along with the code examples in this article, clone the GitHub repository <Text.Link href={ "https://github.com/huboh/graphql-resource-exhaustion-attack" } text={ "here" } target={ "\_blank" } showExtIcon={ true } /> and follow the instructions in the repo's <Text.Link href={ "https://github.com/huboh/graphql-resource-exhaustion-attack#readme" } text={ "Readme" } target={ "\_blank" } showExtIcon={ true } />.
 
-Now, let's take a look at some code examples to better understand how a this attacks can affect a GraphQL API server, In these examples, we'll use Apollo Server, a popular implementation of GraphQL, and simulate an attack using a tool called [Artillery](https://www.artillery.io/) for sending graphql queries.
+The code block below showcases our GraphQL schema alongside all available queries that client applications can send. A blog `Post` has an author, and an author which is a `User` object has many `Post`s (One-To-Many relationship). If an attacker sends a query to our GraphQl API for a `User`, which in turn requires 50 or even 100s of his/her `Post`s, which then requires the author for each `Post`, which in turn require his/her `Post`s again, the server will be stuck in an infinite loop, consuming a significant amount of it's processing power while other requests from genuine users are pending.
 
-### Query with Circular Dependencies
-
-The first example simulates an attack in which an attacker sends a large number of queries with circular dependencies. Circular dependencies occur when a query requires data that is itself dependent on the query. For example, consider the following schema:
-
-> You can find the complete source code for all the examples in this [github repository](https://github.com/huboh/graphql-resource-exhaustion-attack)
-
-```graphql:schema.graphql showLineNumbers
+```graphql:/graphql/schema.graphql showLineNumbers
 type User {
   id: ID!
+  role: Role!
   name: String
   email: String!
   posts: [Post!]!
-  ...
+  createdAt: Date!
+  updatedAt: Date!
 }
 
 type Post {
@@ -66,12 +62,12 @@ type Post {
   title: String!
   author: User!
   content: String!
+  createdAt: Date!
+  updatedAt: Date!
+  publishedAt: Date!
   isPublished: Boolean!
-  ...
 }
 
-# The "Query" type is special: it lists all of the available queries
-# that clients can execute, along with the return type for each.
 type Query {
   me: User
   user(userId: ID): User
@@ -79,20 +75,267 @@ type Query {
 }
 ```
 
-In our schema above, a blog post has an author, and an author(user) has many books. If an attacker sends a query for a user, which in turn requires his/her posts, which requires the author, which in turn require his/her posts again, the server will be stuck in an infinite loop, consuming a significant amount of processing power.
+Now we're going to demonstrate the effects of resource-exhaustion attacks, Open two request tabs on `Postman` or `Apollo's` GraphIQl Playground. Moving forward, I'll be using Postman for the examples not just because I have a preference for it or because I think it's faster 👀. In the first tab, we're going to be simulating a genuine user while on the second tab, we'll be simulating a bad actor.
 
-```yaml:query.yaml showLineNumbers
-config:
-  target: "http://localhost:4000/graphql"
-  phases:
-    - duration: 60
-      arrivalRate: 100
-  payload:
-      method: "POST"
-      headers:
-        Content-Type: "application/json"
-      jsonBody:
-        query: "query { user { id name email posts { id title author { id name email posts { id title author { id name email posts { id title author { id name } } } } } } } }"
+<Image.Article
+  alt="screenshot of two opened request tab on postman for graphql queries"
+  src="/assets/images/articles/Mitigating-Resource-Exhaustion-Attacks-(DDoS)-on-GraphQL-APIs-Best-Practices-and-Strategies/query-tabs.png"
+  width={870}
+  height={89}
+/>
+
+- In the first tab, we'll be sending the `me` query below to get the current user's information whose context we're running the queries for, together with 10 of their posts. Note that this query has an average response time of just `5ms`.
+
+```graphql showLineNumbers
+query CurrentUser($filter: UserPostsFilterInput) {
+  me {
+    id
+    role
+    name
+    email
+    createdAt
+    updatedAt
+    posts(filter: $filter) {
+      id
+      title
+      isPublished
+      updatedAt
+      createdAt
+      publishedAt
+    }
+  }
+}
 ```
 
-This configuration sends 100 queries per second for 60 seconds. When we run this configuration against the server, we can see that the CPU usage spikes to 100%, indicating that the server is under attack.
+GraphQl query variables for the `me` query above.
+
+```json showLineNumbers
+{
+  "filter": {
+    "postCount": 10
+  }
+}
+```
+
+- In the second tab, we'll be sending the complex query below which has lots of circular dependencies. sending this query, you'll notice it takes a significant amount of time to get a response from the server if at all it doesn't even crash the request tab or the whole application. Now head back to the first tab(genuine user tab) and send off the request again with the second tab pending a response from the server in the background, you'll notice that the `me` query that has an average response time of `5 milliseconds` has dramatically increased to an average response time of `1 minute 10 seconds`.
+
+```graphql showLineNumbers
+query Complex {
+  user {
+    id
+    role
+    name
+    email
+    createdAt
+    updatedAt
+    posts {
+      id
+      title
+      content
+      isPublished
+      updatedAt
+      createdAt
+      publishedAt
+      author {
+        id
+        role
+        name
+        email
+        createdAt
+        updatedAt
+        posts {
+          id
+          title
+          content
+          isPublished
+          updatedAt
+          createdAt
+          publishedAt
+          author {
+            id
+            role
+            name
+            email
+            createdAt
+            updatedAt
+            posts {
+              id
+              title
+              content
+              isPublished
+              updatedAt
+              createdAt
+              publishedAt
+              author {
+                id
+                role
+                name
+                email
+                createdAt
+                updatedAt
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
+```
+
+<Image.Article
+  alt="significant increase in response time for the me graphql query"
+  src="/assets/images/articles/Mitigating-Resource-Exhaustion-Attacks-(DDoS)-on-GraphQL-APIs-Best-Practices-and-Strategies/me-query-2.jpg"
+  width={1255}
+  height={622}
+/>
+
+This query is designed to fetch a lot of data from the server, including lots of the current user posts and the author of those posts. If an attacker were to send a flood of queries like this to your GraphQL server, it could quickly consume all of your server's resources and cause it to become unresponsive.
+
+Of course, this is just a simple example. In a real-world scenario, the attacker might use a more sophisticated method to overwhelm your server. But the basic principle is the same: the attacker is trying to consume all of your server's resources to prevent legitimate users from accessing your service.
+
+## Solutions
+
+To mitigate resource-exhaustion attacks on your GraphQL API, you can implement the following best practices and strategies:
+
+- Request Timeouts
+- Query Depth Limits
+- Cost Analysis on the Query
+- Allowing Only Pre-Approved Queries
+
+### Implement Query Depth Limits
+
+One way to prevent resource-exhaustion attacks is to implement query depth limits. This means that you set a limit on how deep the queries client applications send can go so that they can't fetch an unlimited amount of data from your server.
+
+To implement query depth limits on your GraphQL API server with `NodeJs`, install the `graphql-depth-limit` package from npm. This package allows you to set a maximum depth for your GraphQL queries so that any queries that go deeper than the limit will be rejected.
+
+You can view the complete source code for this example in the <Text.Link href={ "https://github.com/huboh/graphql-resource-exhaustion-attack/tree/query-depth-limit-example" } text={ "query-depth-limit-example" } target={ "\_blank" } showExtIcon={ true } /> branch.
+
+```ts:/src/index.ts showLineNumbers
+...
+import { ApolloServer } from '@apollo/server';
+import { default as depthLimit } from "graphql-depth-limit";
+
+const port = 4000;
+const server = new ApolloServer({
+  typeDefs,
+  resolvers,
+  introspection: true,
+  validationRules: [
+    depthLimit(5)
+  ]
+});
+...
+```
+
+Setting The depth limit of 5 for our queries means that any query that goes deeper than 5 levels will be rejected.
+
+<Image.Article
+  alt="graphql query that exceeds the maximum query depth rule of 5 set by the server"
+  src="/assets/images/articles/Mitigating-Resource-Exhaustion-Attacks-(DDoS)-on-GraphQL-APIs-Best-Practices-and-Strategies/query-depth-limit-example.jpg"
+  width={1234}
+  height={606}
+/>
+
+### Use Query Complexity Analysis
+
+Another strategy for mitigating resource-exhaustion attacks is to use query complexity analysis. This means that you analyze each GraphQL query that comes into your server and assign it a complexity score based on factors like the number of fields being requested, the depth of the query, and the number of variables being used. This is somewhat similar to the `query-depth-limit` strategy.
+
+To implement query complexity analysis on your GraphQL API server with `NodeJs`, you can use an npm package like `graphql-query-complexity`. This package allows you to set a maximum complexity for your GraphQL queries so that any queries that exceed the limit will be rejected. Below is an example of how you can use `graphql-query-complexity` on your GraphQL API server:
+
+You can view the complete source code for this example in the <Text.Link href={ "https://github.com/huboh/graphql-resource-exhaustion-attack/tree/query-cost-complexity-example" } text={ "query-cost-complexity" } target={ "\_blank" } showExtIcon={ true } /> branch.
+
+```ts:/src/index.ts showLineNumbers
+...
+import { ApolloServer } from '@apollo/server';
+...
+import { createComplexityRule, simpleEstimator } from 'graphql-query-complexity';
+
+const port = 4000;
+const server = new ApolloServer({
+  typeDefs,
+  resolvers,
+  introspection: true,
+  validationRules: [
+    createComplexityRule({
+      maximumComplexity: 50,
+      estimators: [
+        simpleEstimator({
+          defaultComplexity: 1
+        })
+      ]
+    })
+  ]
+});
+...
+```
+
+In this example we're using the `graphql-query-complexity` package from npm to set a maximum complexity score of `50` for our queries, in a real-world scenario you would use a higher figure but for this example, `50` is a perfect figure. Any queries that exceed this limit will be rejected.
+
+<Image.Article
+  alt="graphql query that exceeds the maximum complexity value rule of 50 set by the server"
+  src="/assets/images/articles/Mitigating-Resource-Exhaustion-Attacks-(DDoS)-on-GraphQL-APIs-Best-Practices-and-Strategies/query-complexity-example.jpg"
+  width={1227}
+  height={606}
+/>
+
+### Allowing Only Pre-Approved Queries
+
+This strategy works best if the GraphQl API you're trying to protect is designed for internal use by your client applications and not for public consumption. Going with this strategy, you'll have an `approved-list` approach that lists all of the allowed queries your server is allowed to execute. This approach re-introduces some dependencies between the client and the server, some automation strategy can be used to mitigate against this issue.
+
+You can view the complete source code for this example in the <Text.Link href={ "https://github.com/huboh/graphql-resource-exhaustion-attack/tree/pre-approved-queries-example" } text={ "pre-approved-queries-example" } target={ "\_blank" } showExtIcon={ true } /> branch.
+
+Here's an example of how you can allow only pre-approved queries to run in your GraphQL API server:
+
+```ts:/src/index.ts showLineNumbers
+...
+import stringSimilarity from "string-similarity";
+import { print } from "graphql/language";
+import { ApolloServer } from '@apollo/server';
+...
+
+const approvedQueries = [
+  `query CurrentUser($filter: UserPostsFilterInput) {
+    me {
+      ...
+    }
+  }`
+];
+
+const port = 4000;
+const server = new ApolloServer({
+  typeDefs,
+  resolvers,
+  introspection: true,
+  plugins: [
+    {
+      requestDidStart: async () => ({
+        didResolveOperation: async ({ request, document }) => {
+          const query = print(document);
+          const operation = request.operationName || (document.definitions[0] as any).name?.value || 'unknown';
+
+          // It's possible that the queries are not identical due to differences in whitespace,
+          // comments, or other characters. Hence the use of `string-similarity` package
+          if (stringSimilarity.findBestMatch(query, approvedQueries).bestMatch.rating < 0.8) {
+            throw new Error(`Query "${operation}" not approved.`);
+          }
+        }
+      }),
+    }
+  ]
+});
+...
+```
+
+In this example, we're using the `print` function from the `graphql` package to get a string representation of the `AST` node. Then we use the `string-similarity` to score similarity between strings because of possible differences in whitespace, comments etc.
+
+<Image.Article
+  alt="an unknown graphql query not found in an approved-list of queries rejected by the api server on postman"
+  src="/assets/images/articles/Mitigating-Resource-Exhaustion-Attacks-(DDoS)-on-GraphQL-APIs-Best-Practices-and-Strategies/pre-approved-query-example.jpg"
+  width={1077}
+  height={474}
+/>
+
+## Conclusion
+
+In this article, we've seen how Resource-exhaustion attacks can significantly impact the performance of your GraphQL API and cause your application to become unresponsive or even crash. To mitigate these attacks, you can implement query depth limits, use query complexity analysis, and rate limit your GraphQL endpoint. These best practices and strategies can help keep your GraphQL API running smoothly and protect it from potential security threats.
