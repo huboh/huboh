@@ -9,7 +9,6 @@ import AboutMeImage from "../../../../public/assets/images/musa-knowledge.jpeg";
 
 // styles
 import styles from "./about.module.scss";
-import linkStyles from "../../../Text/styles/link.module.scss";
 
 const AboutMe: FC = () => {
   const id = "about";
@@ -33,7 +32,7 @@ const AboutMe: FC = () => {
           </Text.Paragraph>
 
           <Text.Paragraph>
-            Fast-forward to today, I've had the privilege of working at <a className={ linkStyles.link } target="_blank" rel="noreferrer" children="Ctechway" href={ "https://www.ctechway.com" } />, worked with awesome individuals and built great applications. My main focus these days are Noteway, Go, Blockchain Development, Distributed Systems, Creating Great Experiences & User-Centered Products.
+            Fast-forward to today, I've had the privilege of working at <Text.Link href={ "https://www.ctechway.com/" } text={ "Ctechway" } target={ "_blank" } showExtIcon={ true } />, worked with awesome individuals and built great applications. My main focus these days are Noteway, Go, Blockchain Development, Distributed Systems, Creating Great Experiences & User-Centered Products.
           </Text.Paragraph>
 
           <Text.Paragraph>
