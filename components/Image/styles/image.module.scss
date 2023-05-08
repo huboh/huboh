@@ -4,6 +4,7 @@
   height: auto;
   border: 1px solid var(--border-color-light);
   display: block;
+  image-rendering: auto;
 
   &.round-border {
     border-radius: var(--border-radius);
