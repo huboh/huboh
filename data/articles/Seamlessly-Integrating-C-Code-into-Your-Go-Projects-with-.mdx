@@ -1,0 +1,173 @@
+---
+tags: ["C", "Go", "Cgo"]
+title: "Seamlessly Integrating C Code into Your Go Projects with Cgo"
+isFeatured: true
+isPublished: true
+modifiedAt: ""
+publishedAt: "2023-06-07T01:00:00.322Z"
+previewText: "Are you a Go developer looking to leverage the power of C libraries in your project? Enter Cgo, the bridge between Go and C. With Cgo, you can seamlessly integrate C code into your Go project without sacrificing the performance and efficiency of the Go language."
+coverImage:
+  alt: "Seamlessly Integrating C Code into Your Go Projects with Cgo"
+  src: "/assets/images/articles/Seamlessly-Integrating-C-Code-into-Your-Go-Projects-with-Cgo/cover.png"
+  type: "image/png"
+  width: 1200
+  height: 628
+author:
+  name: Musa Knowledge
+  avatar:
+    alt: "Musa Knowledge"
+    src: "/assets/images/musa-knowledge.jpeg"
+    type: "image/jpeg"
+    width: 1757
+    height: 2334
+  socials:
+    website: ""
+    twitter: ""
+    linkedin: ""
+ogImage:
+  alt: "Seamlessly Integrating C Code into Your Go Projects with Cgo"
+  src: "/assets/images/articles/Seamlessly-Integrating-C-Code-into-Your-Go-Projects-with-Cgo/cover.png"
+  type: "image/png"
+  width: 1200
+  height: 628
+---
+
+Are you a <Text.Link text={ "Go" } href={ "https://en.wikipedia.org/wiki/Go_(programming_language)" } target={ "\_blank" } showExtIcon={ true } /> developer looking to leverage the power of <Text.Link text={ "C" } href={ "https://en.wikipedia.org/wiki/The_C_Programming_Language" } target={ "\_blank" } showExtIcon={ true } /> libraries in your project? Enter Cgo, the bridge between Go and C. With Cgo, you can seamlessly integrate C code into your Go project without sacrificing the performance and efficiency of the Go language.
+
+In this article, we'll walk through the basics of using Cgo in Go, and show you how to integrate C code into your project with ease. So, let's get started!
+
+## What is Cgo?
+
+Most, if not all major <Text.Link text={ "Operating Systems" } href={ "https://www.techtarget.com/whatis/definition/operating-system-OS" } target={ "\_blank" } showExtIcon={ true } /> are primarily written in C despite being 50+ years old, which means these Operating Systems are bundled with libraries written in C, this also means that most programming languages that run on these Operating Systems provide a way to enable inter-language calls with these C libraries. Go refers to its <Text.Link text={ "FFI (foreign function interface)" } href={ "https://en.wikipedia.org/wiki/Foreign_function_interface" } target={ "\_blank" } showExtIcon={ true } /> to C as `Cgo`.
+
+Cgo is a powerful tool that allows developers to call C functions from Go code. It achieves this by generating Go wrapper code that interfaces with the C code. This allows you to use existing C code and libraries in your Go project, without having to rewrite everything in Go.
+
+## Why use Cgo?
+
+Before we dive in further, I'll like to break it to you that **Cgo isn't fast** because if you're like me you might be thinking of rewriting some performance-critical parts of your existing Go code in C but it's very unlikely you'll make your code faster using Cgo.
+
+There are several reasons why you might want to use Cgo in your Go project, Unfortunately, Additional performance gain isn't one of them. Due to the mismatches in the processing and memory models, calling a C functions from Go is about `29` times slower than a C function calling another C function. Below are two reasons to use Cgo:
+
+- You need to call C code with no suitable replacement that is available in Go.
+- You want to take advantage of C libraries that are more mature or perform better than their Go counterparts.
+
+While using Cgo does come with some overhead, such as the need to manage memory allocation manually, the benefits can outweigh the costs in many cases.
+
+## Getting Started with Cgo
+
+To get started with Cgo, you need to have a basic understanding of Go and C. You'll also need a C compiler installed on your system, A quick Google search should get you started on the OS of your choice if you don't have one installed already.
+
+Let's start by writing a simple C function that we can call from Go. Create a new file called `hello.c` and add the following code:
+
+```c:hello.c showLineNumbers
+#include <stdio.h>
+
+void say_hello() {
+    printf("Hello from C!\n");
+}
+```
+
+This function simply prints out "Hello from C!" to the console.
+
+Next, we'll create a Go file that calls this C function using Cgo. Create a new file called `main.go` and add the following code:
+
+```go:main.go showLineNumbers
+package main
+
+// #include "hello.c"
+import "C"
+
+func main() {
+    C.say_hello()
+}
+```
+
+The import "C" line tells Go that we'll be using Cgo in this file. We then call our `say_hello` function from C using the `C` prefix.
+
+Now, let's run our program:
+
+```bash
+go run main.go
+# Hello from C!
+```
+
+And just like that, we've successfully called a C function from Go using Cgo!
+
+You might be wondering, what's going on? There isn't an actual package named `C` in the standard library, `C` is an automatically generated package whose identifiers come from the C code in the comments that automatically precede it. so if you declare a C function named `hello`, Cgo makes it available in your Go program as `C.hello`. you could also invoke functions, and reference global variables that are imported into the comment block from C libraries via header files, you just have to make sure the file is in the same directory as your Go code.
+
+## Memory Management with Cgo
+
+One of the key differences between Go and C is the way they handle memory management. Go uses a garbage collector to automatically manage memory, while C requires manual memory management and this makes it difficult to integrate non-trivial Go code with C.
+
+When using Cgo, it's important to keep this in mind. Any memory allocated in C code must be freed manually to prevent memory leaks.
+
+Let's modify our `hello.c` file to allocate memory using `malloc`, and then free it using free. Replace the contents of `hello.c` with the following code:
+
+```c:hello.c showLineNumbers
+#include <stdlib.h>
+#include <stdio.h>
+
+char* get_hello() {
+    char* str = malloc(15 * sizeof(char));
+    sprintf(str, "Hello from C!");
+    return str;
+}
+
+void free_hello(char* str) {
+    free(str);
+}
+```
+
+This new get_hello function allocates memory using malloc and returns a pointer to the string "Hello from C!". We also added a new free_hello function that frees the memory allocated by get_hello.
+
+Now, let's modify our `main.go` file to call these new functions:
+
+```go:main.go showLineNumbers
+package main
+
+// #include <stdlib.h>
+// #include "hello.c"
+import "C"
+import "fmt"
+
+func main() {
+    str := C.GoString(C.get_hello())
+    defer C.free(unsafe.Pointer(str))
+    fmt.Println(str)
+}
+```
+
+We've added the `stdlib.h` header file to use malloc and free functions in Go. In our Go code, we now use the `C.GoString` function to convert the C string returned by `get_hello` to a Go string. We also added a defer statement to ensure that we call `C.free` to free the memory allocated by the C `get_hello` function.
+
+Now, when we run our program, we should see "Hello from C!" printed on the console, with no memory leaks!
+
+## Advanced Cgo Techniques
+
+Cgo is a powerful tool that offers many advanced features, such as the ability to pass Go slices and maps to C functions. However, these advanced features come with some complexity and performance overhead, so use them judiciously.
+
+To learn more about using Cgo in Go, check out the official documentation:-
+
+- <Text.Link
+    text={"Learning Go (by Jon Bodner, chapter 14)"}
+    href={"https://www.oreilly.com/library/view/learning-go/9781492077206/"}
+    target={"_blank"}
+    showExtIcon={true}
+  />
+- <Text.Link
+    text={"Cgo - The Go Programming Language"}
+    href={"https://golang.org/cmd/cgo/"}
+    target={"_blank"}
+    showExtIcon={true}
+  />
+- <Text.Link
+    text={"When and How to use CGo"}
+    href={"https://www.youtube.com/watch?v=qvVyT9QjIqc"}
+    target={"_blank"}
+    showExtIcon={true}
+  />
+
+## Conclusion
+
+Cgo is a powerful tool that allows developers to seamlessly integrate C code into their Go projects. With a little bit of knowledge and care, you can take advantage of existing C libraries and code in your Go projects, without sacrificing the performance and efficiency of the Go language.
+
+Now, go forth and Cgo!
