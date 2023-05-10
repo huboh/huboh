@@ -8,7 +8,7 @@ publishedAt: "2023-04-04T05:35:07.322Z"
 previewText: "Over the past few years, GraphQL has become more popular as a way to build APIs, it's important to understand the potential security risks that come with it. One of the most common and devastating attacks or security threats that GraphQL APIs face is resource-exhaustion attacks, which are a type of Distributed Denial of Service (DDoS) attacks. This type of attack floods your GraphQl API server with overly complex queries that overwhelm its resources, making it unresponsive and unable the complete the usual request-response lifecycle to genuine users."
 coverImage:
   alt: "Mitigating Resource-Exhaustion Attacks (DDoS) on GraphQL APIs: Best Practices and Strategies"
-  src: "/assets/images/articles/Mitigating-Resource-Exhaustion-Attacks-(DDoS)-on-GraphQL-APIs-Best-Practices-and-Strategies.png"
+  src: "/assets/images/articles/Mitigating-Resource-Exhaustion-Attacks-(DDoS)-on-GraphQL-APIs-Best-Practices-and-Strategies/cover.png"
   type: "image/png"
   width: 1200
   height: 628
@@ -26,7 +26,7 @@ author:
     linkedin: ""
 ogImage:
   alt: "Mitigating Resource-Exhaustion Attacks (DDoS) on GraphQL APIs: Best Practices and Strategies"
-  src: "/assets/images/articles/Mitigating-Resource-Exhaustion-Attacks-(DDoS)-on-GraphQL-APIs-Best-Practices-and-Strategies.png"
+  src: "/assets/images/articles/Mitigating-Resource-Exhaustion-Attacks-(DDoS)-on-GraphQL-APIs-Best-Practices-and-Strategies/cover.png"
   type: "image/png"
   width: 1200
   height: 628
@@ -44,7 +44,7 @@ One of the main challenges of mitigating resource-exhaustion attacks on GraphQL 
 
 Now, let's take a look at some code examples to better understand how this attack can affect a GraphQL API server, In these examples, I'll be making use of <Text.Link href={ "https://www.postman.com/" } text={ "Postman" } target={ "\_blank" } showExtIcon={ true } /> but you can equally use <Text.Link href={ "https://www.apollographql.com/" } text={ "Apollo's" } target={ "\_blank" } showExtIcon={ true } /> GraphIQL Playground (an interactive, in-browser GraphQl IDE) for sending the Graphql queries (just go to this <Text.Link href={ "http://localhost:4000/" } text={ "URL" } target={ "\_blank" } showExtIcon={ true } /> that the server is listening on in your browser). To follow along with the code examples in this article, clone the GitHub repository <Text.Link href={ "https://github.com/huboh/graphql-resource-exhaustion-attack" } text={ "here" } target={ "\_blank" } showExtIcon={ true } /> and follow the instructions in the repo's <Text.Link href={ "https://github.com/huboh/graphql-resource-exhaustion-attack#readme" } text={ "Readme" } target={ "\_blank" } showExtIcon={ true } />.
 
-The code block below showcases our GraphQL schema alongside all available queries that client applications can send. A blog `Post` has an author, and an author which is a `User` object has many `Post`s (One-To-Many relationship). If an attacker sends a query to our GraphQl API for a `User`, which in turn requires 50 or even 100s of his/her `Post`s, which then requires the author for each `Post`, which in turn require his/her `Post`s again, the server will be stuck in an infinite loop, consuming a significant amount of it's processing power while other requests from genuine users are pending.
+The code block below showcases our GraphQL schema alongside all available queries that client applications can send. A blog Post has an author, and an author which is a User object has many Posts (One-To-Many relationship). If an attacker sends a query to our GraphQl API for a User, which in turn requires 50 or even 100s of his/her Posts, which then requires the author for each Post, which in turn require his/her Posts again, the server will be stuck in an infinite loop, consuming a significant amount of it's processing power while other requests from genuine users are pending.
 
 ```graphql:/graphql/schema.graphql showLineNumbers
 type User {
