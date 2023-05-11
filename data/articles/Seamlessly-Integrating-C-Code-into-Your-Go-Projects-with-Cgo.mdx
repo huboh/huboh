@@ -93,7 +93,7 @@ go run main.go
 
 And just like that, we've successfully called a C function from Go using Cgo!
 
-You might be wondering, what's going on? There isn't an actual package named `C` in the standard library, `C` is an automatically generated package whose identifiers come from the C code in the comments that automatically precede it. so if you declare a C function named `hello`, Cgo makes it available in your Go program as `C.hello`. you could also invoke functions, and reference global variables that are imported into the comment block from C libraries via header files, you just have to make sure the file is in the same directory as your Go code.
+You might be wondering, what's going on? There isn't an actual package named `C` in the standard library, `C` is an automatically generated package whose identifiers come from the C code in the comments that immediately precede it. so if you declare a C function named `hello`, Cgo makes it available in your Go program as `C.hello`. you could also invoke functions, and reference global variables that are imported into the comment block from C libraries via header files, you just have to make sure the file is in the same directory as your Go code.
 
 ## Memory Management with Cgo
 
@@ -118,7 +118,7 @@ void free_hello(char* str) {
 }
 ```
 
-This new get_hello function allocates memory using malloc and returns a pointer to the string "Hello from C!". We also added a new free_hello function that frees the memory allocated by get_hello.
+This new `get_hello` function allocates memory using malloc and returns a pointer to the string "Hello from C!". We also added a new `free_hello` function that frees the memory allocated by `get_hello`.
 
 Now, let's modify our `main.go` file to call these new functions:
 

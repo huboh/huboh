@@ -24,7 +24,7 @@ const AboutMe: FC = () => {
       <div className={ styles.about_me_section_wrapper }>
         <div className={ styles.text_wrapper }>
           <Text.Paragraph>
-            Hello! I’m Knowledge, a software engineer with over 6 years of experience in demanding environments focused in building user centered & cutting-edge applications.
+            Hello! I’m Knowledge Musa, a software engineer with over 6 years of experience in demanding environments focused in building user centered & cutting-edge applications.
           </Text.Paragraph>
 
           <Text.Paragraph>
