@@ -1,0 +1,232 @@
+---
+tags:
+  [
+    "Go",
+    "Goroutines",
+    "Channels",
+    "Concurrency",
+    "Select Keyword",
+    "Starvation",
+    "Deadlocks",
+  ]
+title: "Concurrent Programming in Go: An Introduction to Goroutines and Channels"
+isFeatured: true
+isPublished: true
+modifiedAt: ""
+publishedAt: "2023-05-11T11:47:00.322Z"
+previewText: "Learn how to write highly concurrent programs in Go using goroutines, channels and select keyword. In this article, we'll explore the basics of concurrent programming in Go and dive into the details of using goroutines, channels and select keyword to implement concurrency. We'll cover the syntax and usage of these essential tools. By the end of this article, you'll have a basic foundation for building scalable and efficient concurrent programs in Go"
+coverImage:
+  alt: "Concurrent Programming in Go: An Introduction to Goroutines and Channels By Knowledge Musa"
+  src: "/assets/images/articles/Concurrent-Programming-in-Go-An-Introduction-to-Goroutines-and-Channels/cover.png"
+  type: "image/png"
+  width: 1200
+  height: 628
+author:
+  name: Musa Knowledge
+  avatar:
+    alt: "Musa Knowledge"
+    src: "/assets/images/musa-knowledge.jpeg"
+    type: "image/jpeg"
+    width: 1757
+    height: 2334
+  socials:
+    website: ""
+    twitter: ""
+    linkedin: ""
+ogImage:
+  alt: "Concurrent Programming in Go: An Introduction to Goroutines and Channels By Knowledge Musa"
+  src: "/assets/images/articles/Concurrent-Programming-in-Go-An-Introduction-to-Goroutines-and-Channels/cover.png"
+  type: "image/png"
+  width: 1200
+  height: 628
+---
+
+In my journey to becoming proficient in <Text.Link text={"Go"} href={"https://en.wikipedia.org/wiki/Go_(programming_language)"} target={"\_blank"} showExtIcon={true} />(Golang as I prefer to call it), I came across the concepts of Goroutines and Channels, which enabled <Text.Link text={"concurrent programming"} href={"https://en.wikipedia.org/wiki/Concurrent_computing"} target={"\_blank"} showExtIcon={true} /> in Go. While these concepts might seem a bit intimidating at first, I found them to be incredibly powerful and intuitive once I got the hang of them.
+
+In this article, I’ll be sharing what I’ve learned about `Goroutines`, `Channels` and the `Select Keyword` which are the main features that are the backbone of concurrency in Go, and how they can be used to write efficient and concurrent programs.
+
+## What is Concurrent Programming?
+
+Concurrent programming is the ability to execute multiple tasks simultaneously. This differs from sequential programming, where tasks are executed one after the other. In Go, concurrent programming is made possible through the use of Goroutines, Channels and the Select Keyword.
+
+Before we dive into the fun stuff 😁, I'll like to define some terms used in this article:
+
+- **Process** is an instance of a program that's being run by a computer's operating system. Each process is assigned resources (e.g. memory) & the OS makes sure other processes can't access them. A process is made up of one or more threads.
+
+- **Thread** is a unit of execution that's given some time to run by the OS. threads within a process share access to resources. the computer's <Text.Link text={"C.P.U"} href={"https://en.wikipedia.org/wiki/Central_processing_unit"} target={"\_blank"} showExtIcon={true} /> can execute instructions from one or more threads at the same time depending on the number of cores on the computer.
+
+- **Zero Value** refers to the default value assigned to a variable of a certain type when it is declared but not initialized explicitly.
+
+## Goroutines
+
+These are lightweight processes that are managed by the Go runtime. when a go program starts, the Go runtime creates some threads & launches a single Goroutine to start execution. All Goroutines launched by your program are automatically assigned to these threads by the <Text.Link text={"Go Runtime Scheduler"} href={"https://www.developer.com/languages/go-scheduler/#:~:text=In%20Go%20and%20Golang%20programming,in%20the%20most%20efficient%20way."} target={"\_blank"} showExtIcon={true} />, just like how OS schedules threads across C.P.U cores.
+
+Some of the advantages that allow a Go program to launch, hundreds, thousands & hundreds of thousands of Goroutines are:
+
+- Goroutine creation is faster than OS threads because they aren't an OS level thread resource.
+- Goroutine's initial stack size is smaller than OS thread stack size, making them more memory efficient.
+- Goroutine switching is faster than OS thread switching because it happens entirely within the process.
+- Go's Runtime Scheduler can optimize its decision because it's part of the Go process.
+
+A Goroutine is launched by placing the `go` keyword before a function invocation. you can pass it arguments to initialize its state, however, any return value is ignored. **Any function can be launched as a Goroutine**.
+
+```go showLineNumbers
+package main
+
+import (
+    "fmt"
+    "time"
+)
+
+func main() {
+    go count("sheep")
+    go count("goats")
+    time.Sleep(time.Second * 2)
+}
+
+func count(animal string) {
+    for i := 1; i <= 5; i++ {
+        fmt.Println(i, animal)
+        time.Sleep(time.Millisecond * 500)
+    }
+}
+```
+
+In this example, we create two Goroutines that both call the `count` function with different animals as arguments. The `count` function simply prints out the animal and a number from 1 to 5, pausing for half a second between each print statement.
+
+The `main` function waits for two seconds using the `time.Sleep` function to allow both Goroutines to finish executing before the program exits.
+
+## Channels
+
+Channels are used to communicate and synchronize data between Goroutines, Channels are built-in types in Go just like `slices` & `maps`. They provide a way for one Goroutine to send a value to another Goroutine. few notes you should keep in mind about Channels are:-
+
+- The `zero value` for a Channel is `nil`.
+- Channels are created using the built-in `make` function.
+- Channels are reference types. when you pass them to functions, you're passing a pointer to the Channel.
+
+To create a new Channel in Go, we use the `make` function and specify the type of data that the Channel will transmit. Here's an example:
+
+```go
+myChannel := make(chan string)
+```
+
+### Reading, Writing
+
+We use the `<-` operator to interact with a Channel, you read from a Channel by placing the operator before the Channel (`<- Channel`), and you write to a Channel by placing the operator after the Channel (`Channel <- value`).
+
+Each value written to a Channel can only be read once. if multiple go routines are reading from a single Channel, the value will only be read by one of them (avoid this pattern).
+
+```go showLineNumbers
+// Note, Goroutine execution pauses after the write operation, the following is for demo purposes only
+
+myChannel <- chanValue * "hello there" // writes to a Channel
+chanValue := <- myChannel // reads from the Channel & assigns the value to a variable
+```
+
+### <Text.Link text={"Channel Buffering"} href={"https://medium.com/a-journey-with-go/go-buffered-and-unbuffered-Channels-29a107c00268"} target={"\_blank"} showExtIcon={true} />
+
+Channels are unbuffered by default in Go but they could also be buffered. every write to an open, un-buffered Channel causes the Goroutine to pause until another Goroutine reads from that Channel, likewise, every read from an open, un-buffered Channel pauses until another Goroutine writes to it.
+
+Channels can also be buffered in Go. these are Channels with many elements(values). writing to an open, buffered Channel works without blocking, if the Channel fills up before another Goroutine reads from the Channel, subsequent writes to the Channel block until another Goroutine reads from the Channel. Also reading from empty buffered Channel blocks.
+
+You create a buffered Channel the same way for un-buffered, just with the addition of a `capacity`(the max buffer size) you can use the built-in functions `len` and `cap` for interacting with Channels
+
+```go showLineNumbers
+package main
+
+func main() {
+    myBufferedChannel := make(chan int, 10) // buffered Channel with buffer size of 10 element
+
+    ChannelLength := len(myBufferedChannel) // returns the number of values currently in the Channel
+    ChannelCapacity := cap(myBufferedChannel) // returns the Channel max buffer size
+}
+```
+
+## Select Keyword
+
+The `select` keyword is another powerful tool for managing concurrent programming in Go, This is basically the control structure for concurrency in Go. It allows a Goroutine to read from or write to a set of multiple Goroutines.
+
+The syntax for using `select` is similar to a `switch` statement, with each `case` representing a Channel operation. When a Channel operation is ready to be executed, the corresponding `case` is selected and the associated block of code is executed.
+
+Each `case` in a `select` is a read or write to a Channel, if a read or write is possible, it is executed along with the body of the case. The select cases are all checked at the same time whether they can be written to or read from. it picks randomly from any of its cases that can go forward, order is unimportant. this solves <Text.Link text={"starvation"} href={"https://en.wikipedia.org/wiki/Starvation_(computer_science)"} target={"\_blank"} showExtIcon={true} />(no case is favored over another) & <Text.Link text={"deadlocks"} href={"https://en.wikipedia.org/wiki/Deadlock"} target={"\_blank"} showExtIcon={true} />.
+
+`select` statements can also have default `cases`, it is run when no Channel can be read from or written to. it makes the select run immediately & not wait for a read or write
+
+```go showLineNumbers
+select {
+case v := <-myChannel:
+    fmt.Println(v)
+
+case myChannel <- someValue:
+    fmt.Println("wrote to myChannel", someValue)
+
+case <-someChannel:
+    fmt.Println("read from someChannel, but ignored the value returned")
+}
+```
+
+since `select` is responsible for communicating over a number of Channels, it is often wrapped inside an infinite loop.
+
+```go showLineNumbers
+for {
+    select {
+    case <- done:
+        return
+
+    case val := <-Channel:
+        fmt.Println(val)
+    }
+}
+```
+
+Having a default `case` inside a `for-select` loop would be triggered in every iteration, causing the for loop to run constantly, putting the C.P.U to unnecessary work
+
+```go showLineNumbers
+for {
+    select {
+    case <- done:
+        return
+
+    case val := <-Channel:
+        fmt.Println(val)
+
+    default:
+        fmt.Println("select didn't wait for any of read or write case")
+    }
+}
+```
+
+The `select` statement is a powerful tool for managing concurrent programming in Go and can be used in a wide variety of scenarios. With this tool in your arsenal, you'll be able to create highly performant, scalable, and concurrent programs in Go.
+
+## Conclusion
+
+Goroutines and Channels are powerful tools for concurrent programming in Go. With Goroutines, we can execute multiple functions concurrently without worrying about thread overhead, while Channels provide a safe and efficient way for Goroutines to communicate and synchronize data.
+
+In this guide, we've explored the basics of Goroutines and Channels in Go and provided some examples to help you get started. With these tools in your toolkit, you can build fast and efficient concurrent applications in Go.
+
+To learn more about Go's concurrency features, I recommend checking out the following resources:
+
+- <Text.Link
+    text={"The official Go documentation on Goroutines"}
+    href={
+      "https://golang.org/doc/effective_go#Goroutines](https://golang.org/doc/effective_go#Goroutines"
+    }
+    target={"_blank"}
+    showExtIcon={true}
+  />
+- <Text.Link
+    text={"The official Go documentation on Channels"}
+    href={
+      "https://golang.org/doc/effective_go#Channels](https://golang.org/doc/effective_go#Channels"
+    }
+    target={"_blank"}
+    showExtIcon={true}
+  />
+- <Text.Link
+    text={'"Learning Go" chapter 10, by Jon Bodner'}
+    href={
+      "https://www.oreilly.com/library/view/learning-go/9781492077206/](https://www.oreilly.com/library/view/learning-go/9781492077206/"
+    }
+    target={"_blank"}
+    showExtIcon={true}
+  />
