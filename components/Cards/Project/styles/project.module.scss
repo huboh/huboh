@@ -16,11 +16,12 @@
     overflow: hidden;
     border-radius: var(--border-radius);
     outline: none;
+    mix-blend-mode: overlay;
 
     .project-image {
       height: 100%;
       object-fit: cover;
-      mix-blend-mode: overlay !important;
+      mix-blend-mode: overlay;
       border-radius: var(--border-radius);
       transition: transform 300ms ease-in-out;
     }
@@ -108,6 +109,7 @@
 
       .project-image-wrapper {
         grid-column: 2/-1;
+        mix-blend-mode: normal;
       }
 
       .project-details-wrapper {
