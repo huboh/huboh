@@ -41,7 +41,7 @@ ogImage:
   height: 628
 ---
 
-In my journey to becoming proficient in <Text.Link text={"Go"} href={"https://en.wikipedia.org/wiki/Go_(programming_language)"} target={"\_blank"} showExtIcon={true} />(Golang as I prefer to call it), I came across the concepts of Goroutines and Channels, which enabled <Text.Link text={"concurrent programming"} href={"https://en.wikipedia.org/wiki/Concurrent_computing"} target={"\_blank"} showExtIcon={true} /> in Go. While these concepts might seem a bit intimidating at first, I found them to be incredibly powerful and intuitive once I got the hang of them.
+In my journey to becoming proficient in <Text.Link text={"Go"} href={"https://en.wikipedia.org/wiki/Go_(programming_language)"} target={"\_blank"} showExtIcon={true} />(Golang as I prefer to call it), I came across the concepts of Goroutines, Channels and the Select keyword which enabled <Text.Link text={"concurrent programming"} href={"https://en.wikipedia.org/wiki/Concurrent_computing"} target={"\_blank"} showExtIcon={true} /> in Go. While these concepts might seem a bit intimidating at first, I found them to be incredibly powerful and intuitive once I got the hang of them.
 
 In this article, I’ll be sharing what I’ve learned about `Goroutines`, `Channels` and the `Select Keyword` which are the main features that are the backbone of concurrency in Go, and how they can be used to write efficient and concurrent programs.
 
@@ -49,9 +49,9 @@ In this article, I’ll be sharing what I’ve learned about `Goroutines`, `Chan
 
 Concurrent programming is the ability to execute multiple tasks simultaneously. This differs from sequential programming, where tasks are executed one after the other. In Go, concurrent programming is made possible through the use of Goroutines, Channels and the Select Keyword.
 
-Before we dive into the fun stuff 😁, I'll like to define some terms used in this article:
+Before we dive into the fun stuff 😁, I'll like to define some terms used frequently in this article:
 
-- **Process** is an instance of a program that's being run by a computer's operating system. Each process is assigned resources (e.g. memory) & the OS makes sure other processes can't access them. A process is made up of one or more threads.
+- **Process** is an instance of a program that's being run by a computer's operating system. Each process is assigned resources (e.g. memory) and the OS makes sure other processes can't access them. A process is made up of one or more threads.
 
 - **Thread** is a unit of execution that's given some time to run by the OS. threads within a process share access to resources. the computer's <Text.Link text={"C.P.U"} href={"https://en.wikipedia.org/wiki/Central_processing_unit"} target={"\_blank"} showExtIcon={true} /> can execute instructions from one or more threads at the same time depending on the number of cores on the computer.
 
@@ -59,9 +59,9 @@ Before we dive into the fun stuff 😁, I'll like to define some terms used in t
 
 ## Goroutines
 
-These are lightweight processes that are managed by the Go runtime. when a go program starts, the Go runtime creates some threads & launches a single Goroutine to start execution. All Goroutines launched by your program are automatically assigned to these threads by the <Text.Link text={"Go Runtime Scheduler"} href={"https://www.developer.com/languages/go-scheduler/#:~:text=In%20Go%20and%20Golang%20programming,in%20the%20most%20efficient%20way."} target={"\_blank"} showExtIcon={true} />, just like how OS schedules threads across C.P.U cores.
+These are lightweight processes that are managed by the Go runtime. when a Go program starts, the Go runtime creates some threads and launches a single Goroutine to start execution. All Goroutines launched by your program are automatically assigned to these threads by the <Text.Link text={"Go Runtime Scheduler"} href={"https://www.developer.com/languages/go-scheduler/#:~:text=In%20Go%20and%20Golang%20programming,in%20the%20most%20efficient%20way."} target={"\_blank"} showExtIcon={true} />, just like how OS schedules threads across C.P.U cores.
 
-Some of the advantages that allow a Go program to launch, hundreds, thousands & hundreds of thousands of Goroutines are:
+Some of the advantages that allow a Go program to launch, hundreds, thousands and even hundreds of thousands of Goroutines are:
 
 - Goroutine creation is faster than OS threads because they aren't an OS level thread resource.
 - Goroutine's initial stack size is smaller than OS thread stack size, making them more memory efficient.
@@ -98,7 +98,7 @@ The `main` function waits for two seconds using the `time.Sleep` function to all
 
 ## Channels
 
-Channels are used to communicate and synchronize data between Goroutines, Channels are built-in types in Go just like `slices` & `maps`. They provide a way for one Goroutine to send a value to another Goroutine. few notes you should keep in mind about Channels are:-
+Channels are used to communicate and synchronize data between Goroutines. Channels are built-in types in Go just like `slices` and `maps`, They provide a way for one Goroutine to send a value to another Goroutine. few notes you should keep in mind about Channels are:-
 
 - The `zero value` for a Channel is `nil`.
 - Channels are created using the built-in `make` function.
@@ -107,7 +107,7 @@ Channels are used to communicate and synchronize data between Goroutines, Channe
 To create a new Channel in Go, we use the `make` function and specify the type of data that the Channel will transmit. Here's an example:
 
 ```go
-myChannel := make(chan string)
+myChannel := make(chan int)
 ```
 
 ### Reading, Writing
@@ -119,17 +119,17 @@ Each value written to a Channel can only be read once. if multiple go routines a
 ```go showLineNumbers
 // Note, Goroutine execution pauses after the write operation, the following is for demo purposes only
 
-myChannel <- chanValue * "hello there" // writes to a Channel
+myChannel <- chanValue * 20 // writes to a Channel
 chanValue := <- myChannel // reads from the Channel & assigns the value to a variable
 ```
 
 ### <Text.Link text={"Channel Buffering"} href={"https://medium.com/a-journey-with-go/go-buffered-and-unbuffered-Channels-29a107c00268"} target={"\_blank"} showExtIcon={true} />
 
-Channels are unbuffered by default in Go but they could also be buffered. every write to an open, un-buffered Channel causes the Goroutine to pause until another Goroutine reads from that Channel, likewise, every read from an open, un-buffered Channel pauses until another Goroutine writes to it.
+Channels are Unbuffered by default in Go. every write to an open, Unbuffered Channel causes the Goroutine to pause until another Goroutine reads from that Channel, likewise, every read from an open, Unbuffered Channel pauses until another Goroutine writes to it.
 
 Channels can also be buffered in Go. these are Channels with many elements(values). writing to an open, buffered Channel works without blocking, if the Channel fills up before another Goroutine reads from the Channel, subsequent writes to the Channel block until another Goroutine reads from the Channel. Also reading from empty buffered Channel blocks.
 
-You create a buffered Channel the same way for un-buffered, just with the addition of a `capacity`(the max buffer size) you can use the built-in functions `len` and `cap` for interacting with Channels
+You create a buffered Channel the same way for Unbuffered, just with the addition of a `capacity`(the max buffer size) you can use the built-in functions `len` and `cap` for interacting with Channels
 
 ```go showLineNumbers
 package main
@@ -148,9 +148,9 @@ The `select` keyword is another powerful tool for managing concurrent programmin
 
 The syntax for using `select` is similar to a `switch` statement, with each `case` representing a Channel operation. When a Channel operation is ready to be executed, the corresponding `case` is selected and the associated block of code is executed.
 
-Each `case` in a `select` is a read or write to a Channel, if a read or write is possible, it is executed along with the body of the case. The select cases are all checked at the same time whether they can be written to or read from. it picks randomly from any of its cases that can go forward, order is unimportant. this solves <Text.Link text={"starvation"} href={"https://en.wikipedia.org/wiki/Starvation_(computer_science)"} target={"\_blank"} showExtIcon={true} />(no case is favored over another) & <Text.Link text={"deadlocks"} href={"https://en.wikipedia.org/wiki/Deadlock"} target={"\_blank"} showExtIcon={true} />.
+Each `case` in a `select` is a read or write to a Channel, if a read or write is possible, it is executed along with the body of the case. The select cases are all checked at the same time whether they can be written to or read from. it picks randomly from any of its cases that can go forward, order is unimportant. this solves <Text.Link text={"starvation"} href={"https://en.wikipedia.org/wiki/Starvation_(computer_science)"} target={"\_blank"} showExtIcon={true} />(no case is favored over another) and <Text.Link text={"deadlocks"} href={"https://en.wikipedia.org/wiki/Deadlock"} target={"\_blank"} showExtIcon={true} />.
 
-`select` statements can also have default `cases`, it is run when no Channel can be read from or written to. it makes the select run immediately & not wait for a read or write
+`select` statements can also have default `cases`, it runs when no Channel can be read from or written to. it makes the select run immediately and not wait for a read or write
 
 ```go showLineNumbers
 select {
@@ -179,7 +179,7 @@ for {
 }
 ```
 
-Having a default `case` inside a `for-select` loop would be triggered in every iteration, causing the for loop to run constantly, putting the C.P.U to unnecessary work
+Having a default `case` inside a `for-select` loop would be triggered in every iteration, causing the for loop to run constantly, putting the C.P.U to lots of unnecessary work.
 
 ```go showLineNumbers
 for {
