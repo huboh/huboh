@@ -58,6 +58,7 @@
     ]
   },
   "devDependencies": {
-    "@types/react-responsive-masonry": "^2.1.0"
+    "@types/react-responsive-masonry": "^2.1.0",
+    "next-sitemap": "^4.0.9"
   }
 }
