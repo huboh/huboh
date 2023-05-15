@@ -46,7 +46,7 @@ Cgo is a powerful tool that allows developers to call C functions from Go code. 
 
 Before we dive in further, I'll like to break it to you that **Cgo isn't fast** because if you're like me you might be thinking of rewriting some performance-critical parts of your existing Go code in C but it's very unlikely you'll make your code faster using Cgo.
 
-There are several reasons why you might want to use Cgo in your Go project, Unfortunately, Additional performance gain isn't one of them. Due to the mismatches in the processing and memory models, calling a C functions from Go is about `29` times slower than a C function calling another C function. Below are two reasons to use Cgo:
+There are several reasons why you might want to use Cgo in your Go project, Unfortunately, Additional performance gain isn't one of them. Due to the mismatches in the processing and memory models, calling a C function from Go is about `29` times slower than a C function calling another C function. Below are two reasons to use Cgo:
 
 - You need to call C code with no suitable replacement that is available in Go.
 - You want to take advantage of C libraries that are more mature or perform better than their Go counterparts.
@@ -101,7 +101,7 @@ One of the key differences between Go and C is the way they handle memory manage
 
 When using Cgo, it's important to keep this in mind. Any memory allocated in C code must be freed manually to prevent memory leaks.
 
-Let's modify our `hello.c` file to allocate memory using `malloc`, and then free it using free. Replace the contents of `hello.c` with the following code:
+Let's modify our `hello.c` file to allocate memory using `malloc`, and then free it using `free`. Replace the contents of `hello.c` with the following code:
 
 ```c:hello.c showLineNumbers
 #include <stdlib.h>
