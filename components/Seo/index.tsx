@@ -87,7 +87,7 @@ const Seo: FC<SeoProps> = (props) => {
           ...(props.openGraph ?? {}),
           url: props.url ?? props.canonical ?? props.domain,
           type: props.ogType,
-          title: props.title,
+          title: title,
           locale: props.ogLocale,
           siteName: props.siteName,
           description: props.description,
@@ -111,7 +111,7 @@ const Seo: FC<SeoProps> = (props) => {
 Seo.defaultProps = {
   title: "Knowledge Musa",
   domain: process.env.NEXT_PUBLIC_DOMAIN,
-  siteName: "Knowledge Musa",
+  siteName: "Software Engineer Portfolio.",
   canonical: process.env.NEXT_PUBLIC_DOMAIN,
   twitterHandle: process.env.NEXT_PUBLIC_TWITTER_HANDLE,
   description: "Welcome to my corner of the internet 👀, Knowledge Musa is a software engineer focused in building user-centered, enterprise ready & cutting edge application. I showcase my skills and share my insights on various technologies through detailed tutorials and informative articles. Join me on this journey of exploration and learning.",

@@ -39,7 +39,7 @@ const IndexPage: NextPage<IndexPageProps> = (props) => {
       <Seo
         title="Knowledge Musa"
         canonical={ canonical }
-        siteName="Software Engineer"
+        siteName="Software Engineer."
       />
       <Header
         id="header"
