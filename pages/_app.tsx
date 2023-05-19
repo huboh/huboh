@@ -17,6 +17,16 @@ import ErrorBoundary from "../components/ErrorBoundary";
 // suppress useLayoutEffect warnings when running outside a browser
 if (typeof window === "undefined") React.useLayoutEffect = React.useEffect;
 
+const Days = [
+  "sunday",
+  "monday",
+  "tuesday",
+  "wednesday",
+  "thursday",
+  "friday",
+  "saturday",
+];
+
 const poppins = Poppins({
   preload: true,
   display: "swap",
@@ -43,6 +53,8 @@ const App: AppType = (props) => {
   const Component = props.Component;
   const pageProps = props.pageProps;
   const className = useClassString(poppins.className);
+
+  console.log(`%cLook at you snooping around 👀. Have a nice ${Days[new Date().getDay()]} btw 🚀.`, "font-size: 1.2rem; font-weight: 900;");
 
   return (
     <StrictMode>
