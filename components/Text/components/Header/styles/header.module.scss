@@ -6,13 +6,17 @@
   color: var(--text-color);
   text-transform: capitalize;
 
-  .full-stop {
-    width: 0.3em;
-    height: 0.3em;
-    margin-left: 0.1em;
-    border-radius: 50%;
-    display: inline-block;
-    background-color: var(--primary-color);
+  .full-stop-wrapper {
+    white-space: nowrap;
+
+    .full-stop {
+      width: 0.3em;
+      height: 0.3em;
+      margin-left: 0.1em;
+      border-radius: 50%;
+      display: inline-block;
+      background-color: var(--primary-color);
+    }
   }
 
   &.grey {
