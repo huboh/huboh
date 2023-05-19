@@ -109,9 +109,9 @@ const Seo: FC<SeoProps> = (props) => {
 };
 
 Seo.defaultProps = {
-  title: "Knowledge Musa",
+  title: "Software Engineer Portfolio",
   domain: process.env.NEXT_PUBLIC_DOMAIN,
-  siteName: "Software Engineer Portfolio.",
+  siteName: "Knowledge Musa.",
   canonical: process.env.NEXT_PUBLIC_DOMAIN,
   twitterHandle: process.env.NEXT_PUBLIC_TWITTER_HANDLE,
   description: "Welcome to my corner of the internet 👀, Knowledge Musa is a software engineer focused in building user-centered, enterprise ready & cutting edge application. I showcase my skills and share my insights on various technologies through detailed tutorials and informative articles. Join me on this journey of exploration and learning.",
