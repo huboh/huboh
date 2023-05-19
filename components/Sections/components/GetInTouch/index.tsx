@@ -13,7 +13,7 @@ const GetInTouch: FC = () => {
   const id = "contact";
   const emailSubject = encodeURIComponent("Hey Knowledge, New Opportunity Awaits. Lets Talk!");
   const externalLink = `mailto:kenn1000kenn@gmail.com?importance=high&subject=${emailSubject}&body=`;
-  const paragraphText = "I'm currently looking for new opportunities that'll expose me to more intriguing problems. Reach out if you got a question, proposal or project you would like me to hop on, my inbox is always open.";
+  const paragraphText = "I'm currently available and more than happy to help build and launch your product and/or your startup. I could help take you or your team from idea/prototype to production while picking out tech stack, infra architecture and others. I could also help review architecture and/or code, you just name it. I would only take up roles where I am very I certain can provide enough human capital to you or your team.";
 
   return (
     <Section id={ id } textAlignment={ "center" } className={ styles.get_in_touch_section }>
@@ -21,7 +21,7 @@ const GetInTouch: FC = () => {
         text="What's Next?"
       />
       <Text.Header.H2
-        text="get in touch!!!"
+        text="get in touch!"
         className={ styles.main_header }
       />
       <Text.Paragraph

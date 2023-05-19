@@ -10,7 +10,7 @@ import styles from "./hero.module.scss";
 const Hero: FC = () => {
   const id = "hero";
   const className = styles.hero_section;
-  const headerText = "I build enterprise ready web applications";
+  const headerText = "I build enterprise ready applications for the web";
 
   return (
     <Section id={ id } className={ className } textAlignment={ "center" }>

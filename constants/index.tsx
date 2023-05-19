@@ -36,5 +36,5 @@ export const Socials = {
 };
 
 export const Skills = [
-  "javaScript", "typeScript", "React & Nextjs", "NodeJs", "Go", "Docker"
+  "go (golang 👀)", "typeScript", "javaScript", "React & Nextjs", "NodeJs", "Docker"
 ];
