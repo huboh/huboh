@@ -47,7 +47,9 @@ const Seo: FC<SeoProps> = (props) => {
             },
             {
               rel: "shortcut icon",
-              href: "/favicon.ico"
+              href: "/favicon.ico",
+              sizes: "48x48",
+              type: "image/ico"
             },
             {
               rel: "apple-touch-icon",
