@@ -110,7 +110,7 @@ To create a new Channel in Go, we use the `make` function and specify the type o
 myChannel := make(chan int)
 ```
 
-### Reading, Writing
+### Reading & Writing
 
 We use the `<-` operator to interact with a Channel, you read from a Channel by placing the operator before the Channel (`<- Channel`), and you write to a Channel by placing the operator after the Channel (`Channel <- value`).
 
