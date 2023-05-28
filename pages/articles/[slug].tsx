@@ -4,10 +4,13 @@ import { default as readTime } from "reading-time";
 import { NextPage, GetStaticPaths } from "next";
 
 import { PageProps } from "../../types";
+import { joinClassStrings } from "../../lib";
 import { getArticlesPaths, getArticle } from "../../lib/articles";
 
 // styles
 import styles from "../../styles/pages/article.module.scss";
+import h2Styles from "../../components/Text/components/Header/styles/h2.module.scss";
+import headerStyles from "../../components/Text/components/Header/styles/header.module.scss";
 
 // components
 import Tag from "../../components/Cards/Tag";
@@ -24,10 +27,16 @@ import Image from "../../components/Image";
 
 interface ArticlePageProps extends PageProps, Omit<Awaited<ReturnType<typeof getStaticProps>>["props"], ""> { }
 
+const headerClass = joinClassStrings(headerStyles["text-header"], h2Styles["h2"]);
 const componentsMap = {
   p: Text.Paragraph,
   h1: Text.Header.H1,
   h2: Text.Header.H2,
+  h3: (props: any) => <h3 children={ props.children } className={ headerClass } />,
+  h4: (props: any) => <h4 children={ props.children } className={ headerClass } />,
+  h5: (props: any) => <h5 children={ props.children } className={ headerClass } />,
+  h6: (props: any) => <h6 children={ props.children } className={ headerClass } />,
+
   // components
   Text: Text,
   List: List,
