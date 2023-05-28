@@ -143,7 +143,7 @@ const Article: NextPage<ArticlePageProps> = (props) => {
 
           <List
             items={ article.tags }
-            render={ (tag) => <Tag tag={ tag } /> }
+            render={ (tag) => <Tag tag={ `#${tag}` } path={ tag } /> }
             className={ styles["tags"] }
           />
         </article>

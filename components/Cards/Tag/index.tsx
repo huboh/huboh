@@ -8,7 +8,7 @@ import styles from "./tag.module.scss";
 import useClassString from "../../../hooks/useClassString";
 
 const Tag: FC<TagProps> = (props) => {
-  const link = `${TAGS}/${props.tag}`;
+  const link = `${TAGS}/${props.path || props.tag}`;
   const className = useClassString(styles["tag"], props.className);
 
   return (
