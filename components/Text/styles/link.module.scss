@@ -13,12 +13,13 @@
   svg {
     stroke: var(--primary-color);
     margin-inline-start: 0.2rem;
+    align-self: center;
   }
 
   &::after {
     content: "";
     width: 100%;
-    height: 1px;
+    height: 0.063em;
     display: inline-block;
     transform-origin: left;
     transform: scaleX(0);
