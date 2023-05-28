@@ -17,6 +17,12 @@
     border-radius: var(--border-radius);
     outline: none;
 
+    // seems to fix blending on mobile
+    img {
+      object-fit: cover;
+      mix-blend-mode: overlay;
+    }
+
     .project-image {
       height: 100%;
       object-fit: cover;
@@ -140,7 +146,7 @@
       }
 
       .project-image {
-        mix-blend-mode: normal !important;
+        mix-blend-mode: normal;
       }
 
       &:hover {
