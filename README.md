@@ -4,11 +4,11 @@
 
 - Software Engineer
 - Mechanical Engineer
-- GraphQl, Typescript, Go, Nodejs, Distributed Systems, Blockchain
+- NextJS, NestJS, GraphQl, Typescript, Go, Nodejs, Distributed Systems, Blockchain
 
 ## Technology Stacks
 
-- DBMS: MySQL, MongoDB
+- DBMS: MongoDB, MySQL & PostgreSQL
 - Language: Golang, TypeScript & JavaScript
-- Messaging: Redis
-- Infrastructure: Docker
+- Messaging: RabbitMQ, Kafka & Redis 
+- Infrastructure: Docker, Microservices & Kubernetes
