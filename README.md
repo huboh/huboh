@@ -8,7 +8,7 @@
 
 ## Technology Stacks
 
-- DBMS: MongoDB, MySQL & PostgreSQL
-- Language: Golang, TypeScript & JavaScript
-- Messaging: RabbitMQ, Kafka & Redis 
-- Infrastructure: Docker, Microservices & Kubernetes
+- **Database**: MongoDB, MySQL & PostgreSQL
+- **Language**: Golang, TypeScript & JavaScript
+- **Messaging**: RabbitMQ, Kafka & Redis 
+- **Infrastructure**: Docker, Microservices & Kubernetes
