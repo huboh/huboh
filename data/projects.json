@@ -1,6 +1,84 @@
 {
   "projects": [
     {
+      "title": "DNPSIMS (Digital National Poverty Social Investment Management System)",
+      "description": "A comprehensive digital poverty management system that helps identify and support Nigeria's most vulnerable populations. The system features AI-powered algorithms for identifying and evaluating the poorest households using financial and personal data from BVN and NINC systems. The platform includes six admin dashboards, two user-facing dashboards and robust backend services capable of processing millions of requests. Implemented distributed event handling with Redis and queue management with RabbitMQ for optimal performance and scalability.",
+      "image": {
+        "alt": "DNPSIMS system interface",
+        "src": "/assets/images/projects/dnpsims.png",
+        "type": "image/png",
+        "width": 1200,
+        "height": 900
+      },
+      "links": {
+        "github": "https://www.github.com/huboh/",
+        "external": "https://www.dnpsims.xyz/"
+      },
+      "techStacks": [
+        "TypeScript",
+        "NextJS",
+        "NestJS",
+        "Redis",
+        "RabbitMQ",
+        "Docker",
+        "Kubernetes",
+        "Turborepo",
+        "Microservices"
+      ]
+    },
+    {
+      "title": "Ivie AI",
+      "description": "An AI-powered Telegram bot that generates monthly revenue of about $1500. Features include conversational AI using GPT models, custom image generation via stable diffusion and voice conversation capabilities. Includes a custom credit system integrated with Paystack for subscription management.",
+      "image": {
+        "alt": "Ivie AI chatbot interface",
+        "src": "/assets/images/projects/ivie.png",
+        "type": "image/png",
+        "width": 1200,
+        "height": 900
+      },
+      "links": {
+        "github": "https://www.github.com/huboh/",
+        "external": "https://t.me/IvieAIBot"
+      },
+      "techStacks": [
+        "OpenAI API",
+        "Replicate API",
+        "Stable Diffusion",
+        "Telegram Bot API",
+        "Paystack",
+        "TypeScript",
+        "NestJS"
+      ]
+    },
+    {
+      "title": "Rhema Nigeria: Bible School Management Platform",
+      "description": "A comprehensive platform for managing bible school operations, featuring real-time notifications, role-based access control and optimized performance. The system includes automated API documentation and robust monitoring capabilities, resulting in 50% increased stability and 40% faster response times.",
+      "image": {
+        "alt": "rhema nigeria bible school management platform interface",
+        "src": "/assets/images/projects/rhema.png",
+        "type": "image/png",
+        "width": 1200,
+        "height": 900
+      },
+      "links": {
+        "github": "https://www.github.com/huboh/",
+        "external": "https://app.rhemanigeria.com/"
+      },
+      "techStacks": [
+        "AWS",
+        "NodeJS",
+        "NestJS"
+        "Typescript",
+        "Prisma",
+        "MongoDB",
+        "Redis",
+        "Docker",
+        "Prometheus",
+        "Grafana",
+        "Etc."
+      ]
+    },
+    {
       "title": "Noteway",
       "description": "Noteway is a collaborative note-taking/article-writing web app, i like to think of it as \"a mesh of Google Keep & Google Docs\" with a nice UI of course. individuals or teams can sync, organize & retrieve notes or tasks across multiple devices, share ideas & lots more. (in development).",
       "image": {
