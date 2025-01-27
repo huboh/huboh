@@ -67,15 +67,14 @@
       "techStacks": [
         "AWS",
         "NodeJS",
-        "NestJS"
+        "NestJS",
         "Typescript",
         "Prisma",
         "MongoDB",
         "Redis",
         "Docker",
         "Prometheus",
-        "Grafana",
-        "Etc."
+        "Grafana"
       ]
     },
     {
