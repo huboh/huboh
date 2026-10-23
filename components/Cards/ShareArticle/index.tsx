@@ -1,7 +1,9 @@
-import { FC } from "react";
+"use client";
+
+import { FC, useEffect, useState } from "react";
 import { toast } from "react-hot-toast";
+import { joinClassStrings } from "../../../lib";
 import { ShareArticleProps } from "./share-article";
-import { default as dynamic } from "next/dynamic";
 import { TbCopy, TbShare, TbBrandTwitter, TbBrandWhatsapp, TbBrandFacebook, TbBrandLinkedin, TbBrandReddit } from "react-icons/tb";
 
 // components
@@ -9,14 +11,22 @@ import Text from "../../Text";
 import Button from "../../Button";
 import styles from "./share-article.module.scss";
 
-// hooks
-import useClassString from "../../../hooks/useClassString";
-
 const ShareArticle: FC<ShareArticleProps> = (props) => {
   const link = encodeURIComponent(props.link);
   const title = encodeURIComponent(props.title);
   const header = props.header || "spread the word";
-  const className = useClassString(styles["share-article"], props.className);
+  const className = joinClassStrings(styles["share-article"], props.className);
+
+  const [clientCanShare, setClientCanShare] = useState(false);
+  useEffect(
+    () => {
+      setClientCanShare(
+        typeof navigator !== "undefined" &&
+        typeof navigator.share === "function"
+      );
+    },
+    []
+  );
 
   return (
     <div className={ className }>
@@ -38,7 +48,7 @@ const ShareArticle: FC<ShareArticleProps> = (props) => {
           />
         </li>
         {
-          "share" in navigator ? (
+          clientCanShare ? (
             <li>
               <Button.Icon
                 icon={ <TbShare /> }
@@ -80,6 +90,4 @@ const ShareArticle: FC<ShareArticleProps> = (props) => {
   );
 };
 
-export default dynamic(
-  () => Promise.resolve(ShareArticle), { ssr: false }
-);
+export default ShareArticle;

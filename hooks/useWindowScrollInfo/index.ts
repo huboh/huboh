@@ -1,40 +1,43 @@
 import { useState, useRef } from "react";
 import { useEventListener } from "../";
 
-const getScrollData = (lastScrollPosition: number) => {
+type ScrollData = {
+  isScrolledUp: boolean;
+  isScrollingUp: boolean;
+  isScrollingDown: boolean;
+};
+
+const getScrollData = (lastScrollPosition: number): ScrollData => {
+  const scrollY = typeof window !== "undefined" ? window.scrollY : 0;
   return {
-    isScrolledUp: window.scrollY <= 10,
-    isScrollingUp: window.scrollY < lastScrollPosition,
-    isScrollingDown: window.scrollY > lastScrollPosition,
+    isScrolledUp: scrollY <= 10,
+    isScrollingUp: scrollY < lastScrollPosition,
+    isScrollingDown: scrollY > lastScrollPosition,
   };
 };
 
-export const useWindowScrollInfo = () => {
+const useWindowScrollInfo = () => {
   const lastScrollPositionRef = useRef(0);
-  const [currentScrollInfo, setCurrentScrollInfo] = useState(getScrollData(lastScrollPositionRef.current));
+  const [currentScrollInfo, setCurrentScrollInfo] = useState<ScrollData>({
+    isScrolledUp: true,
+    isScrollingUp: false,
+    isScrollingDown: false,
+  });
 
   useEventListener({
-    target: window,
+    target: (typeof window !== "undefined" ? window : null)!,
     eventType: "scroll",
+    onSetup: (target) => {
+      // synchronize with the restored browser scroll position.
+      lastScrollPositionRef.current = target.scrollY;
+      setCurrentScrollInfo(getScrollData(target.scrollY));
+    },
     eventHandler: async (event) => {
-      const window = event.currentTarget as Window;
-      const currentScrollPosition = window.scrollY;
       const lastScrollPosition = lastScrollPositionRef.current;
-
-      const isScrolledUp = currentScrollPosition <= 10;
-      const isScrollingUp = currentScrollPosition < lastScrollPosition;
-      const isScrollingDown = currentScrollPosition > lastScrollPosition;
-
-      if (
-        currentScrollInfo.isScrolledUp !== isScrolledUp ||
-        currentScrollInfo.isScrollingUp !== isScrollingUp ||
-        currentScrollInfo.isScrollingDown !== isScrollingDown
-      ) {
-        setCurrentScrollInfo(getScrollData(lastScrollPosition));
-      };
-
+      const currentScrollPosition = (event.currentTarget as Window).scrollY;
       lastScrollPositionRef.current = currentScrollPosition;
-    }
+      setCurrentScrollInfo(getScrollData(lastScrollPosition));
+    },
   });
 
   return currentScrollInfo;
@@ -42,5 +45,6 @@ export const useWindowScrollInfo = () => {
 
 
 export {
-  useWindowScrollInfo as default
+  useWindowScrollInfo as default,
+  useWindowScrollInfo
 };

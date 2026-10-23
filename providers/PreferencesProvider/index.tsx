@@ -1,3 +1,5 @@
+"use client";
+
 /* eslint-disable react-hooks/exhaustive-deps */
 import { FC } from 'react';
 import { PreferencesKey } from '../../constants/';

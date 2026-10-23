@@ -1,8 +1,8 @@
 import { FC } from "react";
 import { Socials } from "../../constants";
 
-import Button from "../Button";
 import styles from "./social-icons.module.scss";
+import ButtonExternalIconLink from "../Button/variants/ButtonExternalIconLink";
 
 const SocialIcons: FC = () => {
   const socials = Object.keys(Socials);
@@ -14,7 +14,7 @@ const SocialIcons: FC = () => {
         <li
           key={ Socials[social].link }
           className={ styles["social-icon-wrapper"] }
-          children={ <Button.ExternalIconLink to={ Socials[social].link || "" } icon={ Socials[social].icon } /> }
+          children={ <ButtonExternalIconLink to={ Socials[social].link || "" } icon={ Socials[social].icon } /> }
         />
       )) }
     </ul>

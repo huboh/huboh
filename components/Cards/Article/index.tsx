@@ -1,7 +1,7 @@
 import { FC } from "react";
 import { ARTICLES } from "../../../constants/routes";
 import { ArticleProps } from "./types";
-import { useClassString } from "../../../hooks";
+import { joinClassStrings } from "../../../lib";
 import { default as readTime } from "reading-time";
 
 // styles
@@ -15,7 +15,7 @@ import Image from "../../Image";
 const Article: FC<ArticleProps> = (props) => {
   const article = props.article;
   const cvrImage = article.coverImage;
-  const className = useClassString(styles["article"], props.className);
+  const className = joinClassStrings(styles["article"], props.className);
 
   return (
     <article title={ article.title }>

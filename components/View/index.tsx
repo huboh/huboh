@@ -1,6 +1,7 @@
+"use";
 import styles from "./view.module.scss";
 import { FC, ReactNode } from "react";
-import { useClassString } from "../../hooks";
+import { joinClassStrings } from "../../lib";
 
 interface ViewProps {
   id?: string;
@@ -11,7 +12,7 @@ interface ViewProps {
 const View: FC<ViewProps> = (props) => {
   const id = props.id;
   const children = props.children;
-  const className = useClassString(styles["view"], props.className);
+  const className = joinClassStrings(styles["view"], props.className);
 
   return (
     <section

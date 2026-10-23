@@ -1,3 +1,5 @@
+"use client";
+
 import { FC } from "react";
 import { NavigationLinks } from "../../../../constants";
 
@@ -19,12 +21,13 @@ export interface NavMenuProps {
 }
 
 const NavMenu: FC<NavMenuProps> = (props) => {
-  const [hash, setHash] = useState(window.location.hash);
+  const [hash, setHash] = useState("");
   const className = useClassString(styles["nav-menu"], styles[props.layout || "horizontal"]);
 
   useEventListener({
-    target: window,
+    target: (typeof window !== "undefined" ? window : null)!,
     eventType: "hashchange",
+    onSetup: () => setHash(window.location.hash),
     eventHandler: (event) => setHash((event.target as Window).location.hash)
   });
 

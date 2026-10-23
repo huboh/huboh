@@ -1,7 +1,7 @@
 import styles from "../../styles/paragraph.module.scss";
 
 import { TextSize } from "../../types";
-import { useClassString } from "../../../../hooks";
+import { joinClassStrings } from "../../../../lib";
 import { FC, ReactNode, HTMLAttributes } from "react";
 
 export interface ParagraphProps extends HTMLAttributes<HTMLParagraphElement> {
@@ -14,7 +14,7 @@ export interface ParagraphProps extends HTMLAttributes<HTMLParagraphElement> {
 
 const Paragraph: FC<ParagraphProps> = ({ id, text, size, children, className, ...props }) => {
   const textSize = styles[size || ""];
-  const className_ = useClassString(styles["text-paragraph"], textSize, className);
+  const className_ = joinClassStrings(styles["text-paragraph"], textSize, className);
 
   return (
     <p

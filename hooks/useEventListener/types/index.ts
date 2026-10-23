@@ -1,18 +1,39 @@
-import { RefObject } from 'react';
+import { RefObject } from "react";
 
 export type IsAny<T, U, V> = 0 extends (1 & T) ? U : V;
-export type Target<T extends EventTarget> = RefObject<T> | T;
-export type Listener = 'addEventListener' | 'removeEventListener';
+export type Target<T extends EventTarget> = RefObject<(T | null)> | T;
+export type Listener = "addEventListener" | "removeEventListener";
 
 export type Type<T extends EventTarget> = keyof EventMap<T> & string;
 export type EventType<T extends EventTarget, U extends Type<T>> = Extract<EventMap<T>[U], Event>;
 export type EventHandler<T extends EventTarget, U extends Type<T>, V extends Event = EventType<T, U>> = (this: T, e: V) => any;
 
+/**
+ * Configuration object for the event listener
+ */
 export interface UseEventListenerProps<T extends EventTarget, U extends Type<T>, V extends Event> {
+  /**
+   * The target element or ref
+   */
   target: Target<T>;
+  /**
+   * The event type(s) to listen for (e.g., 'click', ['mouseenter', 'mouseleave'])
+   */
   eventType: U | U[];
-  eventOptions?: EventListenerOptions;
+  /**
+   * Options passed to addEventListener/removeEventListener
+   */
+  eventOptions?: AddEventListenerOptions | EventListenerOptions;
+  /**
+   * The event handler function to be called when the event fires
+   */
   eventHandler: EventHandler<T, U, V>;
+  /**
+   * Initializes state or prepares the listener after the target is resolved,
+   * but before the event listener is registered. Runs after hydration to
+   * synchronize client-side state without affecting the initial server render and causing hydration errors.
+   */
+  onSetup?: (target: T) => void;
 }
 
 export type UseEventListener = <T extends EventTarget, U extends Type<T> = Type<T>, V extends Event = EventType<T, U>>(props: UseEventListenerProps<T, U, V>) => void;

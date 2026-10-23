@@ -3,11 +3,11 @@ import { TbMessage2Share } from "react-icons/tb";
 
 // components
 import Text from "../../../Text";
-import Button from "../../../Button";
 import Section from "../../../Section";
 
 // styles
 import styles from "./contact.module.scss";
+import ButtonExternalLink from "../../../Button/variants/ButtonExternalLink";
 
 const GetInTouch: FC = () => {
   const id = "contact";
@@ -28,7 +28,7 @@ const GetInTouch: FC = () => {
         text={ paragraphText }
         className={ styles.paragraph_text }
       />
-      <Button.ExternalLink
+      <ButtonExternalLink
         to={ externalLink }
         icon={ <TbMessage2Share /> }
         text={ "leave me a message" }

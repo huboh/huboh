@@ -15,8 +15,13 @@
       width: 95%;
       margin-top: 6rem;
 
-      &:nth-child(odd) {
+      >:nth-child(odd) {
         direction: rtl;
+
+        ul {
+          direction: ltr;
+          justify-content: flex-end !important;
+        }
       }
     }
   }

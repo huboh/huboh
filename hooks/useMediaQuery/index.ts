@@ -2,16 +2,21 @@ import { useEventListener } from "../";
 import { useState, useEffect } from "react";
 
 export const useMediaQuery = (query: string) => {
-  const matchMedia = window.matchMedia(query);
-  const [matches, setMatches] = useState(matchMedia.matches);
+  const [matches, setMatches] = useState(false);
+  const [mediaQuery, setMediaQuery] = useState<MediaQueryList | null>(null);
 
-  useEffect(() => {
-    setMatches(matchMedia.matches);
-  }, [matchMedia.matches]);
+  useEffect(
+    () => {
+      const mql = window.matchMedia(query);
+      setMatches(mql.matches);
+      setMediaQuery(mql);
+    },
+    [query]
+  );
 
   useEventListener({
-    target: matchMedia,
-    eventType: 'change',
+    target: mediaQuery!,
+    eventType: "change",
     eventHandler: ({ matches }) => setMatches(matches)
   });
 

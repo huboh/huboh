@@ -1,7 +1,8 @@
+"use client";
+
 import { FC } from "react";
 import { ARTICLES } from "../../../../constants/routes";
 import { ArticlesProps } from "./types";
-import { default as dynamic } from "next/dynamic";
 
 // styles
 import styles from "./articles.module.scss";
@@ -12,9 +13,9 @@ import useMediaQuery from "../../../../hooks/useMediaQuery";
 // components
 import Text from "../../../Text";
 import List from "../../../List";
-import Button from "../../../Button";
 import Section from "../../../Section";
 import Article from "../../../Cards/Article";
+import ButtonLink from "../../../Button/variants/ButtonLink";
 
 const Articles: FC<ArticlesProps> = (props) => {
   const id = "articles";
@@ -34,7 +35,7 @@ const Articles: FC<ArticlesProps> = (props) => {
         render={ (article) => <Article article={ article } /> }
         className={ styles["list"] }
       />
-      <Button.Link
+      <ButtonLink
         href={ ARTICLES }
         text={ "view more" }
       />
@@ -42,6 +43,4 @@ const Articles: FC<ArticlesProps> = (props) => {
   );
 };
 
-export default dynamic(
-  () => Promise.resolve(Articles), { ssr: false }
-);
+export default Articles;

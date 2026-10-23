@@ -1,3 +1,5 @@
+"use client";
+
 import { ButtonStyle } from "./types";
 import { BiLoaderCircle } from 'react-icons/bi';
 import { ReactNode, ButtonHTMLAttributes } from "react";

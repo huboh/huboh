@@ -7,7 +7,7 @@ export type ColorScheme = "red" | "orange" | "yellow" | "green" | "blue" | "pink
 export type PreferencesSetter = Dispatch<SetStateAction<Preferences>>;
 
 export interface PreferencesProviderProps {
-  children: ReactNode;
+  children?: ReactNode;
 }
 
 export interface Preferences {

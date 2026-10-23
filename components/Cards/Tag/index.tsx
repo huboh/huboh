@@ -1,15 +1,15 @@
 import { FC } from "react";
 import { TAGS } from "../../../constants/routes";
 import { TagProps } from "./tag";
+import { joinClassStrings } from "../../../lib";
 
 // 
 import Text from "../../Text";
 import styles from "./tag.module.scss";
-import useClassString from "../../../hooks/useClassString";
 
 const Tag: FC<TagProps> = (props) => {
   const link = `${TAGS}/${props.path || props.tag}`;
-  const className = useClassString(styles["tag"], props.className);
+  const className = joinClassStrings(styles["tag"], props.className);
 
   return (
     <Text.Link

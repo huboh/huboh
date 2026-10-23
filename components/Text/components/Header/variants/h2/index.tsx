@@ -1,3 +1,5 @@
+"use client";
+
 import h2Styles from "../../styles/h2.module.scss";
 import headerStyles from "../../styles/header.module.scss";
 

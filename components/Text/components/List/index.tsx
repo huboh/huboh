@@ -1,3 +1,5 @@
+"use client";
+
 import styles from "../../styles/list.module.scss";
 
 import { FC } from "react";

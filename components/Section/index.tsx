@@ -1,3 +1,5 @@
+"use client";
+
 import styles from "./section.module.scss";
 
 import { FC, ReactNode } from "react";
