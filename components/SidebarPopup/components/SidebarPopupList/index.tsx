@@ -7,7 +7,7 @@ import styles from "../../styles/sidebar-popup-list.module.scss";
 
 export interface SidebarPopupListProps<T> extends ListProps<T> { }
 
-const SidebarPopupList = <T extends any>(props: SidebarPopupListProps<T>) => {
+const SidebarPopupList = <T extends string | Record<string, any>>(props: SidebarPopupListProps<T>) => {
   return (
     <List
       key_={ props.key_ }

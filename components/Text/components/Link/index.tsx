@@ -1,3 +1,5 @@
+"use client";
+
 import styles from "../../styles/link.module.scss";
 
 import { TbExternalLink } from "react-icons/tb";

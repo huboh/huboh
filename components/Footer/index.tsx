@@ -2,12 +2,12 @@ import { FC } from "react";
 import { Socials } from "../../constants";
 
 // components
-import Text from "../Text";
 import SocialIcons from "../SocialIcons";
 import ScrollToTop from "../ScrollToTop";
 
 // styles
 import styles from "./styles/footer.module.scss";
+import Paragraph from "../Text/components/Paragraph";
 import linkStyles from "../Text/styles/link.module.scss";
 
 interface FooterProps {
@@ -27,7 +27,7 @@ const Footer: FC<FooterProps> = (props) => {
   return (
     <footer id={ id } className={ className }>
       <SocialIcons />
-      <Text.Paragraph size="small" children={ paragraphText } />
+      <Paragraph size="small" children={ paragraphText } />
       <ScrollToTop />
     </footer>
   );

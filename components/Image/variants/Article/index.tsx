@@ -1,3 +1,5 @@
+"use client";
+
 import { FC } from "react";
 import { default as Image, ImageProps } from "../../variants/Image";
 

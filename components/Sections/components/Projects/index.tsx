@@ -5,7 +5,7 @@ import { ProjectSectionProps } from "./types";
 import styles from "./projects.module.scss";
 
 // components
-import Text from "../../../Text";
+import H2 from "../../../Text/components/Header/variants/h2";
 import List from "../../../List";
 import Section from "../../../Section";
 import Project from "../../../Cards/Project";
@@ -16,7 +16,7 @@ const Projects: FC<ProjectSectionProps> = (props) => {
 
   return (
     <Section id={ id } className={ className }>
-      <Text.Header.H2
+      <H2
         text="some of my recent "
         coloredText="projects"
       />

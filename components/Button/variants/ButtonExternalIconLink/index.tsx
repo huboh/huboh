@@ -1,3 +1,5 @@
+"use client";
+
 import styles from "../../styles/icon-link.module.scss";
 import iconButtonStyles from "../../styles/icon-button.module.scss";
 

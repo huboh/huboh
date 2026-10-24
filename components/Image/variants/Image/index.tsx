@@ -1,3 +1,5 @@
+"use client";
+
 import { FC } from "react";
 import { default as NextImage, ImageProps as NextImageProps } from "next/image";
 

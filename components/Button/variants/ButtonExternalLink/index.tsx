@@ -1,3 +1,5 @@
+"use client";
+
 import buttonStyles from '../../styles/button.module.scss';
 import buttonLinkStyles from '../../styles/button-link.module.scss';
 

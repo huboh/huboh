@@ -21,13 +21,15 @@ import SidebarPopupFooter from "../../SidebarPopup/components/SidebarPopupFooter
 export interface SidebarMenuProps extends SidebarPopupProps { }
 
 const Sidebar: FC<SidebarMenuProps> = (props) => {
-  const [hash, setHash] = useState(window.location.hash);
+  const [hash, setHash] = useState("");
 
   useEventListener({
-    target: window,
+    target: (typeof window !== "undefined" ? window : null)!,
     eventType: "hashchange",
-    eventHandler: (event) => setHash((event.target as Window).location.hash)
+    onSetup: () => setHash(window.location.hash),
+    eventHandler: (event) => setHash((event.target as typeof window).location.hash)
   });
+
 
   return (
     <SidebarPopup { ...props } className={ styles["sidebar-menu-wrapper"] }>

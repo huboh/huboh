@@ -6,9 +6,20 @@ import { ArticlesPath } from "../../constants";
 import { readdir, readFile } from "fs/promises";
 import { default as matter, } from "gray-matter";
 import { default as remarkHtml } from "remark-html";
+import { type SerializeOptions } from "next-mdx-remote/dist/types";
 import { default as rehypePrismPlus } from "rehype-prism-plus";
 import { default as rehypeCodeTitles } from 'rehype-code-titles';
 import { GetArticleProps, GetArticlesProps, GetArticlesPaths } from "./types";
+
+export const articleMdxOpts: SerializeOptions = {
+  mdxOptions: {
+    remarkPlugins: [],
+    rehypePlugins: [
+      rehypeCodeTitles, // order matters or else it throws parsing error for file titles
+      rehypePrismPlus,
+    ]
+  }
+};
 
 export const markdownToHTML = async (md: string) => remark().use(remarkHtml).process(md);
 
@@ -24,15 +35,7 @@ export const getArticle = async (props: GetArticleProps): Promise<Article> => {
     modifiedAt: grayMatterFile.data.modifiedAt || grayMatterFile.data.publishedAt,
     publishedAt: grayMatterFile.data.publishedAt,
     rawContent: grayMatterFile.content,
-    source: await serialize(grayMatterFile.content, {
-      mdxOptions: {
-        remarkPlugins: [],
-        rehypePlugins: [
-          rehypeCodeTitles, // order matters or else it throws parsing error for file titles
-          rehypePrismPlus,
-        ]
-      }
-    })
+    source: await serialize(grayMatterFile.content, articleMdxOpts)
   };
 };
 

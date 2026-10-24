@@ -1,0 +1,1 @@
+export { FullScreenLoading as default } from "@/components/Loader/Loader";

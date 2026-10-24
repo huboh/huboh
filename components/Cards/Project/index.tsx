@@ -1,3 +1,5 @@
+"use client";
+
 import { FC } from "react";
 import { ProjectProps } from "./types";
 import { useClassString } from "../../../hooks";

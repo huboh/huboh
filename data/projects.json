@@ -5,7 +5,7 @@
       "description": "A comprehensive digital poverty management system that helps identify and support Nigeria's most vulnerable populations. The system features AI-powered algorithms for identifying and evaluating the poorest households using financial and personal data from BVN and NINC systems. The platform includes six admin dashboards, two user-facing dashboards and robust backend services capable of processing millions of requests. Implemented distributed event handling with Redis and queue management with RabbitMQ for optimal performance and scalability.",
       "image": {
         "alt": "DNPSIMS system interface",
-        "src": "/assets/images/projects/dnpsims.png",
+        "src": "/assets/images/projects/placeholder.png",
         "type": "image/png",
         "width": 1200,
         "height": 900
@@ -31,7 +31,7 @@
       "description": "An AI-powered Telegram bot that generates monthly revenue of about $1500. Features include conversational AI using GPT models, custom image generation via stable diffusion and voice conversation capabilities. Includes a custom credit system integrated with Paystack for subscription management.",
       "image": {
         "alt": "Ivie AI chatbot interface",
-        "src": "/assets/images/projects/ivie.png",
+        "src": "/assets/images/projects/placeholder.png",
         "type": "image/png",
         "width": 1200,
         "height": 900
@@ -55,7 +55,7 @@
       "description": "A comprehensive platform for managing bible school operations, featuring real-time notifications, role-based access control and optimized performance. The system includes automated API documentation and robust monitoring capabilities, resulting in 50% increased stability and 40% faster response times.",
       "image": {
         "alt": "rhema nigeria bible school management platform interface",
-        "src": "/assets/images/projects/rhema.png",
+        "src": "/assets/images/projects/placeholder.png",
         "type": "image/png",
         "width": 1200,
         "height": 900
