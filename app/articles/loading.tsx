@@ -1,1 +1,1 @@
-export { FullScreenLoading as default } from "../../components/Loader/Loader";
+export { FullScreenLoading as default } from "@/components/Loader/Loader";

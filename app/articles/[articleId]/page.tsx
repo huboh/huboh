@@ -1,33 +1,32 @@
-
 // types
 import type { Params } from "./page.types";
-import type { Page, GeneratePageMetadata } from "../../../types";
+import type { Page, GeneratePageMetadata } from "@/types";
 
 
 // utils
 import { headers } from "next/headers";
 import { notFound } from "next/navigation";
 import { MDXRemote } from "next-mdx-remote/rsc";
-import { articleMdxOpts, getArticle } from "../../../lib/articles";
-import { joinClassStrings } from "../../../lib";
+import { articleMdxOpts, getArticle } from "@/lib/articles";
+import { joinClassStrings } from "@/lib";
 import { default as readTime } from "reading-time";
 
 // styles
-import styles from "../../../styles/pages/article.module.scss";
-import h2Styles from "../../../components/Text/components/Header/styles/h2.module.scss";
-import headerStyles from "../../../components/Text/components/Header/styles/header.module.scss";
+import styles from "@/styles/pages/article.module.scss";
+import h2Styles from "@/components/Text/components/Header/styles/h2.module.scss";
+import headerStyles from "@/components/Text/components/Header/styles/header.module.scss";
 
 // components
-import Tag from "../../../components/Cards/Tag";
-import View from "../../../components/View";
-import Header from "../../../components/Header";
-import Footer from "../../../components/Footer";
-import ShareArticle from "../../../components/Cards/ShareArticle";
+import Tag from "@/components/Cards/Tag";
+import View from "@/components/View";
+import Header from "@/components/Header";
+import Footer from "@/components/Footer";
+import ShareArticle from "@/components/Cards/ShareArticle";
 
 // mdx components
-import Text from "../../../components/Text";
-import List from "../../../components/List";
-import Image from "../../../components/Image";
+import Text from "@/components/Text";
+import List from "@/components/List";
+import Image from "@/components/Image";
 
 const headerClass = joinClassStrings(headerStyles["text-header"], h2Styles["h2"]);
 

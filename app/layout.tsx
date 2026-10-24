@@ -1,18 +1,18 @@
-import "../styles/main.scss";
+import "@/styles/main.scss";
 
 // types
-import type { Layout } from "../types";
+import type { Layout } from "@/types";
 import type { Metadata } from "next";
 
 // utils
 import { Poppins } from "@next/font/google";
-import { joinClassStrings } from "../lib";
+import { joinClassStrings } from "@/lib";
 
 // components
-import AppProviders from "../providers";
+import AppProviders from "@/providers";
 import { Toaster } from "react-hot-toast";
 import { Analytics } from '@vercel/analytics/react';
-import ClientLogger from "../components/ClientLogger";
+import ClientLogger from "@/components/ClientLogger";
 
 const Days = [
   "sunday",

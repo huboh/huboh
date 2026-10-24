@@ -1,9 +1,9 @@
 "use client";
 
 import type { FC } from "react";
-import type { DefaultComponentProps } from "../../types";
+import type { DefaultComponentProps } from "@/types";
 
-import styles from "../../styles/pages/articles.module.scss";
+import styles from "@/styles/pages/articles.module.scss";
 import { default as ReactMasonry, ResponsiveMasonry } from "react-responsive-masonry";
 
 
