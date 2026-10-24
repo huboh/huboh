@@ -11,17 +11,12 @@
 
   @media screen and (min-width: 760px) {
     .projects {
-      gap: 7em;
+      gap: 10em;
       width: 95%;
       margin-top: 6rem;
 
       >:nth-child(odd) {
         direction: rtl;
-
-        ul {
-          direction: ltr;
-          justify-content: flex-end !important;
-        }
       }
     }
   }

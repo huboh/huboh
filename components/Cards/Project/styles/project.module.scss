@@ -105,7 +105,7 @@
     overflow: visible;
     grid-template-columns: var(--image-column) 4em 1fr;
 
-    &:nth-child(odd) {
+    >:nth-child(odd) {
       grid-template-columns: 1fr 4em var(--image-column);
 
       .project-image-wrapper {
@@ -117,6 +117,7 @@
 
         text-align: left;
         align-items: flex-start;
+
 
         .project-stack-list {
           justify-content: flex-start;
@@ -164,6 +165,11 @@
         max-width: 90%;
         margin-bottom: 0;
         width: max-content;
+
+        direction: ltr;
+        overflow: hidden;
+        white-space: nowrap;
+        text-overflow: ellipsis;
       }
 
       .project-description {
@@ -173,6 +179,15 @@
         border-radius: var(--border-radius);
         border: 1px solid var(--border-color-light);
         background-color: var(--background-color-primary);
+
+        white-space: normal;
+        text-overflow: ellipsis;
+
+        line-clamp: 6;
+        -webkit-line-clamp: 6;
+        -webkit-box-orient: vertical;
+        display: -webkit-box;
+        overflow: hidden !important;
       }
 
       .project-stack-list {

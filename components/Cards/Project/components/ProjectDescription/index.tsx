@@ -13,7 +13,7 @@ import Paragraph from "../../../../Text/components/Paragraph";
 const ProjectDescription: FC<ProjectDescriptionProps> = (props) => {
   const project = props.project;
   const className = styles["project-details-wrapper"];
-  const headerText = <a href={ project.links.external } children={ project.title } target={ "_blank" } rel={ "noreferrer" } />;
+  const headerText = <a href={ project.links.external } children={ project.title } title={ project.title } target={ "_blank" } rel={ "noreferrer" } />;
 
   return (
     <div className={ className }>
@@ -27,6 +27,7 @@ const ProjectDescription: FC<ProjectDescriptionProps> = (props) => {
       <Paragraph
         size={ "small" }
         text={ project.description }
+        title={ project.description }
         className={ styles["project-description"] }
       />
 
