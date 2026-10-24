@@ -1,10 +1,10 @@
 import styles from '../../styles/button.module.scss';
 import linkStyles from '../../styles/button-link.module.scss';
 
-import { FC, ReactNode } from 'react';
 import { ButtonStyle } from '../../types';
+import { FC, ReactNode } from 'react';
+import { joinClassStrings } from "@/lib";
 import { LinkProps, default as Link } from "next/link";
-import { useClassString } from '../../../../hooks';
 
 export interface ButtonLinkProps extends LinkProps {
   text: string;
@@ -16,7 +16,7 @@ export interface ButtonLinkProps extends LinkProps {
 
 const ButtonLink: FC<ButtonLinkProps> = ({ text, href, icon, linkStyle, children, ...rest }) => {
   const label = text || children;
-  const className = useClassString(styles["button"], linkStyles["button-link"], styles[linkStyle || ""], linkStyles[linkStyle || ""], rest.className);
+  const className = joinClassStrings(styles["button"], linkStyles["button-link"], styles[linkStyle || ""], linkStyles[linkStyle || ""], rest.className);
 
   return (
     <Link { ...rest } href={ href } className={ className }>

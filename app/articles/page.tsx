@@ -7,7 +7,6 @@ import styles from "@/styles/pages/articles.module.scss";
 
 // utils
 import { getArticles } from "@/lib/articles";
-import { joinClassStrings } from "@/lib";
 
 // components
 import Text from "@/components/Text";
@@ -27,12 +26,11 @@ const metadata: Metadata = {
   }
 };
 
-const ArticlesPage: Page = async (props) => {
+const ArticlesPage: Page = async () => {
   const articles = await getArticles({ previewMode: true });
-  const className = joinClassStrings(styles["articles"], props.className);
 
   return (
-    <View className={ className }>
+    <View className={ styles["articles"] }>
       <Header
         id={ "header" }
       />

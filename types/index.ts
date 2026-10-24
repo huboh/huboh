@@ -19,7 +19,7 @@ export interface NextFC<
 };
 
 export type Page<
-  Props = { className?: string; },
+  Props = {},
   Params = DefaultParams,
   SearchParams = DefaultSearchParams,
   P = (Props & PageProps<Params, SearchParams>)
@@ -52,7 +52,6 @@ export type GenerateLayoutMetadata<Params = DefaultParams> = (
 
 export type PageProps<Params = DefaultParams, SearchParams = DefaultSearchParams> = {
   params: Promise<Params>;
-  className?: string;
   searchParams: Promise<SearchParams>;
 };
 

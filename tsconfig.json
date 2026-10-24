@@ -33,6 +33,9 @@
       }
     ],
     "paths": {
+      "react": [
+        "./node_modules/@types/react"
+      ],
       "@/*": [
         "./*"
       ]
