@@ -5,7 +5,7 @@ import type { Layout } from "@/types";
 import type { Metadata } from "next";
 
 // utils
-import { Poppins } from "@next/font/google";
+import { poppins } from "@/fonts";
 import { joinClassStrings } from "@/lib";
 
 // components
@@ -23,28 +23,6 @@ const Days = [
   "friday",
   "saturday",
 ];
-
-const poppins = Poppins({
-  preload: true,
-  display: "swap",
-  subsets: [
-    "latin"
-  ],
-  weight: [
-    "300",
-    "400",
-    "500",
-    "600",
-    "700",
-    "800",
-    "900"
-  ],
-  fallback: [
-    "Roboto",
-    "Oxygen",
-    "Ubuntu"
-  ]
-});
 
 const metadata: Metadata = {
   manifest: "",
@@ -83,12 +61,10 @@ const RootLayout: Layout = (props) => {
     <html
       dir="ltr"
       lang="en"
-    // suppressHydrationWarning={ true }
     >
       <body className={ joinClassStrings(poppins.className, "antialiased") }>
         <AppProviders>
           { props.children }
-          {/* <Footer id="footer" /> */ }
           <Toaster position={ "bottom-center" } containerClassName={ poppins.className } />
           <ClientLogger log={ `Look at you snooping around 👀. Have a nice ${Days[new Date().getDay()]} btw 🚀.` } />
           <Analytics />

@@ -29,15 +29,18 @@ const metadata: Metadata = {
   }
 };
 
-const IndexPage: Page = async (props) => {
+const IndexPage: Page = async () => {
   const [projects, articles] = await Promise.all([
     getProjects({}),
-    getArticles({ count: 3, featured: true, previewMode: true }),
+    getArticles({
+      previewMode: true,
+      featured: true,
+      count: 3,
+    }),
   ]);
 
-
   return (
-    <View className={ props.className }>
+    <View>
       <Header
         id="header"
         className={ styles["header"] }
