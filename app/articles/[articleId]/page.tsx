@@ -2,14 +2,14 @@
 import type { Params } from "./page.types";
 import type { Page, GeneratePageMetadata } from "@/types";
 
-
 // utils
 import { headers } from "next/headers";
 import { notFound } from "next/navigation";
 import { MDXRemote } from "next-mdx-remote/rsc";
-import { articleMdxOpts, getArticle } from "@/lib/articles";
+import { getCurrentUrl } from "@/middleware";
 import { joinClassStrings } from "@/lib";
 import { default as readTime } from "reading-time";
+import { articleMdxOpts, getArticle } from "@/lib/articles";
 
 // styles
 import styles from "@/styles/pages/article.module.scss";
@@ -47,11 +47,9 @@ const componentsMap = {
 
 
 const generateMetadata: GeneratePageMetadata<Params> = async (props) => {
-  const hds = await headers();
-  const path = hds.get("x-current-path") || "";
   const params = await props.params;
   const article = await getArticle({ path: params.articleId + ".mdx" });
-  const canonical = process.env.NEXT_PUBLIC_DOMAIN + path;
+  const canonical = getCurrentUrl(await headers());
   const authorLink = (article.author.socials.linkedIn || process.env.NEXT_PUBLIC_LINKEDIN_LINK || "");
 
   return {
@@ -80,13 +78,13 @@ const generateMetadata: GeneratePageMetadata<Params> = async (props) => {
   };
 };
 
+// cast it to any to bypass TypeScript's JSX check during build
+const MDXRemoteComponent = MDXRemote as any;
+
 const Article: Page<unknown, Params> = async (props) => {
   const params = await props.params;
   const article = await getArticle({ path: params.articleId + ".mdx" });
-
-  const hds = await headers();
-  const path = hds.get("x-current-path") || "";
-  const canonical = process.env.NEXT_PUBLIC_DOMAIN + path;
+  const canonical = getCurrentUrl(await headers());
   const authorLink = (article.author.socials.linkedIn || process.env.NEXT_PUBLIC_LINKEDIN_LINK || "");
 
   if (!article) {
@@ -94,7 +92,7 @@ const Article: Page<unknown, Params> = async (props) => {
   }
 
   return (
-    <View className={ props.className }>
+    <View>
       <Header
         id="header"
       />
@@ -136,7 +134,7 @@ const Article: Page<unknown, Params> = async (props) => {
               ) }
           </header>
 
-          <MDXRemote
+          <MDXRemoteComponent
             source={ article.rawContent }
             options={ articleMdxOpts }
             components={ componentsMap as any }
@@ -151,7 +149,7 @@ const Article: Page<unknown, Params> = async (props) => {
 
         <aside className={ styles["sidebar"] }>
           <ShareArticle
-            link={ canonical }
+            link={ canonical.toString() }
             title={ article.title }
             header={ "spread the word 👀🫶" }
           />
