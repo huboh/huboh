@@ -8,7 +8,7 @@ import { default as matter, } from "gray-matter";
 import { default as remarkHtml } from "remark-html";
 import { type SerializeOptions } from "next-mdx-remote/dist/types";
 import { default as rehypePrismPlus } from "rehype-prism-plus";
-import { default as rehypeCodeTitles } from 'rehype-code-titles';
+import { default as rehypeCodeTitles } from "rehype-code-titles";
 import { GetArticleProps, GetArticlesProps, GetArticlesPaths } from "./types";
 
 export const articleMdxOpts: SerializeOptions = {
