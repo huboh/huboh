@@ -22,11 +22,13 @@ import View from "@/components/View";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import ShareArticle from "@/components/Cards/ShareArticle";
+import { Suspense } from "react";
 
 // mdx components
 import Text from "@/components/Text";
 import List from "@/components/List";
 import Image from "@/components/Image";
+import Loading from "@/components/Loader/Loader";
 
 const headerClass = joinClassStrings(headerStyles["text-header"], h2Styles["h2"]);
 
@@ -134,11 +136,19 @@ const Article: Page<unknown, Params> = async (props) => {
               ) }
           </header>
 
-          <MDXRemoteComponent
-            source={ article.rawContent }
-            options={ articleMdxOpts }
-            components={ componentsMap as any }
-          />
+          <Suspense
+            fallback={
+              <div className={ styles["loader"] }>
+                <Loading />
+              </div>
+            }
+          >
+            <MDXRemoteComponent
+              source={ article.rawContent }
+              options={ articleMdxOpts }
+              components={ componentsMap as any }
+            />
+          </Suspense>
 
           <List
             items={ article.tags }
