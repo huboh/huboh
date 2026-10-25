@@ -16,11 +16,12 @@ export interface LinkProps extends NextLinkProps {
 }
 
 const Link: FC<LinkProps> = ({ children, text, showExtIcon, ...props }) => {
+  const href = props.href || "";
   const content = text || children;
   const className = useClassString(styles["link"], props.className);
 
   return (
-    <NextLink { ...props } children={ showExtIcon ? [content, <TbExternalLink key={ "link-icon" } />] : content } className={ className } />
+    <NextLink { ...props } href={ href } children={ showExtIcon ? [content, <TbExternalLink key={ "link-icon" } />] : content } className={ className } />
   );
 };
 
